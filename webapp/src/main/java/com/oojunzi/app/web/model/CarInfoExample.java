@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CarInfoExample {
 	
-	 	protected String beginTime;
+	 protected String beginTime;
 	    
 		protected String endTime;
 		

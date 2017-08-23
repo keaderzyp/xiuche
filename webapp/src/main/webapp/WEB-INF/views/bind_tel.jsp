@@ -16,7 +16,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<body>
 		<div class="nav">
 			<span class="nav-city" onclick="redirectTo('moments.html')">
-				<a href="rest/userInfo/toUserInfo">
+				<a href="rest/user/gotoMainDeal">
 					<img src="img/arrow-left.png"/>
 					返回
 				</a>

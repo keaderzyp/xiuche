@@ -118,7 +118,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	         	</div>
 	         	
 	         	<div class="form-group text-center col-md-12 " >
-	         		<button id="sub" data-url="<%=basePath %>rest/page/infContentSave" type="button" class="btn btn-primary">提交</button>
+	         		<button id="sub" data-url="<%=basePath %>rest/page/infContentSave?userid=${user.id}" type="button" class="btn btn-primary">提交</button>
 	         		<button type="reset" class="btn btn-default">重置</button>
 	         	</div>
 	         </form>  
@@ -130,19 +130,19 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			},'post',"#main-content",function(){
 				$("textarea[name='content']").html($(".note-editable").html());
 				if(util_p.checkNull("[name='title']","标题不可以为空","#addForm")){
- 					return;
+ 					return false;
  				}
  				if(util_p.checkNull("[name='desciption']","文章描述不可以为空","#addForm")){
- 					return;
+ 					return false;
  				}
  				if(util_p.checkNull("[name='icon']","图标不可以为空","#addForm")){
- 					return;
+ 					return false;
  				}
  				if(util_p.checkNull("[name='remark']","备注不可以为空","#addForm")){
- 					return;
+ 					return false;
  				}
  				if(util_p.checkNull("[name='type']","请选择一个文章类型","#addForm")){
- 					return;
+ 					return false;
  				}
  				return true;
 			});

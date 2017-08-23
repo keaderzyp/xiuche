@@ -23,32 +23,31 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<meta content="" name="author" />
 
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+	<link href="<%=basePath%>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-	<link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<%=basePath%>media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<%=basePath%>media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<%=basePath%>media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
-
-	<link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="<%=basePath%>media/css/style.css" rel="stylesheet" type="text/css"/>
 
 
-	<link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="<%=basePath%>media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
 
 	<!-- END GLOBAL MANDATORY STYLES -->
 
 	<!-- BEGIN PAGE LEVEL STYLES --> 
 
-	<link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
+	<link href="<%=basePath%>media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+	<link href="<%=basePath%>media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
 
-	<link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="media/css/datetimepicker.css" />
-	<link href="media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="<%=basePath%>media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" href="<%=basePath%>media/css/datetimepicker.css" />
+	<link href="<%=basePath%>media/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
 
 	<!-- END PAGE LEVEL STYLES -->
 
@@ -89,7 +88,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <body class="page-header-fixed aa" >
 
 	
-	<form id="queryForm" method="post">
+	<form id="queryForm" method="post" >
 			<div class="portlet box grey">
 				<div class="portlet-title ">
 					<div class="caption"><i class="icon-bell"></i>事故记录</div>
@@ -237,7 +236,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				if($(this).prop('checked')){
 					$("input[type='checkbox']:not(:eq(0))").parent().addClass('checked')
 					$("input[type='checkbox']:not(:eq(0))").prop('checked',true);
-					$("input[type='checkbox']:not(:eq(0))").parent().parent().parent().parent().addClass('info');
+					$("input[type='checkbox']:not(:eq(0))").parent().parent().parent().parent();
 					for(var i=0;i<$("input[type='checkbox']:not(:eq(0))").length;i++){
 						var tr = $("input[type='checkbox']:not(:eq(0))").eq(i).parent().parent().parent().parent();
 						var info = getTRobj(tr);
@@ -284,7 +283,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				}else{
 					span.addClass('checked');
 					ipt.prop('checked',true);
-					$(this).css('color','#FFFFFF');
 					$(this).addClass('info');
 					rn.push(info);
 				}
@@ -311,6 +309,32 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					}
 				}
 			}
+			
+			
+			
+			
+			
+			
+		    $(".pagination .pageTo").on('click',function(){
+		    	var pageNo = this.dataset.pageno;
+		    	var url = this.dataset.url;
+		    	$("#queryForm")[0].action= url+'?pageNo='+pageNo;
+		    	$("#queryForm")[0].submit();
+		    /* 	$.ajax({
+		     		url: url+'?pageNo='+pageNo,
+		     		type: 'POST',
+		     		cache: false,
+		     		data: new FormData($('#queryForm')[0]),
+		     		processData: false,
+		     		contentType: false,
+		     		}).done(function(res) {
+		     			 $("#frame").html(res);
+		     		}).fail(function(res) {
+		     			
+		     		}); */
+		    })
+		    
+		    
 		});
 
 	</script>

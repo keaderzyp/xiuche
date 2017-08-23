@@ -99,6 +99,19 @@ public class SmsUtils {
 	        //System.out.println(smsModel.getParam1());
 	        //return sb.toString();
 	        break;
+		case "SMS_88355002":
+	        //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
+	        request.setTemplateParam("{\"code\":\""+smsModel.getParam1()+"\"}");
+	        //System.out.println(smsModel.getParam1());
+	        //return sb.toString();
+	        break;
+		case "SMS_83440266":
+	        //可选:模板中的变量替换JSON串,如模板内容为"亲爱的${name},您的验证码为${code}"时,此处的值为
+	        request.setTemplateParam("{\"code\":\""+smsModel.getParam1()+"\"}");
+	        //System.out.println(smsModel.getParam1());
+	        //return sb.toString();
+	        break;
+	        
 		default:
 			break;
 		}

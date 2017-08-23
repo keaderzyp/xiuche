@@ -52,6 +52,8 @@ import com.oojunzi.app.web.service.UserService;
 @Controller
 @RequestMapping("/page")
 public class PageController {
+	@Resource
+	UserService useService;
 	
 	@RequestMapping("/dev")
 	public String dev(){
@@ -256,8 +258,8 @@ public class PageController {
     	
     	UserExample example = new UserExample();
     	
-    	if ( !(StringUtils.isEmpty(userExample.getTelphone()) )) {
-    		example.createCriteria().andTelphoneEqualTo(userExample.getTelphone());
+    	if ( !(StringUtils.isEmpty(userExample.getUsername()) )) {
+    		example.createCriteria().andUsernameEqualTo(userExample.getUsername());
 		}
     		
     	
@@ -520,13 +522,13 @@ public class PageController {
     	String content = request.getParameter("content");
     	String remark = request.getParameter("remark");
     	String id = request.getParameter("id");
+    	String userid = request.getParameter("userid");
+    	System.out.println(userid);
     	//接收传输的文章图片数组
     	String[] imgs = request.getParameterValues("imgs");
     	System.out.println(Arrays.toString(imgs));
     	//获取用户信息
-    	Subject currentUser = SecurityUtils.getSubject();
-		Session session = currentUser.getSession();
-		User authUserInfo = (User) session.getAttribute("userInfo");
+		User authUserInfo = useService.selectById(userid);
 		//得到用户的名称和主键
 		String issuer = authUserInfo.getUsername();
 		String userFid = authUserInfo.getId().toString();

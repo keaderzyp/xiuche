@@ -190,6 +190,7 @@
 			 	 modelSlide.style.marginLeft="0px"
 				 document.body.style.position="absolute";
 				 document.body.style.marginLeft="260px";
+				 document.body.style.zIndex="0";
 				 window.clearTimeout(rn);
 			 })
 			

@@ -65,7 +65,7 @@
 		type="text/javascript" charset="utf-8"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.js"
 		type="text/javascript" charset="utf-8"></script>
-	<script src="<%=basePath %>js/code.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<%=basePath %>js/changepasscode.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 function sub() {
 	var code1 =document.getElementById("code1").value;

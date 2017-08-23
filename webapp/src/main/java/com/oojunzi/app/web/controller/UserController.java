@@ -265,7 +265,78 @@ public class UserController {
 
 		return JSON.toJSONString(map);
 	}
+	/**
+	 * 发送修改密码验证码
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/sendChangePassCode", method = RequestMethod.GET)
+	@ResponseBody
+	public String sendChangePassCode(@RequestParam("phone") String phone) {
+		final User user = userService.selectByUsername(phone);
+		Map<String, Object> map = new HashMap<>();
+		if (user == null) {
+			map.put("error", "手机号不存在，请注册");
+			map.put("isSucc", "NO");
+		} else {
+			String code = MathUtils.code();
+			//System.out.println("---------------------------------------");
+			//System.out.println(phone);
+			SmsModel smsModel = new SmsModel();
+			smsModel.setPhone(phone);
+			smsModel.setTemplateCode("SMS_88355002");
+			smsModel.setParam1(code);
+			SendSmsResponse response = null;
+			try {
+				response = SmsUtils.sendSms(smsModel);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			map.put("isSucc", response.getCode());
+			map.put("code", code);
+			System.out.println(response.getCode());
+		}
 
+		return JSON.toJSONString(map);
+	}
+	/**
+	 * 发送验证码 登录
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "/verifyCode", method = RequestMethod.GET)
+	@ResponseBody
+	public String verifyCode(@RequestParam("phone") String phone) {
+		final User user = userService.selectByUsername(phone);
+		Map<String, Object> map = new HashMap<>();
+		if (user == null) {
+			map.put("error", "手机号不存在，请注册");
+			map.put("isSucc", "NO");
+		} else {
+			String code = MathUtils.code();
+			//System.out.println("---------------------------------------");
+			//System.out.println(phone);
+			SmsModel smsModel = new SmsModel();
+			smsModel.setPhone(phone);
+			smsModel.setTemplateCode("SMS_83440266");
+			smsModel.setParam1(code);
+			SendSmsResponse response = null;
+			try {
+				response = SmsUtils.sendSms(smsModel);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			map.put("isSucc", response.getCode());
+			map.put("code", code);
+			System.out.println(response.getCode());
+		}
+
+		return JSON.toJSONString(map);
+	}
 	/**
 	 * 用户登出
 	 * 

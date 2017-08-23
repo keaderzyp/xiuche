@@ -182,10 +182,9 @@ public class MathUtils {
      * @param v1 被加数
      * @param v2 加数
      * @return 两个参数的和
-     * @throws Exception 
      */
 
-    public static double add(double... args) throws Exception {
+    public static double add(double... args) {
     	try{
 	        BigDecimal v = new BigDecimal(Double.toString(args[0]));
 	        for(int i = 1; i <args.length; i++){
@@ -232,9 +231,8 @@ public class MathUtils {
      * @param v1 被除数
      * @param v2 除数
      * @return 两个参数的商
-     * @throws Exception 
      */
-    public static double div(double v1, double v2) throws Exception {
+    public static double div(double v1, double v2) {
         return div(v1, v2, DEF_DIV_SCALE);
     }
 
@@ -246,9 +244,8 @@ public class MathUtils {
      * @param v2    除数
      * @param scale 表示表示需要精确到小数点以后几位。
      * @return 两个参数的商
-     * @throws Exception 
      */
-    public static double div(double v1, double v2, int scale) throws Exception {
+    public static double div(double v1, double v2, int scale) {
         if (scale < 0) {
             throw new IllegalArgumentException(
                     "The scale must be a positive integer or zero");
@@ -339,7 +336,7 @@ public class MathUtils {
     	 }
          return v.doubleValue();
     }
-    public static double truncToScale(double amount, int scale) throws Exception{
+    public static double truncToScale(double amount, int scale){
     	int mod = 1;
     	for(int i = 0; i < scale; i++){
     		mod*= 10;

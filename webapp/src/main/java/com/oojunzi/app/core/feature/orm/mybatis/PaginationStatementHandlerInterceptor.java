@@ -37,6 +37,7 @@ public class PaginationStatementHandlerInterceptor implements Interceptor {
     private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
     private static final ObjectWrapperFactory DEFAULT_OBJECT_WRAPPER_FACTORY = new DefaultObjectWrapperFactory();
 
+    @Override
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
         ParameterHandler parameterHandler = statementHandler.getParameterHandler();
@@ -70,10 +71,12 @@ public class PaginationStatementHandlerInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
+    @Override
     public Object plugin(Object target) {
         return Plugin.wrap(target, this);
     }
 
+    @Override
     public void setProperties(Properties properties) {
     }
 

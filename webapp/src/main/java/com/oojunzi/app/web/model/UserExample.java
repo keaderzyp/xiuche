@@ -23,9 +23,17 @@ public class UserExample {
     
 	protected String endTime;
 	protected String telphone;
+	protected String username;
 	
-	
-    public String getTelphone() {
+    public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getTelphone() {
 		return telphone;
 	}
 

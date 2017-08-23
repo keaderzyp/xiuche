@@ -59,10 +59,12 @@ public abstract class GenericServiceImpl<Model, PK> implements GenericService<Mo
     }
 
 
+    @Override
     public Model selectOne() {
         return null;
     }
 
+    @Override
     public List<Model> selectList() {
         return null;
     }

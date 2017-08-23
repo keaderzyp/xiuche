@@ -86,7 +86,7 @@
 				return;
 			}
 			if(registerDate == ""){
-				alert("请选择注册日期");
+				alert("请选择生效日期");
 				return;
 			}
 		}

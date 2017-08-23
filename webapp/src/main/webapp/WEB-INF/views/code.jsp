@@ -80,7 +80,7 @@
 		type="text/javascript" charset="utf-8"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.js"
 		type="text/javascript" charset="utf-8"></script>
-	<script src="<%=basePath %>js/code.js" type="text/javascript" charset="utf-8"></script>
+	<script src="<%=basePath %>js/verifycode.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
 	
 	function sub() {

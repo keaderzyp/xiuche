@@ -448,7 +448,7 @@
 						</a>
 					</li>
 					-->
-				<li><a href="rest/userInfo/toBindtel"> <img
+				<li><a href="rest/userInfo/toValidateTel"> <img
 						src="img/bangdingshouji.png" /> 修改绑定手机
 				</a></li>
 				<li><a href="rest/userInfo/updatePassword"> <img
@@ -486,6 +486,14 @@
 					window.clearTimeout(rn);
 				})
 	
+			}
+			model.onmousemove=function(e){
+				if (e.target != this){
+					console.log(1);
+					e.preventDefault();
+				}else{
+					console.log(2);
+				}
 			}
 			model.onclick = function(e) {
 				if (e.target == this) {
