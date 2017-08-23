@@ -1,0 +1,95 @@
+.login-close{
+	padding: 10px;
+	text-align: right;
+}
+.login-logo{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: center;
+}
+.login-form .form-group{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	border-bottom: 1px solid lightgray;
+	width: 80%;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.login-form .form-group input{
+	border: none;
+	font-size: 15px;
+}
+.login-form .form-group input:focus{
+	outline: none;
+}
+.login-form .form-group img{
+	margin-right: 15px;
+	width: 24px;
+	height: 24px;
+}
+.login-form .form-group-submit{
+	margin: auto;
+	padding-top: 75px;
+	width: 80%;
+}
+.login-form .form-group-submit button{
+	width: 100%;
+	background: #4098FF;
+	border: none;
+	border-radius: 100px !important;
+	padding: 15px;
+	color: white;
+	font-size: 15px;
+}
+.login-form .form-group-check{
+	width: 80%;
+	margin: auto;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	padding-top:15px ;
+}
+.login-form .form-group-check a{
+	
+	font-size:14px;
+	color: #9B9B9B ;
+	text-decoration: none;
+}
+.loading-body{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: flex;
+	transition: 0.5s;
+}
+.loading-body img{
+	width: 30px;
+	height: 30px;
+	margin: auto;
+} 
+.input-icon input{
+	padding:0px !important;
+	background:#FFFFFF !important;
+}
+.input-icon{
+	display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+input-icon input:-webkit-autofill{
+	background: #FFFFFF !important;
+}
+.input-icon input:focus{
+	background:#FFFFFF !important;
+}
+button{
+	outline: none !important;
+}

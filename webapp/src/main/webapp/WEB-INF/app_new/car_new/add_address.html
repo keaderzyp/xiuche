@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新增收货地址</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/main_unlogin-styles.css"/>
+		<link rel="stylesheet" type="text/css" href="css/address.css"/>
+		<style type="text/css">
+			.nav:after{display: none;}
+		</style>
+	</head>
+	<body>
+		<div class="loading-body">
+			<img src="img/loading.gif"/>
+		</div>
+		<div class="main-body">
+			<div class="nav">
+				<span class="nav-city" >
+					<a href="address.html">
+						<img src="img/arrow-left.png"/>
+						返回
+					</a>
+				</span>
+				<span class="nav-city">
+					新增地址
+				</span>
+				<span class="nav-city" >
+					<a href="address_list.html">
+						保存
+					</a>
+				</span>
+			</div>
+			<ul class="address">
+				<li>
+					<div class="title">
+						收货人姓名
+					</div>
+					<div class="content">
+						<input type="text" />
+					</div>
+				</li>
+				<li>
+					<div class="title">
+						手机号码
+					</div>
+					<div class="content">
+						<input type="text" />
+					</div>
+				</li>
+				<li>
+					<div class="title">
+						省/市/区
+					</div>
+					<div class="content choose-address">
+						<input readonly="readonly" type="text" />
+					</div>
+				</li>
+				<li>
+					<div class="title">
+						详细地址
+					</div>
+					<div class="content">
+						<input type="text" />
+					</div>
+				</li>
+			</ul>
+			<div class="set-default">
+				<div class="title">
+					设为默认
+				</div>
+				<div class="radio" data-checked="false">
+					<img src="img/单选空.png"/>
+				</div>
+			</div>
+		</div>
+		<div class="model">
+			<div class="address-list">
+				<div class="diqus">
+					
+				</div>
+				<button class="cancel">
+					取消
+				</button>
+			</div>
+		</div>
+	</body>
+	<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//单选方法
+		document.getElementsByClassName("radio")[0].onclick=function(){
+			if(this.dataset.checked=='false'){
+				this.innerHTML='<img src="img/单选.png"/>';
+				this.dataset.checked='true';
+			}else{
+				this.innerHTML='<img src="img/单选空.png"/>';
+				this.dataset.checked='false';
+			}
+		}
+		//地址信息选择的解决方案，与后台代码连接需要自行修改
+		/*
+		 	所有数据为静态数据
+		 	只有黑龙江哈尔滨流程是正常的其他需要自行添加数据
+		 * 
+		 * */
+		var model = document.getElementsByClassName("model")[0];
+		var mainBody = document.getElementsByClassName("main-body")[0];
+		var chooseAddress = document.getElementsByClassName("choose-address")[0];
+		var addressList = document.getElementsByClassName("address-list")[0];
+		var shengs = {
+			hlj:"黑龙江省",
+			sx:"山西省",
+			ln:"辽宁省",
+			jl:"吉林省",
+			sd:"山东省",
+			heb:"河北省",
+			hub:"湖北省",
+			jl1:"吉林省",
+			sd1:"山东省",
+			heb1:"河北省",
+			hub1:"湖北省"
+		}
+		var shis = {
+			hlj:[
+				{id:'hrb',name:'哈尔滨'},
+				{id:'qqhr',name:'齐齐哈尔'},
+				{id:'dq',name:'大庆'},
+				{id:'hrb',name:'哈尔滨'},
+				{id:'qqhr',name:'齐齐哈尔'},
+				{id:'dq',name:'大庆'}
+			]
+		}
+		var qus={
+			hrb:[
+				{id:'ng',name:'南岗区'},
+				{id:'dl',name:'道里区'},
+				{id:'dw',name:'道外区'},
+				{id:'xf',name:'香坊区'}
+			]
+		}
+		function querySheng(shengs){
+			var diqus = document.getElementsByClassName("diqus")[0];
+			chooseAddress.children[0].value="";
+			diqus.innerHTML="";
+			for(sheng in shengs){
+				var btn = document.createElement("button");
+				btn.innerText=shengs[sheng];
+				btn.id=sheng;
+				btn.onclick=queryShi;
+				diqus.appendChild(btn);
+			}
+		}
+		function queryShi(){
+			chooseAddress.children[0].value+=this.innerHTML+"/";
+			var diqus = document.getElementsByClassName("diqus")[0];
+			diqus.innerHTML="";
+			var shi = shis[this.id];
+			for(var i=0;i<shi.length;i++){
+				var btn = document.createElement("button");
+				btn.innerText=shi[i].name;
+				btn.id=shi[i].id;
+				btn.onclick=queryQu;
+				diqus.appendChild(btn);
+			}
+		}
+		function queryQu(){
+			chooseAddress.children[0].value+=this.innerHTML+"/";
+			var diqus = document.getElementsByClassName("diqus")[0];
+			diqus.innerHTML="";
+			var qu = qus[this.id];
+			for(var i=0;i<qu.length;i++){
+				var btn = document.createElement("button");
+				btn.innerText=qu[i].name;
+				btn.id=qu[i].id;
+				btn.onclick=addressEnd;
+				diqus.appendChild(btn);
+			}
+		}
+		function addressEnd(){
+			chooseAddress.children[0].value+=this.innerHTML+"";
+			mainBody.style.filter="blur(0px)";
+			model.style.display="none";
+		}
+		chooseAddress.onclick=function(){
+			querySheng(shengs);
+			addressList.style.transform="translate(0px,0px)"
+			model.style.display="block";
+			mainBody.style.filter="blur(3px)";
+		}
+		model.onclick=function(e){
+			if(e.target==this){
+				mainBody.style.filter="blur(0px)";
+				this.style.display="none";
+			}
+		}
+		var cancel = document.getElementsByClassName("cancel")[0];
+		cancel.onclick=function(){
+			mainBody.style.filter="blur(0px)";
+			model.style.display="none";
+		}
+	</script>
+</html>

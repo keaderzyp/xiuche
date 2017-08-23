@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.MyHelpMapper">
+	<resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.HelpInfo">
+		<id column="HELP_ID" property="helpId" jdbcType="DECIMAL" />
+		<result column="IS_SPOT" property="isSpot" jdbcType="VARCHAR" />
+		<result column="AREA1" property="area1" jdbcType="VARCHAR" />
+		<result column="AREA2" property="area2" jdbcType="VARCHAR" />
+		<result column="AREA3" property="area3" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="FACT_COST" property="factCost" jdbcType="DECIMAL" />
+		<result column="GUESS_FEE" property="guessFee" jdbcType="DECIMAL" />
+		<result column="OWNER_PAY" property="ownerPay" jdbcType="DECIMAL" />
+		<result column="CIRCLE_PAY" property="circlePay" jdbcType="DECIMAL" />
+		<result column="OO_PAY" property="ooPay" jdbcType="DECIMAL" />
+		<result column="HELP_TIME" property="helpTime" jdbcType="DATE" />
+		<result column="HAPPEN_TIME" property="happenTime" jdbcType="DATE" />
+		<result column="HELP_USER" property="helpUser" jdbcType="VARCHAR" />
+		<result column="SERVICER2_FID" property="servicer2Fid"
+			jdbcType="DECIMAL" />
+		<result column="SERVICER3_FID" property="servicer3Fid"
+			jdbcType="DECIMAL" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="HAVE_PAY" property="havePay" jdbcType="DECIMAL" />
+		<result column="CAR_FID" property="carFid" jdbcType="DECIMAL" />
+		<result column="SERVICER_FID" property="servicerFid" jdbcType="DECIMAL" />
+		<result column="HAPPEN_POSITION" property="happenPosition"
+			jdbcType="VARCHAR" />
+		<result column="GUESS_COST" property="guessCost" jdbcType="VARCHAR" />
+		<result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+		<result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+		<result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+		<result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+		<result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+		<result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+		<result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+		<result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+		<result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+		<result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+		<association property="helpSpot" javaType="com.oojunzi.app.web.model.HelpSpot">
+			<id column="SPOT_ID" property="spotId" jdbcType="DECIMAL" />
+			<result column="STATUS" property="status" jdbcType="VARCHAR" />
+			<result column="SPOT_TIME" property="spotTime" jdbcType="DATE" />
+			<result column="BUTLER2_FTID" property="butler2Ftid" jdbcType="DECIMAL" />
+			<result column="SPOT_RECORD" property="spotRecord" jdbcType="VARCHAR" />
+			<result column="RETERENCE" property="reterence" jdbcType="VARCHAR" />
+			<result column="RETERENCE_TEL" property="reterenceTel"
+				jdbcType="VARCHAR" />
+			<result column="OTHER_SIDE" property="otherSide" jdbcType="VARCHAR" />
+			<result column="OTHER_SIDE_TEL" property="otherSideTel"
+				jdbcType="VARCHAR" />
+			<result column="DUTY_PRECENT" property="dutyPrecent" jdbcType="VARCHAR" />
+			<result column="BUTLER3_FTID" property="butler3Ftid" jdbcType="DECIMAL" />
+			<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+			<result column="BUTLER_FID" property="butlerFid" jdbcType="DECIMAL" />
+			<result column="HELP_FID" property="helpFid" jdbcType="DECIMAL" />
+			<result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+			<result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+			<result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+			<result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+			<result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+			<result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+			<result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+			<result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+			<result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+			<result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+			<collection property="helpSpotimg"
+				ofType="com.oojunzi.app.web.model.HelpSpotimg">
+				<id column="SPOTIMG_ID" property="spotimgId" jdbcType="DECIMAL" />
+				<result column="NUM" property="num" jdbcType="DECIMAL" />
+				<result column="PATH" property="path" jdbcType="VARCHAR" />
+				<result column="STATUS" property="status" jdbcType="VARCHAR" />
+				<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+				<result column="SPOT_FID" property="spotFid" jdbcType="VARCHAR" />
+				<result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+				<result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+				<result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+				<result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+				<result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+				<result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+				<result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+				<result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+				<result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+				<result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+			</collection>
+		</association>
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		HELP_ID, IS_SPOT, AREA1, AREA2, AREA3, STATUS, FACT_COST,
+		GUESS_FEE,
+		OWNER_PAY, CIRCLE_PAY,
+		OO_PAY, HELP_TIME, HAPPEN_TIME,
+		HELP_USER, SERVICER2_FID, SERVICER3_FID,
+		REMARK,
+		HAVE_PAY, CAR_FID,
+		SERVICER_FID, HAPPEN_POSITION, GUESS_COST, PARAM1, PARAM2,
+		PARAM3,
+		PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.oojunzi.app.web.model.HelpInfoExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from T_HELP_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<!-- By L -->
+	<select id="selectByExample1" resultMap="BaseResultMap"
+		parameterType="com.oojunzi.app.web.model.HelpInfoExample">
+		select HELP_ID, IS_SPOT, AREA1, AREA2, AREA3, A.STATUS,
+		FACT_COST,
+		GUESS_FEE, OWNER_PAY, CIRCLE_PAY,
+		OO_PAY, HELP_TIME,
+		HAPPEN_TIME, HELP_USER, SERVICER2_FID, SERVICER3_FID,
+		A.REMARK,
+		HAVE_PAY, CAR_FID, SERVICER_FID, HAPPEN_POSITION, GUESS_COST,
+		A.PARAM1,A.PARAM2, A.PARAM3,
+		A.PARAM4, A.PARAM5, A.PARAM6, A.PARAM7,
+		A.PARAM8, A.PARAM9, A.PARAM10,
+		SPOT_ID, B.STATUS, SPOT_TIME,
+		BUTLER2_FTID, SPOT_RECORD, RETERENCE,
+		RETERENCE_TEL,
+		OTHER_SIDE,
+		OTHER_SIDE_TEL, DUTY_PRECENT, BUTLER3_FTID, B.REMARK, BUTLER_FID,
+		HELP_FID,
+		SPOTIMG_ID, NUM, PATH, c.STATUS, c.REMARK, SPOT_FID
+		from
+		T_HELP_INFO A left join T_HELP_SPOT B ON A.HELP_ID= B.HELP_FID left
+		join t_help_spotimg c on b.spot_id = c.spot_fid
+		where CAR_FID in
+		(select ID from T_CAR_INFO where USER_ID = #{userId})
+	</select>
+	<select id="selectByWeek" resultType="Map" parameterType="Map">
+		SELECT
+		TO_CHAR(T.INFORM_TIME,'YYYY') YEAR,TO_CHAR(T.INFORM_TIME,'IW')
+		WEEK,SUM(
+		case
+		when car_fid in (select id from T_CAR_INFO where user_id
+		= #{userId}) then
+		FACT_PAY
+		else 0
+		end
+		) MONEY,COUNT(distinct help_fid)
+		COUNT_HELP ,count(car_fid) COUNT_USER
+		FROM (select * from
+		T_HELP_PARTAKE c where c.help_fid in (select
+		help_fid from
+		T_HELP_PARTAKE where car_fid in (select id from
+		T_CAR_INFO where
+		user_id = #{userId}))) T
+		WHERE TO_CHAR(T.INFORM_TIME,'YYYY') =
+		TO_CHAR(SYSDATE,'YYYY')
+		GROUP BY
+		TO_CHAR(T.INFORM_TIME,'IW'),TO_CHAR(T.INFORM_TIME,'YYYY')
+	</select>
+	<select id="selectByWeekID" resultType="Map" parameterType="map">
+		SELECT TO_CHAR(T.INFORM_TIME,'YYYY') YEAR,TO_CHAR(T.INFORM_TIME,'IW')
+		WEEK,SUM(
+		case
+		when car_fid in (select id from T_CAR_INFO where user_id
+		= #{userId}) then
+		FACT_PAY
+		else 0
+		end
+		) MONEY,COUNT(distinct help_fid)
+		COUNT_HELP ,count(car_fid) COUNT_USER
+		FROM (select * from
+		T_HELP_PARTAKE c where c.help_fid in (select
+		help_fid from
+		T_HELP_PARTAKE where car_fid in (select id from
+		T_CAR_INFO where
+		user_id = #{userId}))) T
+		WHERE TO_CHAR(T.INFORM_TIME,'YYYY') =
+		TO_CHAR(SYSDATE,'YYYY') and
+		TO_CHAR(T.INFORM_TIME,'IW')=#{weekId}
+		GROUP
+		BY TO_CHAR(T.INFORM_TIME,'IW'),TO_CHAR(T.INFORM_TIME,'YYYY')
+	</select>
+	<select id="countByExample" parameterType="com.oojunzi.app.web.model.HelpInfoExample"
+		resultType="java.lang.Integer">
+		select count(*)
+		from T_HELP_INFO
+		where CAR_FID in (select ID
+		from T_CAR_INFO where USER_ID = #{userId})
+	</select>
+	<select id="selectInfoByWeekOfDay" resultMap="BaseResultMap"
+		parameterType="Map">
+		select HELP_ID, IS_SPOT, AREA1, AREA2, AREA3, A.STATUS,
+		FACT_COST,
+		GUESS_FEE, OWNER_PAY, CIRCLE_PAY,
+		OO_PAY, HELP_TIME,
+		HAPPEN_TIME, HELP_USER, SERVICER2_FID, SERVICER3_FID,
+		A.REMARK,
+		HAVE_PAY, CAR_FID, SERVICER_FID, HAPPEN_POSITION, GUESS_COST,
+		A.PARAM1,A.PARAM2, A.PARAM3,
+		A.PARAM4, A.PARAM5, A.PARAM6, A.PARAM7,
+		A.PARAM8, A.PARAM9, A.PARAM10,
+		SPOT_ID, B.STATUS, SPOT_TIME,
+		BUTLER2_FTID, SPOT_RECORD, RETERENCE,
+		RETERENCE_TEL,
+		OTHER_SIDE,
+		OTHER_SIDE_TEL, DUTY_PRECENT, BUTLER3_FTID, B.REMARK, BUTLER_FID,
+		HELP_FID,
+		SPOTIMG_ID, NUM, PATH, c.STATUS, c.REMARK, SPOT_FID
+		from
+		T_HELP_INFO A left join T_HELP_SPOT B ON A.HELP_ID= B.HELP_FID left
+		join t_help_spotimg c on b.spot_id = c.spot_fid
+		where HELP_ID in
+		(select HELP_FID from T_HELP_PARTAKE t where
+		TO_CHAR(T.INFORM_TIME,'IW')=#{week} and
+		TO_CHAR(T.INFORM_TIME,'YYYY')=#{year} and car_fid in (select id from
+		T_CAR_INFO where user_id = #{userId}) )
+	</select>
+
+	<select id="selectSumPayByCarId" parameterType="String"
+		resultType="String">
+		select sum(t.fact_pay) as money from T_HELP_PARTAKE t where
+		t.car_fid =#{carId} and t.status = 1
+
+	</select>
+	<select id="selectSumPayByUserId" parameterType="String"
+		resultType="String">
+		select sum(t.fact_pay) as fact_pay from T_HELP_PARTAKE t
+		where t.status=1 and t.car_fid in (select c.id from T_Car_Info c where
+		c.user_id=#{userID} )
+	</select>
+
+</mapper>

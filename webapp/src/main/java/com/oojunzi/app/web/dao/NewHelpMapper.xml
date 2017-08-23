@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.NewHelpMapper">
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.HelpBill" >
+    <id column="BILLID" property="billid" jdbcType="DECIMAL" />
+    <result column="BILLNAME" property="billname" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="HELPID" property="helpid" jdbcType="DECIMAL" />
+    <result column="TITLEID" property="titleid" jdbcType="DECIMAL" />
+    <result column="COSTDONE" property="costdone" jdbcType="DECIMAL" />
+    <result column="COSTUNDONE" property="costundone" jdbcType="DECIMAL" />
+    <result column="ACCIDENTTYPE" property="accidenttype" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+    <result column="TIMEZONE" property="timezone" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="PartakeResultMap" type="com.oojunzi.app.web.model.HelpPartake" >
+    <result column="FACT_PAY" property="factPay" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CAR_FID" property="carFid" jdbcType="DECIMAL" />
+    <result column="USER_FID" property="userFid" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	<sql id="Base_Column_List">
+		HELP_ID, IS_SPOT, AREA1, AREA2, AREA3, STATUS, FACT_COST,
+		GUESS_FEE,
+		OWNER_PAY, CIRCLE_PAY,
+		OO_PAY, HELP_TIME, HAPPEN_TIME,
+		HELP_USER, SERVICER2_FID, SERVICER3_FID,
+		REMARK,
+		HAVE_PAY, CAR_FID,
+		SERVICER_FID, HAPPEN_POSITION, GUESS_COST, PARAM1, PARAM2,
+		PARAM3,
+		PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+	</sql>
+	<!-- add yuhb 每周总账单信息-->
+	<select id="selectBillByUserId" parameterType="String" resultMap="BaseResultMap">
+		select t.titleid,t.billname,t.param1 ,t.timezone ,t.param4   
+       		from t_help_bill t 
+       		where t.titleid >= (select max(c.param2) from T_Car_Info c where c.user_id=#{userID})
+       		group by t.titleid,t.billname,t.param1,t.timezone,t.param4 order by t.titleid desc	
+    </select>
+
+	<!-- add yuhb 每周该用户账单信息-->
+	<select id="selectPartakeByUserId" parameterType="String" resultMap="PartakeResultMap">
+		select t.param1,sum(t.fact_pay) fact_pay,max(t.status) status 
+		from T_HELP_PARTAKE t
+		where t.car_fid in (select c.id from T_Car_Info c where
+		c.user_id=#{userID})
+		group by t.param1
+	</select>
+	<select id="selectTopOneBillByUserId" parameterType="String"
+		resultMap="BaseResultMap">
+		select * from (select t.titleid,t.billname,t.param1 ,t.timezone ,t.param4
+		from t_help_bill t
+		where t.titleid >= (select max(c.param2) from T_Car_Info c where
+		c.user_id=#{userID})
+		group by t.titleid,t.billname,t.param1,t.timezone,t.param4 order by
+		t.titleid desc )
+		where rownum=1
+	</select>
+
+	<!-- add yuhb 我的求助记录 -->
+	<select id="selectHelpInfoByUserId" resultType="com.oojunzi.app.web.model.HelpInfo"
+		parameterType="String">
+		select
+		t.status,t.fact_cost,t.owner_pay,t.help_time,t.happen_position,t.param1,t.remark,wy_concat(c.path)
+		imgs
+		from T_HELP_INFO t left join t_help_helpimg c on t.help_id = c.help_fid
+		where CAR_FID in (select ID from T_CAR_INFO where USER_ID = #{userId})
+		group by
+		t.status,t.fact_cost,t.owner_pay,t.help_time,t.happen_position,t.param1,t.remark
+	</select>
+
+	<!-- add yuhb 本周总账单信息 -->
+	<select id="selectBillByTitleId" parameterType="String"
+		resultType="com.oojunzi.app.web.model.HelpBill">
+		select t.titleid,t.billname,t.param1 ,t.timezone ,t.param4
+		,wy_concat(t.helpid) param10
+		from t_help_bill t
+		where t.titleid = #{titleid}
+		group by t.titleid,t.billname,t.param1,t.timezone,t.param4
+	</select>
+
+	<!-- add yuhb 本周该用户账单信息 -->
+	<select id="selectPartakeBytitleId" parameterType="Map"
+		resultMap="PartakeResultMap">
+		select t.param1,sum(t.fact_pay) fact_pay,max(t.status)
+		status
+		from T_HELP_PARTAKE t
+		where t.car_fid in (select c.id from T_Car_Info c where
+		c.user_id=#{userId})
+		and t.param1 = #{titleId}
+		group by t.param1
+	</select>
+
+	<!-- add yuhb 根据id取求助记录 -->
+	<select id="selectHelpInfoByHelpId" resultType="com.oojunzi.app.web.model.HelpInfo"
+		parameterType="String">
+		select
+		t.status,t.fact_cost,t.owner_pay,t.help_time,t.happen_position,t.param1,t.remark,wy_concat(c.path)
+		imgs
+		from T_HELP_INFO t left join t_help_helpimg c on t.help_id = c.help_fid
+		where t.help_id = #{helpId}
+		group by
+		t.status,t.fact_cost,t.owner_pay,t.help_time,t.happen_position,t.param1,t.remark
+	</select>
+
+
+</mapper>

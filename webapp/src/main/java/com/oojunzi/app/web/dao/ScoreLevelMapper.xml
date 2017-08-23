@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.ScoreLevelMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.ScoreLevel" >
+    <id column="SLEVEL_ID" property="slevelId" jdbcType="DECIMAL" />
+    <result column="SCORE_LEVEL_TYPE" property="scoreLevelType" jdbcType="VARCHAR" />
+    <result column="LEVEL_NAME" property="levelName" jdbcType="VARCHAR" />
+    <result column="LEVEL_ICO" property="levelIco" jdbcType="VARCHAR" />
+    <result column="IS_DEFAULT" property="isDefault" jdbcType="VARCHAR" />
+    <result column="REQUIREMENT" property="requirement" jdbcType="VARCHAR" />
+    <result column="CREATER_ID" property="createrId" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="UPDATE_ID" property="updateId" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="DATE" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SLEVEL_ID, SCORE_LEVEL_TYPE, LEVEL_NAME, LEVEL_ICO, IS_DEFAULT, REQUIREMENT, CREATER_ID, 
+    CREATE_TIME, UPDATE_ID, UPDATE_TIME, STATUS, REMARK, PARAM1, PARAM2, PARAM3, PARAM4, 
+    PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.ScoreLevelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_SCORE_LEVEL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_SCORE_LEVEL
+    where SLEVEL_ID = #{slevelId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_SCORE_LEVEL
+    where SLEVEL_ID = #{slevelId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.ScoreLevelExample" >
+    delete from T_SCORE_LEVEL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.ScoreLevel" >
+    insert into T_SCORE_LEVEL (SLEVEL_ID, SCORE_LEVEL_TYPE, LEVEL_NAME, 
+      LEVEL_ICO, IS_DEFAULT, REQUIREMENT, 
+      CREATER_ID, CREATE_TIME, UPDATE_ID, 
+      UPDATE_TIME, STATUS, REMARK, 
+      PARAM1, PARAM2, PARAM3, PARAM4, 
+      PARAM5, PARAM6, PARAM7, PARAM8, 
+      PARAM9, PARAM10)
+    values (#{slevelId,jdbcType=DECIMAL}, #{scoreLevelType,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, 
+      #{levelIco,jdbcType=VARCHAR}, #{isDefault,jdbcType=VARCHAR}, #{requirement,jdbcType=VARCHAR}, 
+      #{createrId,jdbcType=DECIMAL}, #{createTime,jdbcType=DATE}, #{updateId,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=DATE}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, 
+      #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, 
+      #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.ScoreLevel" >
+    insert into T_SCORE_LEVEL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="slevelId != null" >
+        SLEVEL_ID,
+      </if>
+      <if test="scoreLevelType != null" >
+        SCORE_LEVEL_TYPE,
+      </if>
+      <if test="levelName != null" >
+        LEVEL_NAME,
+      </if>
+      <if test="levelIco != null" >
+        LEVEL_ICO,
+      </if>
+      <if test="isDefault != null" >
+        IS_DEFAULT,
+      </if>
+      <if test="requirement != null" >
+        REQUIREMENT,
+      </if>
+      <if test="createrId != null" >
+        CREATER_ID,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="slevelId != null" >
+        #{slevelId,jdbcType=DECIMAL},
+      </if>
+      <if test="scoreLevelType != null" >
+        #{scoreLevelType,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelIco != null" >
+        #{levelIco,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null" >
+        #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        #{createrId,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.ScoreLevelExample" resultType="java.lang.Integer" >
+    select count(*) from T_SCORE_LEVEL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_SCORE_LEVEL
+    <set >
+      <if test="record.slevelId != null" >
+        SLEVEL_ID = #{record.slevelId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.scoreLevelType != null" >
+        SCORE_LEVEL_TYPE = #{record.scoreLevelType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.levelName != null" >
+        LEVEL_NAME = #{record.levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.levelIco != null" >
+        LEVEL_ICO = #{record.levelIco,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDefault != null" >
+        IS_DEFAULT = #{record.isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="record.requirement != null" >
+        REQUIREMENT = #{record.requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createrId != null" >
+        CREATER_ID = #{record.createrId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=DATE},
+      </if>
+      <if test="record.updateId != null" >
+        UPDATE_ID = #{record.updateId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=DATE},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_SCORE_LEVEL
+    set SLEVEL_ID = #{record.slevelId,jdbcType=DECIMAL},
+      SCORE_LEVEL_TYPE = #{record.scoreLevelType,jdbcType=VARCHAR},
+      LEVEL_NAME = #{record.levelName,jdbcType=VARCHAR},
+      LEVEL_ICO = #{record.levelIco,jdbcType=VARCHAR},
+      IS_DEFAULT = #{record.isDefault,jdbcType=VARCHAR},
+      REQUIREMENT = #{record.requirement,jdbcType=VARCHAR},
+      CREATER_ID = #{record.createrId,jdbcType=DECIMAL},
+      CREATE_TIME = #{record.createTime,jdbcType=DATE},
+      UPDATE_ID = #{record.updateId,jdbcType=DECIMAL},
+      UPDATE_TIME = #{record.updateTime,jdbcType=DATE},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.ScoreLevel" >
+    update T_SCORE_LEVEL
+    <set >
+      <if test="scoreLevelType != null" >
+        SCORE_LEVEL_TYPE = #{scoreLevelType,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        LEVEL_NAME = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelIco != null" >
+        LEVEL_ICO = #{levelIco,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null" >
+        IS_DEFAULT = #{isDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="requirement != null" >
+        REQUIREMENT = #{requirement,jdbcType=VARCHAR},
+      </if>
+      <if test="createrId != null" >
+        CREATER_ID = #{createrId,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID = #{updateId,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SLEVEL_ID = #{slevelId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.ScoreLevel" >
+    update T_SCORE_LEVEL
+    set SCORE_LEVEL_TYPE = #{scoreLevelType,jdbcType=VARCHAR},
+      LEVEL_NAME = #{levelName,jdbcType=VARCHAR},
+      LEVEL_ICO = #{levelIco,jdbcType=VARCHAR},
+      IS_DEFAULT = #{isDefault,jdbcType=VARCHAR},
+      REQUIREMENT = #{requirement,jdbcType=VARCHAR},
+      CREATER_ID = #{createrId,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      UPDATE_ID = #{updateId,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR}
+    where SLEVEL_ID = #{slevelId,jdbcType=DECIMAL}
+  </update>
+</mapper>

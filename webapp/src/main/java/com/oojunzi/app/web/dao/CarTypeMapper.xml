@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.CarTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.CarType" >
+    <id column="TYPE_ID" property="typeId" jdbcType="DECIMAL" />
+    <result column="FACTORY" property="factory" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="MODEL" property="model" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="MODEL_YEAR" property="modelYear" jdbcType="VARCHAR" />
+    <result column="CAR_SERIES" property="carSeries" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    TYPE_ID, FACTORY, BRAND, MODEL, STATUS, MODEL_YEAR, CAR_SERIES, REMARK, PARAM1, PARAM2, 
+    PARAM3, PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.CarTypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_CAR_TYPE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CAR_TYPE
+    where TYPE_ID = #{typeId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_CAR_TYPE
+    where TYPE_ID = #{typeId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.CarTypeExample" >
+    delete from T_CAR_TYPE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.CarType" >
+    insert into T_CAR_TYPE (TYPE_ID, FACTORY, BRAND, 
+      MODEL, STATUS, MODEL_YEAR, CAR_SERIES, 
+      REMARK, PARAM1, PARAM2, PARAM3, 
+      PARAM4, PARAM5, PARAM6, PARAM7, 
+      PARAM8, PARAM9, PARAM10)
+    values (#{typeId,jdbcType=DECIMAL}, #{factory,jdbcType=VARCHAR}, #{brand,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{modelYear,jdbcType=VARCHAR}, #{carSeries,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, #{param3,jdbcType=VARCHAR}, 
+      #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, #{param7,jdbcType=VARCHAR}, 
+      #{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.CarType" >
+    insert into T_CAR_TYPE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="factory != null" >
+        FACTORY,
+      </if>
+      <if test="brand != null" >
+        BRAND,
+      </if>
+      <if test="model != null" >
+        MODEL,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="modelYear != null" >
+        MODEL_YEAR,
+      </if>
+      <if test="carSeries != null" >
+        CAR_SERIES,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        #{typeId,jdbcType=DECIMAL},
+      </if>
+      <if test="factory != null" >
+        #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="modelYear != null" >
+        #{modelYear,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeries != null" >
+        #{carSeries,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.CarTypeExample" resultType="java.lang.Integer" >
+    select count(*) from T_CAR_TYPE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_CAR_TYPE
+    <set >
+      <if test="record.typeId != null" >
+        TYPE_ID = #{record.typeId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.factory != null" >
+        FACTORY = #{record.factory,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brand != null" >
+        BRAND = #{record.brand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.model != null" >
+        MODEL = #{record.model,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modelYear != null" >
+        MODEL_YEAR = #{record.modelYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carSeries != null" >
+        CAR_SERIES = #{record.carSeries,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_CAR_TYPE
+    set TYPE_ID = #{record.typeId,jdbcType=DECIMAL},
+      FACTORY = #{record.factory,jdbcType=VARCHAR},
+      BRAND = #{record.brand,jdbcType=VARCHAR},
+      MODEL = #{record.model,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      MODEL_YEAR = #{record.modelYear,jdbcType=VARCHAR},
+      CAR_SERIES = #{record.carSeries,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.CarType" >
+    update T_CAR_TYPE
+    <set >
+      <if test="factory != null" >
+        FACTORY = #{factory,jdbcType=VARCHAR},
+      </if>
+      <if test="brand != null" >
+        BRAND = #{brand,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null" >
+        MODEL = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="modelYear != null" >
+        MODEL_YEAR = #{modelYear,jdbcType=VARCHAR},
+      </if>
+      <if test="carSeries != null" >
+        CAR_SERIES = #{carSeries,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TYPE_ID = #{typeId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.CarType" >
+    update T_CAR_TYPE
+    set FACTORY = #{factory,jdbcType=VARCHAR},
+      BRAND = #{brand,jdbcType=VARCHAR},
+      MODEL = #{model,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      MODEL_YEAR = #{modelYear,jdbcType=VARCHAR},
+      CAR_SERIES = #{carSeries,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR}
+    where TYPE_ID = #{typeId,jdbcType=DECIMAL}
+  </update>
+</mapper>

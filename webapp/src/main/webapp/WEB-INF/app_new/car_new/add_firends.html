@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>基本信息</title>
+		<link rel="stylesheet" type="text/css" href="css/main_unlogin-styles.css"/>
+		<link rel="stylesheet" type="text/css" href="css/user_info.css"/>
+		<link rel="stylesheet" type="text/css" href="css/phone.css"/>
+	</head>
+	<body>
+		<div class="loading-body">
+			<img src="img/loading.gif"/>
+		</div>
+		<div class="main-body">
+			<div class="nav">
+				<span class="nav-city" onclick="redirectTo('moments.html')">
+					<a href="main_login.html">
+						<img src="img/arrow-left.png"/>
+						返回
+					</a>
+					
+				</span>
+				<span class="nav-city">
+					创建我的圈子
+				</span>
+			</div>
+			<ul class="user">
+				<li class="user-head">
+					<div class="title">
+						上传圈头像
+					</div>
+					<input type="file" accept="image/*;capture=camera" />
+					<img class="head-img"  src="img/quanzi.png"/>
+				</li>
+				<li class="user-nickname tel">
+					<div class="title">
+						圈名称
+					</div>
+					<div class="content">
+						<input type="text" placeholder="请输入圈名称"/>
+					</div>
+				</li>
+			</ul>
+			<div class="friends-info">
+				<textarea name="info" placeholder="请输入圈子的介绍，15-500字" rows="" cols=""></textarea>
+			</div>
+		</div>
+<!--		
+		<div class="model">
+			<div class="camera-photo">
+				<button class="camera">
+					拍照
+				</button>
+				<button class="photo">
+					相册
+				</button>
+				<button class="cancel">
+					取消
+				</button>
+			</div>
+		</div>-->
+		<div class="save long">
+			<a href="#" onclick="sub()">
+				<button>
+					创建我的圈
+				</button>
+			</a>
+		</div>
+		<div class="model">
+			<div class="model-body">
+				<div class="model-head">
+					<img src="img/deal-success.png"/>
+					<div class="model-title">
+						圈子创建成功
+					</div>
+					<div class="model-content">
+						您已成功创建圈子，快去管理你的圈子吧
+					</div>
+				</div>
+				<div class="model-foot">
+					<a href="my_friends.html" onclick="hideModel()" >
+						管理我的圈子
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+	<script type="text/javascript">
+		//弹出底部选择的菜单
+//		var headImg = document.getElementsByClassName("head-img")[0];
+//		var model = document.getElementsByClassName("model")[0];
+//		var mainBody = document.getElementsByClassName("main-body")[0];
+//		headImg.onclick=function(){
+//			model.style.display="block";
+//			mainBody.style.filter="blur(3px)";
+//			var cameraPhoto = document.getElementsByClassName("camera-photo")[0];
+//			cameraPhoto.style.transform="translate(0px,0px)";
+//		}
+//		model.onclick=function(e){
+//			if(e.target==this){
+//				mainBody.style.filter="blur(0px)";
+//				this.style.display="none";
+//			}
+//		}
+//		var cancel = document.getElementsByClassName("cancel")[0];
+//		cancel.onclick=function(){
+//			mainBody.style.filter="blur(0px)";
+//			model.style.display="none";
+//		}
+	</script>
+</html>

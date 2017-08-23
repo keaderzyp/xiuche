@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.UserGroupMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.UserGroup" >
+    <id column="GROUP_ID" property="groupId" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="TERM" property="term" jdbcType="VARCHAR" />
+    <result column="RIGHT" property="right" jdbcType="VARCHAR" />
+    <result column="GROUP_NAME" property="groupName" jdbcType="VARCHAR" />
+    <result column="LEADER_FID" property="leaderFid" jdbcType="DECIMAL" />
+    <result column="ADD_SCORE" property="addScore" jdbcType="DECIMAL" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    GROUP_ID, STATUS, REMARK, TERM, RIGHT, GROUP_NAME, LEADER_FID, ADD_SCORE, PARAM1, 
+    PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.UserGroupExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_USER_GROUP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_USER_GROUP
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_USER_GROUP
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.UserGroupExample" >
+    delete from T_USER_GROUP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.UserGroup" >
+    insert into T_USER_GROUP (GROUP_ID, STATUS, REMARK, 
+      TERM, RIGHT, GROUP_NAME, LEADER_FID, 
+      ADD_SCORE, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5, PARAM6, 
+      PARAM7, PARAM8, PARAM9, PARAM10
+      )
+    values (#{groupId,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{term,jdbcType=VARCHAR}, #{right,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{leaderFid,jdbcType=DECIMAL}, 
+      #{addScore,jdbcType=DECIMAL}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, 
+      #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.UserGroup" >
+    insert into T_USER_GROUP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        GROUP_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="term != null" >
+        TERM,
+      </if>
+      <if test="right != null" >
+        RIGHT,
+      </if>
+      <if test="groupName != null" >
+        GROUP_NAME,
+      </if>
+      <if test="leaderFid != null" >
+        LEADER_FID,
+      </if>
+      <if test="addScore != null" >
+        ADD_SCORE,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="right != null" >
+        #{right,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFid != null" >
+        #{leaderFid,jdbcType=DECIMAL},
+      </if>
+      <if test="addScore != null" >
+        #{addScore,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.UserGroupExample" resultType="java.lang.Integer" >
+    select count(*) from T_USER_GROUP
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_USER_GROUP
+    <set >
+      <if test="record.groupId != null" >
+        GROUP_ID = #{record.groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.term != null" >
+        TERM = #{record.term,jdbcType=VARCHAR},
+      </if>
+      <if test="record.right != null" >
+        RIGHT = #{record.right,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupName != null" >
+        GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.leaderFid != null" >
+        LEADER_FID = #{record.leaderFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.addScore != null" >
+        ADD_SCORE = #{record.addScore,jdbcType=DECIMAL},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_USER_GROUP
+    set GROUP_ID = #{record.groupId,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      TERM = #{record.term,jdbcType=VARCHAR},
+      RIGHT = #{record.right,jdbcType=VARCHAR},
+      GROUP_NAME = #{record.groupName,jdbcType=VARCHAR},
+      LEADER_FID = #{record.leaderFid,jdbcType=DECIMAL},
+      ADD_SCORE = #{record.addScore,jdbcType=DECIMAL},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.UserGroup" >
+    update T_USER_GROUP
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="term != null" >
+        TERM = #{term,jdbcType=VARCHAR},
+      </if>
+      <if test="right != null" >
+        RIGHT = #{right,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderFid != null" >
+        LEADER_FID = #{leaderFid,jdbcType=DECIMAL},
+      </if>
+      <if test="addScore != null" >
+        ADD_SCORE = #{addScore,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.UserGroup" >
+    update T_USER_GROUP
+    set STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      TERM = #{term,jdbcType=VARCHAR},
+      RIGHT = #{right,jdbcType=VARCHAR},
+      GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      LEADER_FID = #{leaderFid,jdbcType=DECIMAL},
+      ADD_SCORE = #{addScore,jdbcType=DECIMAL},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR}
+    where GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </update>
+</mapper>

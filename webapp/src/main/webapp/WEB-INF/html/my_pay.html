@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的账单</title>
+	<link href="css/my_pay-styles.css" rel="stylesheet"></head>
+	<body>
+		<div class="nav">
+			<span class="nav-city">
+				<a href="main_deal.html">
+					<img src="img/arrow-left.png"/>
+					返回
+				</a>
+			</span>
+			<span class="nav-city">
+				我的账单
+			</span>
+		</div>
+		<div class="pay-info">
+			<div class="pay-info-circle">
+				<div class="number">
+					<span>￥</span>
+					<span class="main">400</span>
+					<span>.00</span>
+				</div>
+				<div class="title">
+					已节省
+				</div>
+				<canvas id="circle" width="101" height="101"></canvas>
+			</div>
+			<div class="pay-info-total">
+				<div class="info">
+					<img src="img/car.png"/>共计 2 辆车
+				</div>
+				<div class="number">
+					￥210.34/3800.00
+				</div>
+			</div>
+		</div>
+		<div class="help-btns">
+			<div class="btn line active tab-bar-icon">
+				<a class="my-help" href="#">
+					<img src="img/我的求助图标.png" alt="" />
+					我的求助
+				</a>
+			</div>
+			<div class="btn  tab-bar-icon  ">
+				<a class="my-pay" href="#">
+					<img src="img/互助账单图标.png" alt="" />
+					互助账单
+				</a>
+			</div>
+		</div>
+		<!--我的求助页面-->
+		<div class="my-help-page show">
+			<div class="help-item">
+				<div class="title">
+					<img src="img/shigushijian.png" alt="" />
+					<span class="t1">
+						2017年6月5日
+					</span>
+					<span class="t2">
+						费用
+					</span>
+					<span class="t3">
+						¥300.00
+					</span>
+				</div>
+				<div class="title">
+					<img src="img/shigudidian.png" alt="" />
+					<span class="t1">
+						贵阳市南明区遵义路
+					</span>
+					<span class="t2">
+						实际支付
+					</span>
+					<span class="t3 orange">
+						¥15.00
+					</span>
+				</div>
+				<div class="imgs">
+					<div class="title">
+						与车库立柱发生刮蹭，右后门变形，右后门需要重新喷漆。
+					</div>
+					<ul>
+						<li>
+							<a href="#">
+								<img src="img/car1.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car2.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car3.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car4.png"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="help-item">
+				<div class="title">
+					<img src="img/shigushijian.png" alt="" />
+					<span class="t1">
+						2017年6月5日
+					</span>
+					<span class="t2">
+						费用
+					</span>
+					<span class="t3">
+						¥300.00
+					</span>
+				</div>
+				<div class="title">
+					<img src="img/shigudidian.png" alt="" />
+					<span class="t1">
+						贵阳市南明区遵义路
+					</span>
+					<span class="t2">
+						实际支付
+					</span>
+					<span class="t3 orange">
+						¥15.00
+					</span>
+				</div>
+				<div class="imgs">
+					<div class="title">
+						与车库立柱发生刮蹭，右后门变形，右后门需要重新喷漆。
+					</div>
+					<ul>
+						<li>
+							<a href="#">
+								<img src="img/car1.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car2.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car3.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car4.png"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="help-item">
+				<div class="title">
+					<img src="img/shigushijian.png" alt="" />
+					<span class="t1">
+						2017年6月5日
+					</span>
+					<span class="t2">
+						费用
+					</span>
+					<span class="t3">
+						¥300.00
+					</span>
+				</div>
+				<div class="title">
+					<img src="img/shigudidian.png" alt="" />
+					<span class="t1">
+						贵阳市南明区遵义路
+					</span>
+					<span class="t2">
+						实际支付
+					</span>
+					<span class="t3 orange">
+						¥15.00
+					</span>
+				</div>
+				<div class="imgs">
+					<div class="title">
+						与车库立柱发生刮蹭，右后门变形，右后门需要重新喷漆。
+					</div>
+					<ul>
+						<li>
+							<a href="#">
+								<img src="img/car1.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car2.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car3.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/car4.png"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<!--账单页面-->
+		<div class="my-pay-page">
+			<div class="pay-item">
+				<div class="pay-item-info" onclick="redirectTo('my_pay_info.html')">
+					<div class="title">
+						<span class="main">
+							第35周账单
+						</span>
+						<span class="date">
+							6月5日-6月11日
+						</span>
+					</div>
+					<div class="content">
+						共计2起分摊-180位车主参与分摊
+					</div>
+				</div>
+				<div class="pay-item-number">
+					￥10.40
+				</div>
+				<div class="pay-item-type">
+					<button>支付</button>
+				</div>
+			</div>
+			<div class="pay-item">
+				<div class="pay-item-info" onclick="redirectTo('my_pay_info.html')">
+					<div class="title">
+						<span class="main">
+							第35周账单
+						</span>
+						<span class="date">
+							6月5日-6月11日
+						</span>
+					</div>
+					<div class="content">
+						共计2起分摊-180位车主参与分摊
+					</div>
+				</div>
+				<div class="pay-item-number">
+					￥10.40
+				</div>
+				<div class="pay-item-type">
+					已支付
+				</div>
+			</div>
+			<div class="pay-item">
+				<div class="pay-item-info" onclick="redirectTo('my_pay_info.html')">
+					<div class="title">
+						<span class="main">
+							第35周账单
+						</span>
+						<span class="date">
+							6月5日-6月11日
+						</span>
+					</div>
+					<div class="content">
+						共计2起分摊-180位车主参与分摊
+					</div>
+				</div>
+				<div class="pay-item-number">
+					￥10.40
+				</div>
+				<div class="pay-item-type">
+					无需分摊
+				</div>
+			</div>
+		</div></body>
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//实现canvas动画的闭包 参数1为节省多少钱 参数2为原价
+		(function(jieSheng,yuanJia){
+			"use strict";
+			//获取canvas与绘图对象
+			var c = document.getElementById("circle");
+			var ctx = c.getContext("2d");
+			//画圆背景
+			function drawBG(){
+				ctx.beginPath();
+				ctx.strokeStyle='#85B2F6';
+				ctx.lineWidth=8;
+				ctx.lineCap='round';
+				ctx.arc(c.width/2,c.height/2,46,0,Math.PI*2,false);
+				ctx.stroke();
+			}
+			//根据节省多少钱的比例计算出来画圆弧
+			function drawCircle(i){
+				ctx.beginPath();
+				ctx.strokeStyle='#FFFFFF';
+				ctx.lineWidth=8;
+				ctx.lineCap='round';
+				ctx.arc(c.width/2,c.height/2,46,Math.PI,Math.PI*(1+i),false);
+				ctx.stroke();
+			}
+			//节省多少钱的变量
+			var jieSheng=jieSheng;
+			//总共多少钱的变量
+			var yuanJia=yuanJia;
+			//根据钱数计算圆弧比例
+			var bili = jieSheng/yuanJia*2;
+			//圆弧动画计数器
+			var count = 0;
+			//数字变化计数器
+			var countJieSheng=0;
+			//圆弧动画定时器
+			var rn = window.setInterval(function(){
+				ctx.clearRect(0,0,c.width,c.height);
+				drawBG();
+				drawCircle(count);
+				if(count<bili){
+					count+=0.005;
+				}else{
+					window.clearInterval(rn);
+				}
+			},17);
+			//数字动画定时器
+			var rn1 = window.setInterval(function(){
+				var num = document.getElementsByClassName('number')[0];
+				if(countJieSheng<jieSheng){
+					countJieSheng+=6.09;
+					writeNumber(countJieSheng,num);
+				}else{
+					writeNumber(jieSheng,num);
+					window.clearInterval(rn1);
+				}
+			},17);
+			//转换数字结果进入标签
+			function writeNumber(data,tag){
+				var str = data.toString();
+				var strs = str.split('.')
+				var zhengShu = strs[0];
+				var xiaoShu = strs[1].substring(0,2);
+				tag.children[1].innerHTML=zhengShu;
+				tag.children[2].innerHTML='.'+xiaoShu;
+			}
+		})(406.67,3000);
+		//切换页面使用的闭包
+		(function(){
+			var tabs = document.getElementsByClassName('tab-bar-icon');
+			for(var i=0;i<2;i++){
+				tabs[i].addEventListener('click',changeTab);
+			}
+			function changeTab(){
+				//console.log(this);
+				for(var i=0;i<2;i++){
+					removeClass(tabs[i],'active');
+					var name = tabs[i].children[0].className;
+					console.log(name)
+					var tabPage = document.getElementsByClassName(name+'-page')[0];
+					console.log(tabPage)
+					removeClass(tabPage,'show');
+				}
+				var name = this.children[0].className;
+				var tabPage = document.getElementsByClassName(name+'-page')[0];
+				addClass(this,'active')
+				addClass(tabPage,'show')
+			}
+			function addClass(tag,name){
+				tag.className+=" "+name;
+			}
+			function removeClass(tag,name){
+				tag.className = tag.className.replace(name,'');
+			}
+		})();
+	</script>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/FJL.css"/>
+		<link rel="stylesheet" type="text/css" href="css/FJL.picker.css"/>
+		<link href="css/upload-styles.css" rel="stylesheet"></head>
+	<body>
+		<div class="main-body">
+			<div class="nav">
+				<span class="back">
+					<a href="main_unlogin.html">
+						<img src="img/arrow-left.png"/>
+						返回
+					</a>
+				</span>
+				<span class="title">
+					签订互助协议
+				</span>
+			</div>
+			<div class="add-complete">
+				<img src="img/success-white.png" alt="" /><br />
+				贵A12345&nbsp;添加成功
+				<span class="join">现在加入到互助圈吧</span>
+				<span class="money">车辆事故未加入互助圈需要话费￥5600</span>
+			</div>
+			<div class="deal-content">
+				<div class="blue-gray">
+					<div class="left">
+						加入后年分推上限￥2800元
+					</div>
+					<div class="right">
+						可以节省￥2800
+					</div>
+				</div>
+				<img src="img/dealstep.png"/>
+				<div class="agree">
+					<input type="checkbox" />
+					本人同意签订
+					<a href="#">
+						《互助协议》
+					</a>
+				</div>
+			</div>
+			<div class="car-license-info group shadow">
+				<div class="title">
+					注册日期
+				</div>
+				<div class="content">
+					<button class="date-picker"  >
+						2017-7-1
+					</button>
+					<ul class="arrow-date-picker">
+						<li class="up">
+							<img src="img/arrow-top.png"/>
+						</li>
+						<li class="down">
+							<img src="img/arrow-bottom.png"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<button class="make-sure" onclick="sub()">
+				确认加入
+			</button>
+		</div>
+		<div class="model">
+			<div class="model-body">
+				<div class="model-head">
+					<img src="img/deal-success.png"/>
+					<div class="model-title">
+						互助协议签订成功！
+					</div>
+					<div class="model-content">
+						欢迎加入互助互爱的大家庭！
+					</div>
+				</div>
+				<div class="model-foot">
+					<a href="main_deal.html" onclick="hideModel()" >
+						开启新的旅程
+					</a>
+				</div>
+			</div>
+		</div>
+		
+		<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/FJL.min.js"></script>
+		<script src="js/FJL.picker.min.js"></script>
+		<script>
+			(function($) {
+				$.init();
+				var d = new Date();
+				var year = d.getFullYear();
+				var month = d.getMonth()+1;
+				var day = d.getDate()+1;
+				//var result = $('#demo2')[0];
+				var btns = $('.date-picker');
+				btns[0].innerHTML=year+'-'+month+'-'+day;
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var that = this;
+						var options={
+							type:'date',
+							beginYear:year,
+							beginMonth:month,
+							beginDay:day,
+							endYear:2086
+						}
+						var picker = new $.DtPicker(options);
+						console.log(picker);
+						console.log(picker.setSelectedValue);
+						picker.show(function(rs) {
+							console.log(rs);
+							var d = new Date(rs.value);
+							console.log(new Date(d.getTime()+86400000));
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							that.innerHTML=rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+				
+				var ups = $('.arrow-date-picker .up');
+				ups.each(function(i, up) {
+					up.addEventListener('touchstart', function() {
+						var now = this.parentNode.parentNode.children[0].innerHTML;
+						console.log(now.trim())
+						var nows = now.trim().split('-');
+						var d = new Date();
+						if(btns[0].innerHTML!=year+'-'+month+'-'+day){
+							d.setFullYear(nows[0],nows[1],nows[2]);
+							d.setDate(d.getDate()-1)
+							var resDate = d.getFullYear()+'-'+
+										(d.getMonth())+'-'+
+										d.getDate();
+							this.parentNode.parentNode.children[0].innerHTML=resDate;
+						}
+						
+					}, false);
+				});
+				var downs = $('.arrow-date-picker .down');
+				downs.each(function(i, down) {
+					down.addEventListener('touchstart', function() {
+						var now = this.parentNode.parentNode.children[0].innerHTML;
+						console.log(now.trim())
+						var nows = now.trim().split('-');
+						var d = new Date();
+						d.setFullYear(nows[0],nows[1],nows[2]);
+						d.setDate(d.getDate()+1)
+						var resDate = d.getFullYear()+'-'+
+									(d.getMonth())+'-'+
+									d.getDate();
+						this.parentNode.parentNode.children[0].innerHTML=resDate;
+					}, false);
+				});
+			})(mui);
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.AdminLogMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.AdminLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
+    <result column="createtimestr" property="createtimestr" jdbcType="VARCHAR" />
+    <result column="admin_name" property="adminName" jdbcType="VARCHAR" />
+    <result column="admin_id" property="adminId" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="CHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content, createtime, admin_name, admin_id, ip, url
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_SYSTEM_ADMINLOG
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_SYSTEM_ADMINLOG
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByIds" parameterType="java.util.List">
+    delete from T_SYSTEM_ADMINLOG where id in
+    <foreach item="item" index="index"  collection="list" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.AdminLog" >
+    insert into T_SYSTEM_ADMINLOG (id, content, createtime, 
+      admin_name, admin_id, ip, url
+      )
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=INTEGER}, 
+      #{adminName,jdbcType=CHAR}, #{adminId,jdbcType=INTEGER}, #{ip,jdbcType=CHAR}, #{url,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.AdminLog" >
+    insert into T_SYSTEM_ADMINLOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="adminName != null" >
+        admin_name,
+      </if>
+      <if test="adminId != null" >
+        admin_id,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null" >
+        #{adminName,jdbcType=CHAR},
+      </if>
+      <if test="adminId != null" >
+        #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.AdminLog" >
+    update T_SYSTEM_ADMINLOG
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null" >
+        admin_name = #{adminName,jdbcType=CHAR},
+      </if>
+      <if test="adminId != null" >
+        admin_id = #{adminId,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.AdminLog" >
+    update T_SYSTEM_ADMINLOG
+    set content = #{content,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=INTEGER},
+      admin_name = #{adminName,jdbcType=CHAR},
+      admin_id = #{adminId,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=CHAR},
+      url = #{url,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+  <select id="selectListByCondition" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.AdminLog" >
+    select
+    <include refid="Base_Column_List" />
+    
+    from T_SYSTEM_ADMINLOG o
+    where 1=1
+    <if test="id != null" >
+      and #{id,jdbcType=INTEGER}
+    </if>
+    <if test="content != null" >
+      and content = #{content,jdbcType=VARCHAR}
+    </if>
+    <if test="startTime != null and startTime != ''" >
+      and createtime &gt;= #{startTime ,jdbcType=VARCHAR}
+    </if>
+    <if test="endTime != null and endTime != ''" >
+      and createtime &lt;= #{endTime ,jdbcType=VARCHAR}
+    </if>
+    <if test="adminName != null" >
+      and admin_name = #{adminName,jdbcType=CHAR}
+    </if>
+    <if test="adminId != null" >
+      and admin_id = #{adminId,jdbcType=INTEGER}
+    </if>
+    <if test="ip != null" >
+      and ip = #{ip,jdbcType=CHAR}
+    </if>
+    <if test="url != null" >
+      and url = #{url,jdbcType=VARCHAR}
+    </if>
+  </select>
+ 
+</mapper>

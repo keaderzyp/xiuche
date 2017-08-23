@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.ShareInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.ShareInfo" >
+    <id column="SHARE_ID" property="shareId" jdbcType="DECIMAL" />
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="SIMPLE_DESC" property="simpleDesc" jdbcType="VARCHAR" />
+    <result column="SHARE_TYPE" property="shareType" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="SHARE_ICO" property="shareIco" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="DATE" />
+    <result column="KEY_WORD" property="keyWord" jdbcType="VARCHAR" />
+    <result column="WECHAT_NUMBER" property="wechatNumber" jdbcType="VARCHAR" />
+    <result column="SHARE_URL" property="shareUrl" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="SHARER_NAME" property="sharerName" jdbcType="VARCHAR" />
+    <result column="USER_FID" property="userFid" jdbcType="DECIMAL" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.oojunzi.app.web.model.ShareInfo" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="BLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    SHARE_ID, TITLE, SIMPLE_DESC, SHARE_TYPE, STATUS, SHARE_ICO, CREATE_TIME, KEY_WORD, 
+    WECHAT_NUMBER, SHARE_URL, REMARK, SHARER_NAME, USER_FID, PARAM1, PARAM2, PARAM3, 
+    PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.oojunzi.app.web.model.ShareInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_SHARE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.ShareInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_SHARE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_SHARE_INFO
+    where SHARE_ID = #{shareId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_SHARE_INFO
+    where SHARE_ID = #{shareId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.ShareInfoExample" >
+    delete from T_SHARE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.ShareInfo" >
+    insert into T_SHARE_INFO (SHARE_ID, TITLE, SIMPLE_DESC, 
+      SHARE_TYPE, STATUS, SHARE_ICO, 
+      CREATE_TIME, KEY_WORD, WECHAT_NUMBER, 
+      SHARE_URL, REMARK, SHARER_NAME, 
+      USER_FID, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5, PARAM6, 
+      PARAM7, PARAM8, PARAM9, PARAM10, 
+      CONTENT)
+    values (#{shareId,jdbcType=DECIMAL}, #{title,jdbcType=VARCHAR}, #{simpleDesc,jdbcType=VARCHAR}, 
+      #{shareType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{shareIco,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=DATE}, #{keyWord,jdbcType=VARCHAR}, #{wechatNumber,jdbcType=VARCHAR}, 
+      #{shareUrl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{sharerName,jdbcType=VARCHAR}, 
+      #{userFid,jdbcType=DECIMAL}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, 
+      #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}, 
+      #{content,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.ShareInfo" >
+    insert into T_SHARE_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="shareId != null" >
+        SHARE_ID,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="simpleDesc != null" >
+        SIMPLE_DESC,
+      </if>
+      <if test="shareType != null" >
+        SHARE_TYPE,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="shareIco != null" >
+        SHARE_ICO,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="keyWord != null" >
+        KEY_WORD,
+      </if>
+      <if test="wechatNumber != null" >
+        WECHAT_NUMBER,
+      </if>
+      <if test="shareUrl != null" >
+        SHARE_URL,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="sharerName != null" >
+        SHARER_NAME,
+      </if>
+      <if test="userFid != null" >
+        USER_FID,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="shareId != null" >
+        #{shareId,jdbcType=DECIMAL},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleDesc != null" >
+        #{simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shareType != null" >
+        #{shareType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="shareIco != null" >
+        #{shareIco,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="keyWord != null" >
+        #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatNumber != null" >
+        #{wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="shareUrl != null" >
+        #{shareUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharerName != null" >
+        #{sharerName,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null" >
+        #{userFid,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.ShareInfoExample" resultType="java.lang.Integer" >
+    select count(*) from T_SHARE_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_SHARE_INFO
+    <set >
+      <if test="record.shareId != null" >
+        SHARE_ID = #{record.shareId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.simpleDesc != null" >
+        SIMPLE_DESC = #{record.simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shareType != null" >
+        SHARE_TYPE = #{record.shareType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shareIco != null" >
+        SHARE_ICO = #{record.shareIco,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=DATE},
+      </if>
+      <if test="record.keyWord != null" >
+        KEY_WORD = #{record.keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechatNumber != null" >
+        WECHAT_NUMBER = #{record.wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shareUrl != null" >
+        SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sharerName != null" >
+        SHARER_NAME = #{record.sharerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFid != null" >
+        USER_FID = #{record.userFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=BLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update T_SHARE_INFO
+    set SHARE_ID = #{record.shareId,jdbcType=DECIMAL},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      SIMPLE_DESC = #{record.simpleDesc,jdbcType=VARCHAR},
+      SHARE_TYPE = #{record.shareType,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      SHARE_ICO = #{record.shareIco,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=DATE},
+      KEY_WORD = #{record.keyWord,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{record.wechatNumber,jdbcType=VARCHAR},
+      SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      SHARER_NAME = #{record.sharerName,jdbcType=VARCHAR},
+      USER_FID = #{record.userFid,jdbcType=DECIMAL},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=BLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_SHARE_INFO
+    set SHARE_ID = #{record.shareId,jdbcType=DECIMAL},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      SIMPLE_DESC = #{record.simpleDesc,jdbcType=VARCHAR},
+      SHARE_TYPE = #{record.shareType,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      SHARE_ICO = #{record.shareIco,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=DATE},
+      KEY_WORD = #{record.keyWord,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{record.wechatNumber,jdbcType=VARCHAR},
+      SHARE_URL = #{record.shareUrl,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      SHARER_NAME = #{record.sharerName,jdbcType=VARCHAR},
+      USER_FID = #{record.userFid,jdbcType=DECIMAL},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.ShareInfo" >
+    update T_SHARE_INFO
+    <set >
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="simpleDesc != null" >
+        SIMPLE_DESC = #{simpleDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shareType != null" >
+        SHARE_TYPE = #{shareType,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="shareIco != null" >
+        SHARE_ICO = #{shareIco,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="keyWord != null" >
+        KEY_WORD = #{keyWord,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatNumber != null" >
+        WECHAT_NUMBER = #{wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="shareUrl != null" >
+        SHARE_URL = #{shareUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="sharerName != null" >
+        SHARER_NAME = #{sharerName,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null" >
+        USER_FID = #{userFid,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=BLOB},
+      </if>
+    </set>
+    where SHARE_ID = #{shareId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.oojunzi.app.web.model.ShareInfo" >
+    update T_SHARE_INFO
+    set TITLE = #{title,jdbcType=VARCHAR},
+      SIMPLE_DESC = #{simpleDesc,jdbcType=VARCHAR},
+      SHARE_TYPE = #{shareType,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      SHARE_ICO = #{shareIco,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      KEY_WORD = #{keyWord,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{wechatNumber,jdbcType=VARCHAR},
+      SHARE_URL = #{shareUrl,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SHARER_NAME = #{sharerName,jdbcType=VARCHAR},
+      USER_FID = #{userFid,jdbcType=DECIMAL},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=BLOB}
+    where SHARE_ID = #{shareId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.ShareInfo" >
+    update T_SHARE_INFO
+    set TITLE = #{title,jdbcType=VARCHAR},
+      SIMPLE_DESC = #{simpleDesc,jdbcType=VARCHAR},
+      SHARE_TYPE = #{shareType,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      SHARE_ICO = #{shareIco,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=DATE},
+      KEY_WORD = #{keyWord,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{wechatNumber,jdbcType=VARCHAR},
+      SHARE_URL = #{shareUrl,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      SHARER_NAME = #{sharerName,jdbcType=VARCHAR},
+      USER_FID = #{userFid,jdbcType=DECIMAL},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR}
+    where SHARE_ID = #{shareId,jdbcType=DECIMAL}
+  </update>
+</mapper>

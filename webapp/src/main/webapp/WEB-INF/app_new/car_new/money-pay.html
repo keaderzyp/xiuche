@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>黔币充值</title>
+		<link rel="stylesheet" type="text/css" href="css/moments_info-styles.css"/>
+		<link rel="stylesheet" type="text/css" href="css/money.css"/>
+	</head>
+	<body>
+		<div class="nav">
+			<a href="my_money2.html">
+				<span class="nav-city" >
+					<img src="img/arrow-left.png"/>
+					返回
+				</span>
+			</a>
+			<span class="nav-city">
+				黔币充值
+			</span>
+		</div>
+		<div class="money-num-bar">
+			<div class="title">
+				<img src="img/jinbi.png"/>
+				黔币余额
+			</div>
+			<div class="num">
+				28.78
+			</div>
+			<div class="btn">
+				<a href="#">
+					<button class="btn-pay">
+						充值 &gt;
+					</button>
+				</a>
+			</div>
+		</div>
+		<div class="alert">
+			<img src="img/alert.png"/>活动通知：充￥100送￥10，充￥200送￥20
+		</div>
+		<div class="choose-pay">
+			<div class="tr">
+				<div class="td">
+					50元
+				</div>
+				<div class="td">
+					100元
+				</div>
+				<div class="td active">
+					200元
+				</div>
+			</div>
+			<div class="tr">
+				<div class="td">
+					50元
+				</div>
+				
+				<div class="td lg">
+					<input type="text" value="请输入其他金额" name="" id="" value="" />
+				</div>
+			</div>
+			<div class="bottom">
+				到账金额 <span id="total-num">200元</span>
+			</div>
+		</div>
+		<div class="pay-type-title">
+			支付方式
+		</div>
+		<div class="pay-type">
+			<div class="pay-item">
+				<img class="pay-img" src="img/weixin.png"/>
+				<div class="pay-title">
+					微信支付
+				</div>
+				<div class="choose">
+					&gt;
+				</div>
+			</div>
+			<div class="pay-item">
+				<img class="pay-img" src="img/zhifubao.png"/>
+				<div class="pay-title">
+					支付宝
+				</div>
+				<div class="choose">
+					&gt;
+				</div>
+			</div>
+		</div>
+		<div class="loading-body">
+			<img src="img/loading.gif"/>
+		</div>
+	</body>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		(function(){
+			var tds = document.getElementsByClassName("td");
+			for(var i=0;i<tds.length;i++){
+				tds[i].addEventListener("click",pick);
+			}
+			tds[tds.length-1].addEventListener('click',function(){
+				console.log(this.children);
+				this.children[0].focus();
+				this.children[0].style.background=' #58A5FF';
+				this.children[0].style.color="#FFFFFF";
+				this.children[0].type='number';
+				document.getElementById('total-num').innerHTML=0;
+			});
+			tds[tds.length-1].addEventListener('keyup',function(){
+				document.getElementById('total-num').innerHTML=this.children[0].value;
+			})
+//			tds[tds.length-1].addEventListener('touchend',function(){
+//				
+//			})
+			function pick(){
+				clearStyle(tds,'active');
+				addClass(this,'active');
+				document.getElementById('total-num').innerHTML=parseInt(this.innerHTML);
+			}
+			function clearStyle(tags,name){
+				tds[tds.length-1].children[0].style.background='#FFFFFF';
+				tds[tds.length-1].children[0].style.color="#58A5FF";
+				tds[tds.length-1].children[0].type='text';
+				tds[tds.length-1].children[0].value="点击输入其他金额"
+				for(var i=0;i<tds.length;i++){
+					removeClass(tds[i],'active');
+				}
+			}
+			function addClass(tag,name){
+				tag.className+=" "+name;
+			}
+			function removeClass(tag,name){
+				tag.className = tag.className.replace(name,'');
+			}
+		})();
+	</script>
+</html>

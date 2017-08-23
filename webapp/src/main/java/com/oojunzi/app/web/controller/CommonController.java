@@ -1,0 +1,30 @@
+package com.oojunzi.app.web.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+/**
+ * 公共视图控制器
+ * 
+ * @author michael
+ * @since 2016年4月15日 下午4:16:34
+ **/
+@Controller
+public class CommonController {
+    /**
+     * 首页
+     * 
+     * @param request
+     * @return
+     */
+    @RequestMapping("/")
+    public String index(HttpServletRequest request) {
+        return "main_unlogin";
+    }
+
+    @RequestMapping("admin")
+    public String admin(HttpServletRequest request) {
+        return "login2";
+    }
+}

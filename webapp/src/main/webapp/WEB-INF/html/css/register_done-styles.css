@@ -1,0 +1,188 @@
+body{
+	margin: 0;
+	background-color: #F2F2F2  ;
+}
+body:after{
+	content: '.';
+	height: 49px;
+	visibility: hidden;
+	display: block;
+}
+.close{
+	position: absolute;
+	top: 19px;
+	right: 19px;
+}
+.close > img{
+	width: 24px;
+	height: 24px;
+}
+.top{
+	padding-top:30px ;
+	padding-left: 30px;
+	overflow: auto;
+}
+.top > .line-head{
+	height: 70px;
+	border-left: 2px solid #7ED321;
+	position: relative;
+}
+.top  .circle{
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	left: -12px;
+	top: 0px;
+	background-color: #DBDBDB;
+	border-radius: 50%;
+}
+.top .active{
+	background-color: #7ED321;
+}
+.top > .line-body{
+	border-left: 2px solid #DBDBDB;
+	position: relative;
+}
+.top .title{
+	font-family: .PingFangSC-Regular;
+	font-size: 16px;
+	color: #000000;
+	letter-spacing: 0.19px;
+}
+.top .title{
+	padding-left: 20.9px;
+}
+.top .line-body .well{
+	width: 329px;
+	height: 327.3px;
+	margin-left: 7.9px;
+	margin-top: 8.7px;
+	padding-top: 19px;
+	padding-left: 23px;
+	background: #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.10);
+	border-radius: 9px;
+}
+.top .line-body .well-content{
+	height: 99.5px;
+	border-bottom: 1px solid #F2F2F2;
+	margin-top: 5.5px;
+}
+.top .line-body .well-content .title{
+	padding: 0;
+}
+.pay-type{
+	margin-top: 17.7px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: white;
+	padding-top: 9px;
+	padding-bottom: 9px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.pay-type .pay-item{
+	border-bottom: 1px solid #F2F2F2;
+	padding-top:9px ;
+	padding-bottom: 9px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.pay-type  .pay-img ,.pay-type  .choose {
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+}
+.pay-type .pay-img{
+	margin-right: 10px;
+}
+.pay-type  .pay-title{
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+}
+.pay-type .pay-item:last-child{
+	border:none;
+}
+.pay-type .pay-title{
+	font-family: .PingFangSC-Regular;
+	font-size: 14px;
+	color: #000000;
+	letter-spacing: 0.17px;
+	line-height: 14px;
+}
+.pay-type .pay-item .choose{
+	width: 26px;
+	height: 26px;
+	background-image: url(../img/unchecked.png);
+	background-size: 100%;
+}
+.pay-type .pay-item .active{
+	width: 26px;
+	height: 26px;
+	background-image: url(../img/checked.png);
+	background-size: 100%;
+}
+.tab-btn{
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	height: 49px;
+	background: #FAFAFA;
+	box-shadow: inset 0 0 0 0 #B2B2B2;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.tab-btn .pay-info{
+	border-top:1px solid #B2B2B2;
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.tab-btn .pay-info .title{
+	font-family: .PingFangSC-Regular;
+	font-size: 14px;
+	color: #000000;
+	letter-spacing: 0.17px;
+}
+.tab-btn .pay-info .number{
+	font-family: .PingFangSC-Regular;
+	font-size: 14px;
+	color: #E12306;
+	letter-spacing: 0.17px;
+	padding-left: 16px;
+}
+.tab-btn .pay-btn{
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	width: 138px;
+	height: 49px;
+	border: none;
+	background: #4098FF;
+	box-shadow: inset 0 0 0 0 #B2B2B2;
+	font-family: .PingFangSC-Regular;
+	font-size: 16px;
+	color: #FFFFFF;
+	letter-spacing: 0.19px;
+	line-height: 14px;
+}

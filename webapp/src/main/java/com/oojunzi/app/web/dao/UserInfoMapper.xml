@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.UserInfo" >
+    <id column="USER_ID" property="userId" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="PET_NAME" property="petName" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="TELPHONE" property="telphone" jdbcType="VARCHAR" />
+    <result column="HAS_CIRCLE" property="hasCircle" jdbcType="VARCHAR" />
+    <result column="HELP_COUNT" property="helpCount" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="AGE" property="age" jdbcType="DECIMAL" />
+    <result column="DRIVE_YEAR" property="driveYear" jdbcType="DECIMAL" />
+    <result column="ID_NUMBER" property="idNumber" jdbcType="VARCHAR" />
+    <result column="WECHAT_NUMBER" property="wechatNumber" jdbcType="VARCHAR" />
+    <result column="SYUSER_FID" property="syuserFid" jdbcType="DECIMAL" />
+    <result column="MARK_NUMBER" property="markNumber" jdbcType="DECIMAL" />
+    <result column="USER_ICO" property="userIco" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="GROUP_FID" property="groupFid" jdbcType="DECIMAL" />
+    <result column="LEVEL_FID" property="levelFid" jdbcType="DECIMAL" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    USER_ID, STATUS, USER_NAME, PET_NAME, SEX, TELPHONE, HAS_CIRCLE, HELP_COUNT, REMARK, 
+    AGE, DRIVE_YEAR, ID_NUMBER, WECHAT_NUMBER, SYUSER_FID, MARK_NUMBER, USER_ICO, ADDRESS, 
+    EMAIL, GROUP_FID, LEVEL_FID, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, PARAM7, 
+    PARAM8, PARAM9, PARAM10
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.UserInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_USER_INFO
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_USER_INFO
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.UserInfoExample" >
+    delete from T_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.UserInfo" >
+    insert into T_USER_INFO (USER_ID, STATUS, USER_NAME, 
+      PET_NAME, SEX, TELPHONE, HAS_CIRCLE, 
+      HELP_COUNT, REMARK, AGE, 
+      DRIVE_YEAR, ID_NUMBER, WECHAT_NUMBER, 
+      SYUSER_FID, MARK_NUMBER, USER_ICO, 
+      ADDRESS, EMAIL, GROUP_FID, 
+      LEVEL_FID, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5, PARAM6, 
+      PARAM7, PARAM8, PARAM9, PARAM10
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{petName,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{telphone,jdbcType=VARCHAR}, #{hasCircle,jdbcType=VARCHAR}, 
+      #{helpCount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{age,jdbcType=DECIMAL}, 
+      #{driveYear,jdbcType=DECIMAL}, #{idNumber,jdbcType=VARCHAR}, #{wechatNumber,jdbcType=VARCHAR}, 
+      #{syuserFid,jdbcType=DECIMAL}, #{markNumber,jdbcType=DECIMAL}, #{userIco,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{groupFid,jdbcType=DECIMAL}, 
+      #{levelFid,jdbcType=DECIMAL}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, 
+      #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.UserInfo" >
+    insert into T_USER_INFO
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        USER_ID,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="userName != null" >
+        USER_NAME,
+      </if>
+      <if test="petName != null" >
+        PET_NAME,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="telphone != null" >
+        TELPHONE,
+      </if>
+      <if test="hasCircle != null" >
+        HAS_CIRCLE,
+      </if>
+      <if test="helpCount != null" >
+        HELP_COUNT,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="age != null" >
+        AGE,
+      </if>
+      <if test="driveYear != null" >
+        DRIVE_YEAR,
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER,
+      </if>
+      <if test="wechatNumber != null" >
+        WECHAT_NUMBER,
+      </if>
+      <if test="syuserFid != null" >
+        SYUSER_FID,
+      </if>
+      <if test="markNumber != null" >
+        MARK_NUMBER,
+      </if>
+      <if test="userIco != null" >
+        USER_ICO,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="groupFid != null" >
+        GROUP_FID,
+      </if>
+      <if test="levelFid != null" >
+        LEVEL_FID,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="petName != null" >
+        #{petName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCircle != null" >
+        #{hasCircle,jdbcType=VARCHAR},
+      </if>
+      <if test="helpCount != null" >
+        #{helpCount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="driveYear != null" >
+        #{driveYear,jdbcType=DECIMAL},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatNumber != null" >
+        #{wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="syuserFid != null" >
+        #{syuserFid,jdbcType=DECIMAL},
+      </if>
+      <if test="markNumber != null" >
+        #{markNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="userIco != null" >
+        #{userIco,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="groupFid != null" >
+        #{groupFid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelFid != null" >
+        #{levelFid,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.UserInfoExample" resultType="java.lang.Integer" >
+    select count(*) from T_USER_INFO
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_USER_INFO
+    <set >
+      <if test="record.userId != null" >
+        USER_ID = #{record.userId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.petName != null" >
+        PET_NAME = #{record.petName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        SEX = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telphone != null" >
+        TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hasCircle != null" >
+        HAS_CIRCLE = #{record.hasCircle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.helpCount != null" >
+        HELP_COUNT = #{record.helpCount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null" >
+        AGE = #{record.age,jdbcType=DECIMAL},
+      </if>
+      <if test="record.driveYear != null" >
+        DRIVE_YEAR = #{record.driveYear,jdbcType=DECIMAL},
+      </if>
+      <if test="record.idNumber != null" >
+        ID_NUMBER = #{record.idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechatNumber != null" >
+        WECHAT_NUMBER = #{record.wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.syuserFid != null" >
+        SYUSER_FID = #{record.syuserFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.markNumber != null" >
+        MARK_NUMBER = #{record.markNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userIco != null" >
+        USER_ICO = #{record.userIco,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        ADDRESS = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupFid != null" >
+        GROUP_FID = #{record.groupFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.levelFid != null" >
+        LEVEL_FID = #{record.levelFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_USER_INFO
+    set USER_ID = #{record.userId,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      USER_NAME = #{record.userName,jdbcType=VARCHAR},
+      PET_NAME = #{record.petName,jdbcType=VARCHAR},
+      SEX = #{record.sex,jdbcType=VARCHAR},
+      TELPHONE = #{record.telphone,jdbcType=VARCHAR},
+      HAS_CIRCLE = #{record.hasCircle,jdbcType=VARCHAR},
+      HELP_COUNT = #{record.helpCount,jdbcType=DECIMAL},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      AGE = #{record.age,jdbcType=DECIMAL},
+      DRIVE_YEAR = #{record.driveYear,jdbcType=DECIMAL},
+      ID_NUMBER = #{record.idNumber,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{record.wechatNumber,jdbcType=VARCHAR},
+      SYUSER_FID = #{record.syuserFid,jdbcType=DECIMAL},
+      MARK_NUMBER = #{record.markNumber,jdbcType=DECIMAL},
+      USER_ICO = #{record.userIco,jdbcType=VARCHAR},
+      ADDRESS = #{record.address,jdbcType=VARCHAR},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      GROUP_FID = #{record.groupFid,jdbcType=DECIMAL},
+      LEVEL_FID = #{record.levelFid,jdbcType=DECIMAL},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.UserInfo" >
+    update T_USER_INFO
+    <set >
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="petName != null" >
+        PET_NAME = #{petName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="telphone != null" >
+        TELPHONE = #{telphone,jdbcType=VARCHAR},
+      </if>
+      <if test="hasCircle != null" >
+        HAS_CIRCLE = #{hasCircle,jdbcType=VARCHAR},
+      </if>
+      <if test="helpCount != null" >
+        HELP_COUNT = #{helpCount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null" >
+        AGE = #{age,jdbcType=DECIMAL},
+      </if>
+      <if test="driveYear != null" >
+        DRIVE_YEAR = #{driveYear,jdbcType=DECIMAL},
+      </if>
+      <if test="idNumber != null" >
+        ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatNumber != null" >
+        WECHAT_NUMBER = #{wechatNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="syuserFid != null" >
+        SYUSER_FID = #{syuserFid,jdbcType=DECIMAL},
+      </if>
+      <if test="markNumber != null" >
+        MARK_NUMBER = #{markNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="userIco != null" >
+        USER_ICO = #{userIco,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="groupFid != null" >
+        GROUP_FID = #{groupFid,jdbcType=DECIMAL},
+      </if>
+      <if test="levelFid != null" >
+        LEVEL_FID = #{levelFid,jdbcType=DECIMAL},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.UserInfo" >
+    update T_USER_INFO
+    set STATUS = #{status,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      PET_NAME = #{petName,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      TELPHONE = #{telphone,jdbcType=VARCHAR},
+      HAS_CIRCLE = #{hasCircle,jdbcType=VARCHAR},
+      HELP_COUNT = #{helpCount,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      AGE = #{age,jdbcType=DECIMAL},
+      DRIVE_YEAR = #{driveYear,jdbcType=DECIMAL},
+      ID_NUMBER = #{idNumber,jdbcType=VARCHAR},
+      WECHAT_NUMBER = #{wechatNumber,jdbcType=VARCHAR},
+      SYUSER_FID = #{syuserFid,jdbcType=DECIMAL},
+      MARK_NUMBER = #{markNumber,jdbcType=DECIMAL},
+      USER_ICO = #{userIco,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      GROUP_FID = #{groupFid,jdbcType=DECIMAL},
+      LEVEL_FID = #{levelFid,jdbcType=DECIMAL},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </update>
+</mapper>

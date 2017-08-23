@@ -1,0 +1,351 @@
+body{
+	margin: 0px;
+}
+.register-close{
+	padding: 10px;
+	text-align: right;
+}
+.register-logo{
+	padding-top: 24px;
+	padding-bottom: 51px;
+	text-align: center;
+}
+.register-form .form-group{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	border-bottom: 1px solid lightgray;
+	width: 80%;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.register-form .form-group input{
+	border: none;
+	font-size: 15px;
+	width: 100%;
+}
+.register-form .form-group input:focus{
+	outline: none;
+}
+.register-form .form-group img{
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+	margin-right: 15px;
+	width: 24px;
+	height: 24px;
+}
+.register-form .form-group .get-code{
+	background: #CCCCCC;
+	border: none;
+	border-radius: 100px;
+	font-size: 14px;
+	width: 100px;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin-top: -5px;
+	margin-bottom: -5px;
+	color: white;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+}
+.register-form .form-group-submit{
+	position: relative;
+	margin: auto;
+	padding-top: 49.5px;
+	width: 80%;
+}
+.register-form .form-group-submit button{
+	width: 100%;
+	background: #4098FF;
+	border: none;
+	border-radius: 100px;
+	padding: 15px;
+	color: white;
+	font-size: 15px;
+}
+.register-form .form-group-check{
+	width: 80%;
+	margin: auto;
+	text-align: right;
+	padding-top:15px ;
+}
+.register-form .form-group-check a{
+	
+	font-size:14px;
+	color: #9B9B9B ;
+	text-decoration: none;
+}
+.register-readme{
+	text-align: center;
+	color: #9B9B9B;
+	font-size: 14px;
+	padding-top: 48px;
+}
+.register-readme a{
+	color: #4098FF;
+	text-decoration: none;
+}
+.close{
+	position: absolute;
+	right: 15px;
+	top: 15px;
+}
+.main-body-register{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.success-img{
+	margin-top: 21px;
+	text-align: center;
+	border-bottom: 1px dotted #979797;
+}
+.success-img span{
+	font-family: .PingFangSC-Medium;
+	font-size: 18px;
+	color: #4A4A4A;
+	letter-spacing: 0.22px;
+	display: block;
+	margin: auto;
+	margin-bottom: 15px;
+	
+}
+.car-chart{
+	text-align: center;
+}
+.car-chart .title{
+	margin-top: 19.5px;
+	font-family: .PingFangSC-Medium;
+	font-size: 16px;
+	color: #4098FF;
+	letter-spacing: 0.19px;
+	line-height: 14px;
+}
+.car-chart .info{
+	margin-top: 10px;
+	font-family: .PingFangSC-Medium;
+	font-size: 12px;
+	color: #4A4A4A;
+	letter-spacing: 0.14px;
+	line-height: 14px;
+}
+.car-chart img{
+	margin-top: 20px;
+	width: 271px;
+	height: 108px;
+}
+.save,.change{
+	text-align: center;
+}
+.save button{
+	width: 90%;
+	height: 46px;
+	background: #4098FF;
+	border: 1px solid #58A5FF;
+	border-radius: 100px;
+	font-family: .PingFangSC-Regular;
+	font-size: 16px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+	line-height: 16px;
+	margin: auto;
+	margin-top: 30px;
+}
+.role{
+	margin: auto;
+	margin-top: 34px;
+	width: 201px;
+	text-align: center;
+	font-family: .PingFangSC-Medium;
+	font-size: 16px;
+	color: #4A4A4A;
+	letter-spacing: 0.19px;
+	border-bottom: 1px solid #5FA9FF;
+	background-color: #FFFFFF;
+	z-index: 999;
+}
+.sanjiao{
+	height: 16px;
+	overflow: hidden;
+}
+ .sanjiao div{
+	width: 8px;
+	height: 8px;
+	margin: auto;
+	margin-top: -4px;
+	transform: rotate(45deg);
+	background-color: #4098FF;
+}
+.role-img{
+	margin: auto;
+	margin-top: 12px;
+	text-align: center;
+	position: relative;
+}
+.role-img img{
+	width: 100%;
+}
+.collapse-btn{
+	background: #FFFFFF;
+	border: 1px solid #EBEBEB;
+	border-radius: 10px;
+	margin-top: 10px;
+	
+}
+.collapse-btn .title{
+	padding: 15px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	display: flex;
+	align-items: center;
+}
+.collapse-btn .title .head{
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.collapse-btn .title .foot{
+	width: 10px;
+	height: 10px;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.collapse-btn .title .main{
+	flex-grow:1 ;
+	margin-left: 10px;
+	font-size: 12px;
+	color: #4A4A4A;
+	letter-spacing: 0.14px;
+	line-height: 12px;
+}
+.collapse-btn .content{
+	overflow: hidden;
+	padding:15px;
+	font-family: .PingFangSC-Regular;
+	font-size: 12px;
+	color: #9B9B9B;
+	letter-spacing: 0;
+	line-height: 18px;
+}
+.collapse-btn .collapse{
+	height: 0px;
+	padding: 0px;
+}
+.collapse-btn .up{
+	transform: rotate(180deg);
+}
+.sub-btn{
+	margin-top:24px ;
+	height: 48px;
+	width: 100%;
+	background: #4098FF;
+	font-family: .PingFangSC-Medium;
+	font-size: 16px;
+	color: #FFFFFF;
+	letter-spacing: 0.19px;
+	line-height: 14px;
+	border: none;
+}
+.pay-type{
+	background-color: white;
+	padding-top: 9px;
+	position: absolute;
+	width: 100%;
+	display: none;
+	transition:0.5s;
+	border-top: 1px solid #DDDDDD;
+}
+.pay-type .pay-item{
+	
+	border-bottom: 1px solid #F2F2F2;
+	padding-top:9px ;
+	padding-bottom: 9px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.pay-type  .pay-img ,.pay-type  .choose {
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+}
+.pay-type .pay-img{
+	margin-right: 10px;
+	
+}
+.pay-type  .pay-title{
+	-webkit-box-flex: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+}
+.pay-type .pay-item:last-child{
+	border:none;
+}
+.pay-type .pay-title{
+	font-family: .PingFangSC-Regular;
+	font-size: 14px;
+	color: #000000;
+	letter-spacing: 0.17px;
+	line-height: 14px;
+}
+.pay-type .pay-item .choose{
+	width: 26px;
+	height: 26px;
+	background-image: url(../img/unchecked.png);
+	background-size: 100%;
+}
+.pay-type .pay-item .active{
+	width: 26px;
+	height: 26px;
+	background-image: url(../img/checked.png);
+	background-size: 100%;
+}
+.pay-type .btns{
+	height: 43px;
+	display:flex;
+}
+.pay-type .btns button,.pay-type .btns a{
+	height: 100%;
+	width: 100%;
+	font-size: 16px;
+	color: #FFFFFF;
+	letter-spacing: 0.19px;
+	line-height: 14px;
+	border: none;
+	outline: none;
+}
+.pay-type .btns .cancel{
+	background-color: #DD524D;
+}
+.pay-type .btns .pay{
+	background-color: #58A5FF;
+}
+.loading-body{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: flex;
+	transition: 0.5s;
+}
+.loading-body img{
+	width: 30px;
+	height: 30px;
+	margin: auto;
+}

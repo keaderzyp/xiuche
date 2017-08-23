@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册成功1</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/register-styles.css"/>
+	</head>
+	<body>
+		<div class="loading-body">
+			<img src="img/loading.gif"/>
+		</div>
+		<div class="main-body-register">
+			<img class="close" src="img/close.png"/>
+			<div class="success-img">
+				<img src="img/互助协议签订成功对号.png" alt="" />
+				<span>注册成功</span>
+			</div>
+			<div class="car-chart">
+				<div class="title">
+					1元！即可加入互助计划
+				</div>
+				<div class="info">
+					至少降低50%的养车成本哦
+				</div>
+				<img src="img/图表.png"/>
+			</div>
+			<div class="save">
+				<a href="quick_learn-1.html">
+					<button>快速了解互助修车计划</button>
+				</a>
+			</div>
+			<div class="role">
+				享受权限
+				
+			</div>
+			<div class="sanjiao">
+				<div >
+					
+				</div>
+			</div>
+			<div class="role-img">
+				<img src="img/享受.png"/>
+				
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/互助流程.png" alt="" />
+					<div class="main">
+						互助流程
+					</div>
+					<img class="foot" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content collapse">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/适用车辆.png" alt="" />
+					<div class="main">
+						适用车辆
+					</div>
+					<img class="foot" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content collapse">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/指定范围.png" alt="" />
+					<div class="main">
+						互助范围
+					</div>
+					<img class="foot up" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content ">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/额度.png" alt="" />
+					<div class="main">
+						互助额度
+					</div>
+					<img class="foot" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content collapse">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/维修.png" alt="" />
+					<div class="main">
+						车辆维修
+					</div>
+					<img class="foot" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content collapse">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+			<div class="collapse-btn">
+				<div class="title">
+					<img class="head" src="img/帮助.png" alt="" />
+					<div class="main">
+						常见问题
+					</div>
+					<img class="foot" src="img/翻转箭头.png"/>
+				</div>
+				<div class="content collapse">
+					意外产生的损失（互助期间内，因意外事故或自然灾害造成会员车辆直接损失。如由于：碰撞损坏、车身划伤、发动机被水淹、玻璃破碎登导致的损失）
+				</div>
+			</div>
+		</div>
+		<!--<a  href="add_car.html">-->
+			<button class="sub-btn">1元加入计划</button>
+		<!--</a>-->
+		
+		<div class="pay-type">
+			<div class="pay-item">
+				<img class="pay-img" src="img/weixin.png"/>
+				<div class="pay-title">
+					微信支付
+				</div>
+				<div class="choose ">
+					
+				</div>
+			</div>
+			<div class="pay-item">
+				<img class="pay-img" src="img/zhifubao.png"/>
+				<div class="pay-title">
+					支付宝
+				</div>
+				<div class="choose active">
+					
+				</div>
+			</div>
+			<div class="btns">
+				<button class="cancel">
+					取消
+				</button>
+				<a href="add_car.html">
+					<button class="pay">
+						确认支付
+					</button>
+				</a>
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		for(var i=0;i<document.getElementsByClassName("collapse-btn").length;i++){
+			document.getElementsByClassName("collapse-btn")[i].onclick=function(){
+				console.log(this.children[0].children[2]);
+				var arrow = this.children[0].children[2];
+				var content = this.children[1];
+				if(arrow.className.indexOf("up")!=-1){
+					arrow.className = arrow.className.replace("up","");
+					content.className+=" collapse";
+				}else{
+					arrow.className += " up";
+					content.className = content.className.replace("collapse","");
+				}
+			}
+		}
+		var subBtn = document.getElementsByClassName("sub-btn")[0];
+		var payType = document.getElementsByClassName("pay-type")[0];
+		var cancel = document.getElementsByClassName("cancel")[0];
+		var main = document.getElementsByClassName("main-body-register")[0];
+		subBtn.onclick=function(){
+			main.style.filter="blur(3px)";
+			payType.style.display='block';
+			window.setTimeout(function(){
+				payType.style.transform="translate(0px,-154px)";
+			})
+		}
+		cancel.onclick=function(){
+			main.style.filter="blur(0px)";
+			payType.style.transform="translate(0px,0px)";
+			window.setTimeout(function(){
+				payType.style.display='none';
+			},500);
+		}
+		var chooses = document.getElementsByClassName("choose");
+		for(var i=0;i<chooses.length;i++){
+			chooses[i].onclick=function(){
+				console.log(this);
+				for(var j=0;j<chooses.length;j++){
+					chooses[j].className = this.className.replace("active","");
+				}
+				this.className+=" active";
+			}
+		}
+	</script>
+	<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+</html>

@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.NewsDynamicMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.NewsDynamic" >
+    <id column="DYNAMIC_ID" property="dynamicId" jdbcType="VARCHAR" />
+ <!--    <result column="TYPE" property="type" jdbcType="VARCHAR" /> -->
+    <result column="TITLE" property="title" jdbcType="VARCHAR" />
+    <result column="ISSUE_TIME" property="issueTime" jdbcType="DATE" />
+    <result column="DESCIPTION" property="desciption" jdbcType="VARCHAR" />
+    <result column="DYNAMIC_URL" property="dynamicUrl" jdbcType="VARCHAR" />
+    <result column="BYNAMIC_ICO" property="bynamicIco" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="ISSUER" property="issuer" jdbcType="VARCHAR" />
+    <result column="imgs" property="imgs" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="param10" property="param10" jdbcType="VARCHAR" />
+    <association property="type" javaType="com.oojunzi.app.web.model.NewsDynamicType" >
+        <!-- property 表示com.mybatis.bean.Class中的属性； column 表示表中的列名 -->
+        <id column="TYPE_ID" property="typeId" jdbcType="VARCHAR" />
+	    <result column="TYPE_NAME" property="typeName" jdbcType="VARCHAR" />
+	    <result column="TYPE_ICON" property="typeIcon" jdbcType="VARCHAR" />
+	    <result column="TYPE_STATE" property="typeState" jdbcType="VARCHAR" />
+	    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+	    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    </association>
+    <association property="userFid" javaType="com.oojunzi.app.web.model.User" >
+        <id column="ID" jdbcType="DECIMAL" property="id" />
+	    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+	    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+	    <result column="STATE" jdbcType="VARCHAR" property="state" />
+	    <result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+	    <result column="PET_NAME" jdbcType="VARCHAR" property="petName" />
+	    <result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+	    <result column="SEX" jdbcType="VARCHAR" property="sex" />
+	    <result column="TELPHONE" jdbcType="VARCHAR" property="telphone" />
+	    <result column="HAS_CIRCLE" jdbcType="VARCHAR" property="hasCircle" />
+	    <result column="HELP_COUNT" jdbcType="DECIMAL" property="helpCount" />
+	    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+	    <result column="DRIVE_YEAR" jdbcType="VARCHAR" property="driveYear" />
+	    <result column="ID_NUMBER" jdbcType="VARCHAR" property="idNumber" />
+	    <result column="WECHAT_NUMBER" jdbcType="VARCHAR" property="wechatNumber" />
+	    <result column="USER_ICO" jdbcType="VARCHAR" property="userIco" />
+	    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+	    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+	    <result column="GROUP_FID" jdbcType="DECIMAL" property="groupFid" />
+	    <result column="LEVEL_FID" jdbcType="DECIMAL" property="levelFid" />
+	    <result column="MARK_NUMBER" jdbcType="DECIMAL" property="markNumber" />
+	    <result column="PARAM1" jdbcType="VARCHAR" property="param1" />
+	    <result column="PARAM2" jdbcType="VARCHAR" property="param2" />
+	    <result column="PARAM3" jdbcType="VARCHAR" property="param3" />
+	    <result column="PARAM4" jdbcType="VARCHAR" property="param4" />
+	    <result column="PARAM5" jdbcType="VARCHAR" property="param5" />
+	    <result column="PARAM6" jdbcType="VARCHAR" property="param6" />
+	    <result column="PARAM7" jdbcType="VARCHAR" property="param7" />
+	    <result column="PARAM8" jdbcType="VARCHAR" property="param8" />
+	    <result column="PARAM9" jdbcType="VARCHAR" property="param9" />
+	    <result column="PARAM10" jdbcType="VARCHAR" property="param10" />
+    </association>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.oojunzi.app.web.model.NewsDynamic" extends="BaseResultMap" >
+    <result column="CONTENT" property="content" jdbcType="BLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DYNAMIC_ID, TYPE, TITLE, ISSUE_TIME, DESCIPTION, DYNAMIC_URL, BYNAMIC_ICO, STATUS, 
+    REMARK, ISSUER, USER_FID, IMGS, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, PARAM7, 
+    PARAM8, PARAM9, param10
+  </sql>
+  <sql id="Blob_Column_List" >
+    CONTENT
+  </sql>
+  <select id="selectByType" resultMap="BaseResultMap" parameterType="java.lang.String">
+  		select 
+  		<include refid="Base_Column_List" />
+  		from T_NEWS_DYNAMIC
+  		where type=#{id}
+  </select>
+   <select id="selectNewsAndType" parameterType="com.oojunzi.app.web.model.NewsDynamic" resultMap="BaseResultMap" >
+  		select 
+	  		t.DYNAMIC_ID, t.TYPE, t.TITLE, t.ISSUE_TIME, t.DESCIPTION,t.DYNAMIC_URL, t.BYNAMIC_ICO, t.STATUS, 
+		    t.REMARK, t.ISSUER, t.USER_FID,t.CONTENT,ty.TYPE_ID,ty.TYPE_NAME
+  		from T_NEWS_DYNAMIC t left join T_NEWS_DYNAMIC_TYPE ty
+  		on t.TYPE=ty.TYPE_ID
+  		<if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause} desc
+        </if>
+  </select>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.oojunzi.app.web.model.NewsDynamicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from T_NEWS_DYNAMIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.NewsDynamicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_NEWS_DYNAMIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+ 		t.DYNAMIC_ID, t.TYPE, t.TITLE, t.ISSUE_TIME, t.DESCIPTION,t.DYNAMIC_URL, t.BYNAMIC_ICO, t.STATUS, 
+        t.REMARK, t.ISSUER, t.USER_FID,t.CONTENT,t.IMGS,
+        ty.TYPE_ID,ty.TYPE_NAME,
+        tu.ID,tu.USERNAME,tu.USER_ICO
+	from T_NEWS_DYNAMIC t left join T_NEWS_DYNAMIC_TYPE ty on t.TYPE=ty.TYPE_ID
+	     				  left join T_SYSTEM_USER tu on t.USER_FID=tu.ID
+    where DYNAMIC_ID = #{dynamicId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_NEWS_DYNAMIC
+    where DYNAMIC_ID = #{dynamicId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.NewsDynamicExample" >
+    delete from T_NEWS_DYNAMIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.NewsDynamic" >
+    insert into T_NEWS_DYNAMIC (DYNAMIC_ID, TYPE, TITLE, 
+      ISSUE_TIME, DESCIPTION, DYNAMIC_URL, 
+      BYNAMIC_ICO, STATUS, REMARK, 
+      ISSUER, USER_FID, imgs, PARAM2, 
+      PARAM3, PARAM4, PARAM5, PARAM6, 
+      PARAM7, PARAM8, PARAM9, param10, 
+      CONTENT)
+    values (#{dynamicId,jdbcType=VARCHAR}, #{type.typeId,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{issueTime,jdbcType=DATE}, #{desciption,jdbcType=VARCHAR}, #{dynamicUrl,jdbcType=VARCHAR}, 
+      #{bynamicIco,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{issuer,jdbcType=VARCHAR}, #{userFid.id,jdbcType=VARCHAR}, #{imgs,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR}, 
+      #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}, 
+      #{content,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.NewsDynamic" >
+    insert into T_NEWS_DYNAMIC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dynamicId != null" >
+        DYNAMIC_ID,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="title != null" >
+        TITLE,
+      </if>
+      <if test="issueTime != null" >
+        ISSUE_TIME,
+      </if>
+      <if test="desciption != null" >
+        DESCIPTION,
+      </if>
+      <if test="dynamicUrl != null" >
+        DYNAMIC_URL,
+      </if>
+      <if test="bynamicIco != null" >
+        BYNAMIC_ICO,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="issuer != null" >
+        ISSUER,
+      </if>
+      <if test="userFid != null" >
+        USER_FID,
+      </if>
+      <if test="imgs != null" >
+        imgs,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        param10,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dynamicId != null" >
+        #{dynamicId,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="issueTime != null" >
+        #{issueTime,jdbcType=DATE},
+      </if>
+      <if test="desciption != null" >
+        #{desciption,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicUrl != null" >
+        #{dynamicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bynamicIco != null" >
+        #{bynamicIco,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="issuer != null" >
+        #{issuer,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null" >
+        #{userFid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null" >
+        #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.NewsDynamicExample" resultType="java.lang.Integer" >
+    select count(*) from T_NEWS_DYNAMIC
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_NEWS_DYNAMIC
+    <set >
+      <if test="record.dynamicId != null" >
+        DYNAMIC_ID = #{record.dynamicId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null" >
+        TITLE = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issueTime != null" >
+        ISSUE_TIME = #{record.issueTime,jdbcType=DATE},
+      </if>
+      <if test="record.desciption != null" >
+        DESCIPTION = #{record.desciption,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dynamicUrl != null" >
+        DYNAMIC_URL = #{record.dynamicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bynamicIco != null" >
+        BYNAMIC_ICO = #{record.bynamicIco,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issuer != null" >
+        ISSUER = #{record.issuer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFid != null" >
+        USER_FID = #{record.userFid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgs != null" >
+        imgs = #{record.imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        param10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.content != null" >
+        CONTENT = #{record.content,jdbcType=BLOB},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update T_NEWS_DYNAMIC
+    set DYNAMIC_ID = #{record.dynamicId,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      ISSUE_TIME = #{record.issueTime,jdbcType=DATE},
+      DESCIPTION = #{record.desciption,jdbcType=VARCHAR},
+      DYNAMIC_URL = #{record.dynamicUrl,jdbcType=VARCHAR},
+      BYNAMIC_ICO = #{record.bynamicIco,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      ISSUER = #{record.issuer,jdbcType=VARCHAR},
+      USER_FID = #{record.userFid,jdbcType=VARCHAR},
+      imgs = #{record.imgs,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      param10 = #{record.param10,jdbcType=VARCHAR},
+      CONTENT = #{record.content,jdbcType=BLOB}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_NEWS_DYNAMIC
+    set DYNAMIC_ID = #{record.dynamicId,jdbcType=VARCHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      TITLE = #{record.title,jdbcType=VARCHAR},
+      ISSUE_TIME = #{record.issueTime,jdbcType=DATE},
+      DESCIPTION = #{record.desciption,jdbcType=VARCHAR},
+      DYNAMIC_URL = #{record.dynamicUrl,jdbcType=VARCHAR},
+      BYNAMIC_ICO = #{record.bynamicIco,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      ISSUER = #{record.issuer,jdbcType=VARCHAR},
+      USER_FID = #{record.userFid,jdbcType=VARCHAR},
+      imgs = #{record.imgs,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      param10 = #{record.param10,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.NewsDynamic" >
+    update T_NEWS_DYNAMIC
+    <set >
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        TITLE = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="issueTime != null" >
+        ISSUE_TIME = #{issueTime,jdbcType=DATE},
+      </if>
+      <if test="desciption != null" >
+        DESCIPTION = #{desciption,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamicUrl != null" >
+        DYNAMIC_URL = #{dynamicUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bynamicIco != null" >
+        BYNAMIC_ICO = #{bynamicIco,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="issuer != null" >
+        ISSUER = #{issuer,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null" >
+        USER_FID = #{userFid,jdbcType=VARCHAR},
+      </if>
+      <if test="imgs != null" >
+        imgs = #{imgs,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        param10 = #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=BLOB},
+      </if>
+    </set>
+    where DYNAMIC_ID = #{dynamicId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.oojunzi.app.web.model.NewsDynamic" >
+    update T_NEWS_DYNAMIC
+    set TYPE = #{type.typeId,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      ISSUE_TIME = #{issueTime,jdbcType=DATE},
+      DESCIPTION = #{desciption,jdbcType=VARCHAR},
+      DYNAMIC_URL = #{dynamicUrl,jdbcType=VARCHAR},
+      BYNAMIC_ICO = #{bynamicIco,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      ISSUER = #{issuer,jdbcType=VARCHAR},
+      USER_FID = #{userFid.id,jdbcType=VARCHAR},
+      imgs = #{imgs,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      param10 = #{param10,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=BLOB}
+    where DYNAMIC_ID = #{dynamicId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.NewsDynamic" >
+    update T_NEWS_DYNAMIC
+    set TYPE = #{type,jdbcType=VARCHAR},
+      TITLE = #{title,jdbcType=VARCHAR},
+      ISSUE_TIME = #{issueTime,jdbcType=DATE},
+      DESCIPTION = #{desciption,jdbcType=VARCHAR},
+      DYNAMIC_URL = #{dynamicUrl,jdbcType=VARCHAR},
+      BYNAMIC_ICO = #{bynamicIco,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      ISSUER = #{issuer,jdbcType=VARCHAR},
+      USER_FID = #{userFid,jdbcType=VARCHAR},
+      imgs = #{imgs,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      param10 = #{param10,jdbcType=VARCHAR}
+    where DYNAMIC_ID = #{dynamicId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByExampleAndPage" parameterType="com.oojunzi.app.web.model.NewsDynamic" resultMap="BaseResultMap">
+	 	select 
+	 		t.DYNAMIC_ID, t.TYPE, t.TITLE, t.ISSUE_TIME, t.DESCIPTION,t.DYNAMIC_URL, t.BYNAMIC_ICO, t.STATUS, 
+	        t.REMARK, t.ISSUER, t.USER_FID,t.CONTENT,t.IMGS,
+	        tu.ID,tu.USERNAME,tu.USER_ICO
+		from T_NEWS_DYNAMIC t 
+		     				  left join T_SYSTEM_USER tu on t.USER_FID=tu.ID 
+        where type=#{type}
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause} desc
+        </if>
+    </select>    
+</mapper>

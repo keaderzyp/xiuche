@@ -1,0 +1,31 @@
+body{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	width: 300px;
+	height: 200px;
+	padding: 15px;
+	font-size: 30px;
+	color: white;
+	background-color: orange;
+	margin: 20px;  
+	
+}
+.loading-body{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: flex;
+	transition: 0.5s;
+}
+.loading-body img{
+	width: 30px;
+	height: 30px;
+	margin: auto;
+}

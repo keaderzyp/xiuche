@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 配置Run As Maven build : Goals 参数 : mybatis-generator:generate -Dmybatis.generator.overwrite=true -->
+<!-- 配置 tableName,使用 Run As Maven build 生成 dao model 层 -->
+<generatorConfiguration>
+    <!-- 配置文件路径 -->
+    <properties url="${mybatis.generator.generatorConfig.properties}"/>
+
+    <!--数据库驱动包路径 -->
+    <classPathEntry location="${drive.class.path}"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--关闭注释 -->
+	<!--<commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator> -->
+		<commentGenerator type="com.comment.mycomment.MyCommentGenerator">
+		</commentGenerator>
+
+        <!--数据库连接信息 -->
+        <jdbcConnection driverClass="${jdbc.driver}" connectionURL="${jdbc.url}" userId="${jdbc.username}"
+                        password="${jdbc.password}">
+                        <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
+
+        <!--生成的model 包路径 -->
+        <javaModelGenerator targetPackage="${model.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成xml mapper文件 路径 -->
+        <sqlMapGenerator targetPackage="${xml.mapper.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+        </sqlMapGenerator>
+
+        <!-- 生成的Dao接口 的包路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${dao.package}" targetProject="${target.project}">
+            <property name="enableSubPackages" value="ture"/>
+        </javaClientGenerator>
+
+        <!--对应数据库表名 -->
+       <!-- <table tableName="T_CAR_INFO" domainObjectName="CarInfo">
+		</table>
+		<table tableName="T_CAR_TYPE" domainObjectName="CarType">
+		</table>
+		<table tableName="T_CIRCLE_USER" domainObjectName="CircleUser">
+		</table>
+		<table tableName="T_GARAGE_IMG" domainObjectName="GarageImg">
+		</table>
+		<table tableName="T_GARAGE_INFO" domainObjectName="GarageInfo">
+		</table>
+		<table tableName="T_GARAGE_MEND" domainObjectName="GarageMend">
+		</table>
+		<table tableName="T_HELP_PARTAKE" domainObjectName="HelpPartake">
+		</table>
+		<table tableName="T_HELP_PARTAKEMAX" domainObjectName="HelpPartakemax">
+		</table>
+		<table tableName="T_HELP_SPOT" domainObjectName="HelpSpot">
+		</table>
+		<table tableName="T_HELP_SPOTIMG" domainObjectName="HelpSpotimg">
+		</table>
+		<table tableName="T_ORDER_INFO" domainObjectName="OrderInfo">
+		</table>
+		<table tableName="T_SCORE_LEVEL" domainObjectName="ScoreLevel">
+		</table>
+		<table tableName="T_SCORE_PLAN" domainObjectName="ScorePlan">
+		</table>
+		<table tableName="T_SCORE_PLANDT" domainObjectName="ScorePlandt">
+		</table>
+		<table tableName="T_SCORE_RECORD" domainObjectName="ScoreRecord">
+		</table>
+		<table tableName="T_SCORE_USERINFO" domainObjectName="ScoreUserinfo">
+		</table>
+		<table tableName="T_SYSTEM_ADMINLOG" domainObjectName="SystemAdminlog">
+		</table>
+		<table tableName="T_SYSTEM_PERMISSION" domainObjectName="SystemPermission">
+		</table>
+		<table tableName="T_SYSTEM_ROLE" domainObjectName="SystemRole">
+		</table>
+		<table tableName="T_USER_CUSTOMER" domainObjectName="UserCustomer">
+		</table>
+		<table tableName="T_USER_DEPART" domainObjectName="UserDepart">
+		</table>
+		<table tableName="T_USER_GROUP" domainObjectName="UserGroup">
+		</table>
+		<table tableName="T_USER_INFO" domainObjectName="UserInfo">
+		</table>
+		<table tableName="T_USER_LEVEL" domainObjectName="UserLevel">
+		</table>
+		<table tableName="T_USER_PAY" domainObjectName="UserPay">
+		</table>
+		<table tableName="T_USER_STAFF" domainObjectName="UserStaff">
+		</table>
+		<table tableName="T_SHARE_INFO" domainObjectName="ShareInfo">
+		</table>
+		<table tableName="T_NEWS_DYNAMIC" domainObjectName="NewsDynamic">
+		</table>
+		<table tableName="T_HELP_INFO" domainObjectName="HelpInfo">
+		</table>
+		<table tableName="T_HELP_HELPIMG" domainObjectName="HelpHelpimg">
+		</table>
+		<table tableName="T_USER_TIMERECODE" domainObjectName="UserTimerecode">
+		</table> 
+		<table tableName="T_CIRCLE_INFO" domainObjectName="CircleInfo">
+		</table>
+		<table tableName="T_SYSTEM_USER" domainObjectName="User">
+		</table>
+		-->
+    </context>
+</generatorConfiguration>

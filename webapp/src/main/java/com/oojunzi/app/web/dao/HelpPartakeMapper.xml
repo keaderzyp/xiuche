@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oojunzi.app.web.dao.HelpPartakeMapper">
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.HelpPartake">
+    <id column="PAY_ID" jdbcType="DECIMAL" property="payId" />
+    <result column="HELP_FID" jdbcType="DECIMAL" property="helpFid" />
+    <result column="FCIRCLE_FID" jdbcType="DECIMAL" property="fcircleFid" />
+    <result column="NEED_PAY" jdbcType="DECIMAL" property="needPay" />
+    <result column="FACT_PAY" jdbcType="DECIMAL" property="factPay" />
+    <result column="IS_HELPER" jdbcType="VARCHAR" property="isHelper" />
+    <result column="STATUS" jdbcType="VARCHAR" property="status" />
+    <result column="PAY_TYPE" jdbcType="VARCHAR" property="payType" />
+    <result column="INFORM_TIME" jdbcType="DATE" property="informTime" />
+    <result column="PAY_TIME" jdbcType="DATE" property="payTime" />
+    <result column="CAR_FID" jdbcType="DECIMAL" property="carFid" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="PARAM1" jdbcType="VARCHAR" property="param1" />
+    <result column="PARAM2" jdbcType="VARCHAR" property="param2" />
+    <result column="PARAM3" jdbcType="VARCHAR" property="param3" />
+    <result column="PARAM4" jdbcType="VARCHAR" property="param4" />
+    <result column="PARAM5" jdbcType="VARCHAR" property="param5" />
+    <result column="PARAM6" jdbcType="VARCHAR" property="param6" />
+    <result column="PARAM7" jdbcType="VARCHAR" property="param7" />
+    <result column="PARAM8" jdbcType="VARCHAR" property="param8" />
+    <result column="PARAM9" jdbcType="VARCHAR" property="param9" />
+    <result column="PARAM10" jdbcType="VARCHAR" property="param10" />
+    <result column="USER_FID" jdbcType="VARCHAR" property="userFid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PAY_ID, HELP_FID, FCIRCLE_FID, NEED_PAY, FACT_PAY, IS_HELPER, STATUS, PAY_TYPE, INFORM_TIME, 
+    PAY_TIME, CAR_FID, TYPE, REMARK, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, 
+    PARAM7, PARAM8, PARAM9, PARAM10, USER_FID
+  </sql>
+  <select id="selectByExample" parameterType="com.oojunzi.app.web.model.HelpPartakeExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_HELP_PARTAKE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_HELP_PARTAKE
+    where PAY_ID = #{payId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from T_HELP_PARTAKE
+    where PAY_ID = #{payId,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.HelpPartakeExample">
+    delete from T_HELP_PARTAKE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.HelpPartake">
+    insert into T_HELP_PARTAKE (PAY_ID, HELP_FID, FCIRCLE_FID, 
+      NEED_PAY, FACT_PAY, IS_HELPER, 
+      STATUS, PAY_TYPE, INFORM_TIME, 
+      PAY_TIME, CAR_FID, TYPE, 
+      REMARK, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5, 
+      PARAM6, PARAM7, PARAM8, 
+      PARAM9, PARAM10, USER_FID
+      )
+    values (#{payId,jdbcType=DECIMAL}, #{helpFid,jdbcType=DECIMAL}, #{fcircleFid,jdbcType=DECIMAL}, 
+      #{needPay,jdbcType=DECIMAL}, #{factPay,jdbcType=DECIMAL}, #{isHelper,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, #{informTime,jdbcType=DATE}, 
+      #{payTime,jdbcType=DATE}, #{carFid,jdbcType=DECIMAL}, #{type,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, 
+      #{param6,jdbcType=VARCHAR}, #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, 
+      #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}, #{userFid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.HelpPartake">
+    insert into T_HELP_PARTAKE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="payId != null">
+        PAY_ID,
+      </if>
+      <if test="helpFid != null">
+        HELP_FID,
+      </if>
+      <if test="fcircleFid != null">
+        FCIRCLE_FID,
+      </if>
+      <if test="needPay != null">
+        NEED_PAY,
+      </if>
+      <if test="factPay != null">
+        FACT_PAY,
+      </if>
+      <if test="isHelper != null">
+        IS_HELPER,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+      <if test="payType != null">
+        PAY_TYPE,
+      </if>
+      <if test="informTime != null">
+        INFORM_TIME,
+      </if>
+      <if test="payTime != null">
+        PAY_TIME,
+      </if>
+      <if test="carFid != null">
+        CAR_FID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="param1 != null">
+        PARAM1,
+      </if>
+      <if test="param2 != null">
+        PARAM2,
+      </if>
+      <if test="param3 != null">
+        PARAM3,
+      </if>
+      <if test="param4 != null">
+        PARAM4,
+      </if>
+      <if test="param5 != null">
+        PARAM5,
+      </if>
+      <if test="param6 != null">
+        PARAM6,
+      </if>
+      <if test="param7 != null">
+        PARAM7,
+      </if>
+      <if test="param8 != null">
+        PARAM8,
+      </if>
+      <if test="param9 != null">
+        PARAM9,
+      </if>
+      <if test="param10 != null">
+        PARAM10,
+      </if>
+      <if test="userFid != null">
+        USER_FID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="payId != null">
+        #{payId,jdbcType=DECIMAL},
+      </if>
+      <if test="helpFid != null">
+        #{helpFid,jdbcType=DECIMAL},
+      </if>
+      <if test="fcircleFid != null">
+        #{fcircleFid,jdbcType=DECIMAL},
+      </if>
+      <if test="needPay != null">
+        #{needPay,jdbcType=DECIMAL},
+      </if>
+      <if test="factPay != null">
+        #{factPay,jdbcType=DECIMAL},
+      </if>
+      <if test="isHelper != null">
+        #{isHelper,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="informTime != null">
+        #{informTime,jdbcType=DATE},
+      </if>
+      <if test="payTime != null">
+        #{payTime,jdbcType=DATE},
+      </if>
+      <if test="carFid != null">
+        #{carFid,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null">
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null">
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null">
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null">
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null">
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null">
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null">
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null">
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null">
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null">
+        #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null">
+        #{userFid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.HelpPartakeExample" resultType="java.lang.Integer">
+    select count(*) from T_HELP_PARTAKE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update T_HELP_PARTAKE
+    <set>
+      <if test="record.payId != null">
+        PAY_ID = #{record.payId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.helpFid != null">
+        HELP_FID = #{record.helpFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.fcircleFid != null">
+        FCIRCLE_FID = #{record.fcircleFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.needPay != null">
+        NEED_PAY = #{record.needPay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.factPay != null">
+        FACT_PAY = #{record.factPay,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isHelper != null">
+        IS_HELPER = #{record.isHelper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payType != null">
+        PAY_TYPE = #{record.payType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.informTime != null">
+        INFORM_TIME = #{record.informTime,jdbcType=DATE},
+      </if>
+      <if test="record.payTime != null">
+        PAY_TIME = #{record.payTime,jdbcType=DATE},
+      </if>
+      <if test="record.carFid != null">
+        CAR_FID = #{record.carFid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=DECIMAL},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param1 != null">
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null">
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null">
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null">
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null">
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null">
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null">
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null">
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null">
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null">
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFid != null">
+        USER_FID = #{record.userFid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update T_HELP_PARTAKE
+    set PAY_ID = #{record.payId,jdbcType=DECIMAL},
+      HELP_FID = #{record.helpFid,jdbcType=DECIMAL},
+      FCIRCLE_FID = #{record.fcircleFid,jdbcType=DECIMAL},
+      NEED_PAY = #{record.needPay,jdbcType=DECIMAL},
+      FACT_PAY = #{record.factPay,jdbcType=DECIMAL},
+      IS_HELPER = #{record.isHelper,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      PAY_TYPE = #{record.payType,jdbcType=VARCHAR},
+      INFORM_TIME = #{record.informTime,jdbcType=DATE},
+      PAY_TIME = #{record.payTime,jdbcType=DATE},
+      CAR_FID = #{record.carFid,jdbcType=DECIMAL},
+      TYPE = #{record.type,jdbcType=DECIMAL},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      USER_FID = #{record.userFid,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.HelpPartake">
+    update T_HELP_PARTAKE
+    <set>
+      <if test="helpFid != null">
+        HELP_FID = #{helpFid,jdbcType=DECIMAL},
+      </if>
+      <if test="fcircleFid != null">
+        FCIRCLE_FID = #{fcircleFid,jdbcType=DECIMAL},
+      </if>
+      <if test="needPay != null">
+        NEED_PAY = #{needPay,jdbcType=DECIMAL},
+      </if>
+      <if test="factPay != null">
+        FACT_PAY = #{factPay,jdbcType=DECIMAL},
+      </if>
+      <if test="isHelper != null">
+        IS_HELPER = #{isHelper,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null">
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="informTime != null">
+        INFORM_TIME = #{informTime,jdbcType=DATE},
+      </if>
+      <if test="payTime != null">
+        PAY_TIME = #{payTime,jdbcType=DATE},
+      </if>
+      <if test="carFid != null">
+        CAR_FID = #{carFid,jdbcType=DECIMAL},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null">
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null">
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null">
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null">
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null">
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null">
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null">
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null">
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null">
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null">
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="userFid != null">
+        USER_FID = #{userFid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where PAY_ID = #{payId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.HelpPartake">
+    update T_HELP_PARTAKE
+    set HELP_FID = #{helpFid,jdbcType=DECIMAL},
+      FCIRCLE_FID = #{fcircleFid,jdbcType=DECIMAL},
+      NEED_PAY = #{needPay,jdbcType=DECIMAL},
+      FACT_PAY = #{factPay,jdbcType=DECIMAL},
+      IS_HELPER = #{isHelper,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      INFORM_TIME = #{informTime,jdbcType=DATE},
+      PAY_TIME = #{payTime,jdbcType=DATE},
+      CAR_FID = #{carFid,jdbcType=DECIMAL},
+      TYPE = #{type,jdbcType=DECIMAL},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR},
+      USER_FID = #{userFid,jdbcType=VARCHAR}
+    where PAY_ID = #{payId,jdbcType=DECIMAL}
+  </update>
+  
+  	<!-- add lgq 通过车辆ID和求助ID查询分摊费用 -->
+  <select id="selectByhelpIdAndcarId" parameterType="Map" resultMap="BaseResultMap">
+    select 
+     PAY_ID, HELP_FID, FCIRCLE_FID, NEED_PAY, FACT_PAY, IS_HELPER, STATUS, PAY_TYPE, INFORM_TIME, 
+    PAY_TIME, USER_FID, TYPE, REMARK, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, 
+    PARAM7, PARAM8, PARAM9, PARAM10
+	 from T_HELP_PARTAKE t  
+	 where t.help_fid=#{helpId} and t.car_fid=#{carId}
+  </select>
+  	<!--生成 主键id-->
+  	 <select id="selectHelpPartakeId" resultType="java.lang.Long">
+        select SEQ_HELP_PARTAKE.NEXTVAL from dual
+    </select>
+  <!-- 根据用户id更改信息 -->
+  <update id="updateByUserId" parameterType="String">
+    update T_HELP_PARTAKE
+      set
+      STATUS =1
+     
+     
+      where 
+    CAR_FID in (select ID from T_CAR_INFO where USER_ID = #{userId})
+    
+      <!--  CAR_FID in (select f.car_fid  from T_HELP_BILL t,t_help_partake  f where t.helpid=f.help_fid and  
+     CAR_FID in (select ID as car_fid from T_CAR_INFO where USER_ID =#{userId}))
+      -->
+   
+  </update>
+</mapper>

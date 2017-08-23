@@ -1,0 +1,337 @@
+{
+	"register.html": {
+		"resources": [
+			"img/yanzheng.png",
+			"register_done.html",
+			"css/register-styles.css",
+			"register_done1.html"
+		],
+		"refer": [
+			"register_done.html",
+			"register_done1.html"
+		]
+	},
+	"register_done.html": {
+		"resources": [
+			"img/checked.png",
+			"img/zhifubao.png",
+			"css/register_done-styles.css",
+			"img/unchecked.png",
+			"img/weixin.png",
+			"add_car.html"
+		],
+		"refer": [
+			"add_car.html"
+		]
+	},
+	"login.html": {
+		"resources": [
+			"register.html",
+			"img/password.png",
+			"img/close.png",
+			"img/phone.png",
+			"img/logo.png",
+			"css/login-styles.css",
+			"main_login.html"
+		],
+		"refer": [
+			"register.html",
+			"main_login.html"
+		]
+	},
+	"add_car.html": {
+		"resources": [
+			"css/add_car-styles.css",
+			"img/yindao.png",
+			"upload.html",
+			"main_join.html"
+		],
+		"refer": [
+			"upload.html"
+		]
+	},
+	"upload.html": {
+		"resources": [
+			"css/FJL.css",
+			"img/arrow-top.png",
+			"js/FJL.min.js",
+			"img/arrow-bottom.png",
+			"img/upload.png",
+			"img/arrow-left.png",
+			"css/upload-styles.css",
+			"js/FJL.picker.min.js",
+			"img/upload-main.png",
+			"css/FJL.picker.css",
+			"main_makedeal.html"
+		],
+		"refer": [
+			"main_makedeal.html"
+		]
+	},
+	"main_makedeal.html": {
+		"resources": [
+			"img/cloud.png",
+			"js/util.js",
+			"img/deal-success.png",
+			"img/dealstep.png",
+			"img/blue-gray.png",
+			"img/success-white.png",
+			"main_deal.html"
+		],
+		"refer": [
+			"main_deal.html"
+		]
+	},
+	"main_deal.html": {
+		"resources": [
+			"img/jiben.png",
+			"img/Group.png",
+			"css/main_unlogin-styles.css",
+			"img/xiuche-btn.png",
+			"img/jixiang.png",
+			"img/car-model.png",
+			"img/t4.jpg",
+			"img/hudong.png",
+			"img/arrow-down-white.png",
+			"my_pay.html",
+			"img/weather.png",
+			"img/t3.jpeg",
+			"img/dongtai.png",
+			"img/qiuzhu.png",
+			"img/jiben-btn.png",
+			"img/t2.jpg",
+			"score.html",
+			"img/progress.png",
+			"img/xiuche.png",
+			"img/arrow-right-gray.png",
+			"img/jifen.png",
+			"img/qiuzhu-btn.png",
+			"img/shouye-active.png",
+			"img/jine.png",
+			"img/add-friends.png",
+			"img/t1.jpg",
+			"help.html",
+			"moments.html",
+			"user_info.html",
+			"login.html"
+		],
+		"refer": [
+			"my_pay.html",
+			"score.html",
+			"user_info.html",
+			"moments.html",
+			"login.html"
+		]
+	},
+	"my_pay.html": {
+		"resources": [
+			"img/shigushijian.png",
+			"img/car4.png",
+			"img/duihuan.png",
+			"img/car3.png",
+			"img/car.png",
+			"img/shigudidian.png",
+			"css/my_pay-styles.css",
+			"img/car2.png",
+			"img/help.png",
+			"img/car1.png",
+			"img/互助账单图标.png",
+			"img/我的求助图标.png",
+			"main_deal.html"
+		],
+		"refer": [
+			"main_deal.html"
+		]
+	},
+	"score.html": {
+		"resources": [
+			"img/jingpin.png",
+			"img/shouye.png",
+			"img/zhuangshi.png",
+			"css/score-styles.css",
+			"img/shangpin.png",
+			"img/yanghu.png",
+			"img/jifen-active.png",
+			"img/zuanshi.png",
+			"good_info.html",
+			"moments.html",
+			"img/duihuan.png",
+			"main_deal.html",
+			"img/help.png",
+			"img/dongtai.png",
+			"img/jixiang.png",
+			"img/hudong.png"
+		],
+		"refer": [
+			"main_deal.html"
+		]
+	},
+	"good_info.html": {
+		"resources": [
+			"js/jquery-2.2.4.min.js",
+			"css/good_info-styles.css",
+			"img/sanjiao.png",
+			"js/swiper-3.3.1.jquery.min.js",
+			"score.html",
+			"css/swiper-3.3.1.min.css",
+			"img/arrow-left.png",
+			"img/arrow-right-gray.png",
+			"img/jixiang.png"
+		],
+		"refer": [
+			"score.html"
+		]
+	},
+	"moments.html": {
+		"resources": [
+			"img/search.png",
+			"img/huodong-2.png",
+			"main_deal.html",
+			"img/zixun.png",
+			"css/moments-styles.css",
+			"img/fengjing.jpeg",
+			"img/gonggao.png",
+			"img/fengjing1.jpeg",
+			"img/fengjing2.jpeg",
+			"img/dongtai-active.png",
+			"img/kuwan.png",
+			"img/shouye.png",
+			"score.html",
+			"moments_info.html",
+			"js/util.js",
+			"img/t1.jpg"
+		],
+		"refer": [
+			"main_deal.html",
+			"moments_info.html"
+		]
+	},
+	"help.html": {
+		"resources": [
+			"img/deal-success.png",
+			"css/help-styles.css",
+			"img/arrow-left.png",
+			"img/qiuzhuliucheng.png"
+		],
+		"refer": []
+	},
+	"my_pay_info.html": {
+		"resources": [
+			"css/my_pay_info-styles.css",
+			"my_pay.html"
+		],
+		"refer": [
+			"my_pay.html"
+		]
+	},
+	"main_login.html": {
+		"resources": [
+			"img/Group.png",
+			"register_done.html",
+			"img/arrow-right-gray.png",
+			"img/gotojoin.png",
+			"css/main_unlogin-styles.css",
+			"img/jifen.png",
+			"img/hudong.png",
+			"img/dongtai.png",
+			"img/arrow-down-white.png",
+			"img/shouye-active.png",
+			"img/add-car-plus.png",
+			"img/empty-icon.png",
+			"img/jixiang.png",
+			"score.html",
+			"img/绑定手机.png",
+			"img/基本信息.png",
+			"img/收货地址.png",
+			"img/等级8.png",
+			"img/注销.png",
+			"img/t1.jpg",
+			"img/修改密码.png",
+			"address.html",
+			"user_info.html"
+		],
+		"refer": [
+			"register_done.html",
+			"score.html",
+			"address.html",
+			"user_info.html"
+		]
+	},
+	"main_join.html": {
+		"resources": [
+			"img/add-car.png",
+			"moments.html"
+		],
+		"refer": [
+			"moments.html"
+		]
+	},
+	"moments_info.html": {
+		"resources": [
+			"css/moments_info-styles.css",
+			"img/arrow-left.png",
+			"moments.html"
+		],
+		"refer": [
+			"moments.html"
+		]
+	},
+	"address.html": {
+		"resources": [
+			"css/address.css",
+			"add_address.html",
+			"main_login.html"
+		],
+		"refer": [
+			"add_address.html",
+			"main_login.html"
+		]
+	},
+	"user_info.html": {
+		"resources": [
+			"main_login.html",
+			"css/user_info.css",
+			"nickname.html"
+		],
+		"refer": [
+			"main_login.html",
+			"nickname.html"
+		]
+	},
+	"add_address.html": {
+		"resources": [
+			"img/单选空.png",
+			"address.html"
+		],
+		"refer": [
+			"address.html"
+		]
+	},
+	"nickname.html": {
+		"resources": [
+			"css/nickname.css",
+			"user_info.html"
+		],
+		"refer": [
+			"user_info.html"
+		]
+	},
+	"register_done1.html": {
+		"resources": [
+			"img/额度.png",
+			"img/指定范围.png",
+			"img/适用车辆.png",
+			"img/互助协议签订成功对号.png",
+			"img/翻转箭头.png",
+			"img/帮助.png",
+			"img/维修.png",
+			"img/图表.png",
+			"img/互助流程.png",
+			"img/享受.png",
+			"add_car.html"
+		],
+		"refer": [
+			"add_car.html"
+		]
+	}
+}

@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oojunzi.app.web.dao.CarInfoMapper">
+	<resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.CarInfo">
+		<id column="ID" jdbcType="DECIMAL" property="id" />
+		<result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+		<result column="PLATE_NUMBER" jdbcType="VARCHAR" property="plateNumber" />
+		<result column="OWNER" jdbcType="VARCHAR" property="owner" />
+		<result column="BRAND_MODEL" jdbcType="VARCHAR" property="brandModel" />
+		<result column="VEHICLE_IDENTIFICATION_CODE" jdbcType="VARCHAR"
+			property="vehicleIdentificationCode" />
+		<result column="ENGINE_TYPE" jdbcType="VARCHAR" property="engineType" />
+		<result column="DRIVING_LICENSE_HOMEPAGE" jdbcType="VARCHAR"
+			property="drivingLicenseHomepage" />
+		<result column="DRIVING_LICENSE_VICE_PAGE" jdbcType="VARCHAR"
+			property="drivingLicenseVicePage" />
+		<result column="CREATE_TIME" jdbcType="DATE" property="createTime" />
+		<result column="PARAM1" jdbcType="VARCHAR" property="param1" />
+		<result column="PARAM2" jdbcType="VARCHAR" property="param2" />
+		<result column="PARAM3" jdbcType="VARCHAR" property="param3" />
+		<result column="PARAM4" jdbcType="VARCHAR" property="param4" />
+		<result column="PARAM5" jdbcType="VARCHAR" property="param5" />
+		<result column="PARAM6" jdbcType="VARCHAR" property="param6" />
+		<result column="PARAM7" jdbcType="VARCHAR" property="param7" />
+		<result column="PARAM8" jdbcType="VARCHAR" property="param8" />
+		<result column="PARAM9" jdbcType="VARCHAR" property="param9" />
+		<result column="PARAM10" jdbcType="VARCHAR" property="param10" />
+		<result column="LEVEL_ID" jdbcType="VARCHAR" property="levelId" />
+		<result column="VIN" jdbcType="VARCHAR" property="vin" />
+		<result column="VINNF" jdbcType="VARCHAR" property="vinnf" />
+		<result column="CJMC" jdbcType="VARCHAR" property="cjmc" />
+		<result column="PP" jdbcType="VARCHAR" property="pp" />
+		<result column="CX" jdbcType="VARCHAR" property="cx" />
+		<result column="PL" jdbcType="VARCHAR" property="pl" />
+		<result column="FDJXH" jdbcType="VARCHAR" property="fdjxh" />
+		<result column="BSQLX" jdbcType="VARCHAR" property="bsqlx" />
+		<result column="DWS" jdbcType="VARCHAR" property="dws" />
+		<result column="PFBZ" jdbcType="VARCHAR" property="pfbz" />
+		<result column="CLDM" jdbcType="VARCHAR" property="cldm" />
+		<result column="SSNF" jdbcType="VARCHAR" property="ssnf" />
+		<result column="TCNF" jdbcType="VARCHAR" property="tcnf" />
+		<result column="ZDJG" jdbcType="VARCHAR" property="zdjg" />
+		<result column="N_LEVEL_ID" jdbcType="VARCHAR" property="nLevelId" />
+		<result column="SSYF" jdbcType="VARCHAR" property="ssyf" />
+		<result column="SCNF" jdbcType="VARCHAR" property="scnf" />
+		<result column="NK" jdbcType="VARCHAR" property="nk" />
+		<result column="CXI" jdbcType="VARCHAR" property="cxi" />
+		<result column="XSMC" jdbcType="VARCHAR" property="xsmc" />
+		<result column="CLLX" jdbcType="VARCHAR" property="cllx" />
+		<result column="JB" jdbcType="VARCHAR" property="jb" />
+		<result column="CSXS" jdbcType="VARCHAR" property="csxs" />
+		<result column="CMS" jdbcType="VARCHAR" property="cms" />
+		<result column="ZWS" jdbcType="VARCHAR" property="zws" />
+		<result column="GL" jdbcType="VARCHAR" property="gl" />
+		<result column="RYLX" jdbcType="VARCHAR" property="rylx" />
+		<result column="BSQMS" jdbcType="VARCHAR" property="bsqms" />
+		<result column="RYBH" jdbcType="VARCHAR" property="rybh" />
+		<result column="QDFS" jdbcType="VARCHAR" property="qdfs" />
+		<result column="FDJGS" jdbcType="VARCHAR" property="fdjgs" />
+		<result column="REGISTER_DATE" jdbcType="DATE" property="registerDate" />
+		<result column="CERTIFICATE_DATE" jdbcType="DATE" property="certificateDate" />
+		<result column="CAR_ID" jdbcType="DECIMAL" property="carId" />
+		<result column="AREA1" jdbcType="VARCHAR" property="area1" />
+		<result column="AREA2" jdbcType="VARCHAR" property="area2" />
+		<result column="AREA3" jdbcType="VARCHAR" property="area3" />
+		<result column="STATUS" jdbcType="VARCHAR" property="status" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="CAR_NAME" jdbcType="VARCHAR" property="carName" />
+		<result column="CAR_ICO" jdbcType="VARCHAR" property="carIco" />
+		<result column="CAR_PRICE" jdbcType="DECIMAL" property="carPrice" />
+		<result column="USER_FID" jdbcType="DECIMAL" property="userFid" />
+		<result column="TYPE_FID" jdbcType="DECIMAL" property="typeFid" />
+		<result column="PARTAKE_MAX" jdbcType="DECIMAL" property="partakeMax" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" prefixOverrides="and" suffix=")">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach close=")" collection="criterion.value" item="listItem"
+										open="(" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" prefixOverrides="and" suffix=")">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach close=")" collection="criterion.value" item="listItem"
+										open="(" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		ID, USER_ID, PLATE_NUMBER, OWNER, BRAND_MODEL,
+		VEHICLE_IDENTIFICATION_CODE, ENGINE_TYPE,
+		DRIVING_LICENSE_HOMEPAGE,
+		DRIVING_LICENSE_VICE_PAGE, CREATE_TIME, PARAM1, PARAM2,
+		PARAM3, PARAM4,
+		PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10, LEVEL_ID,
+		VIN, VINNF,
+		CJMC, PP, CX, PL, FDJXH, BSQLX, DWS, PFBZ, CLDM, SSNF, TCNF, ZDJG,
+		N_LEVEL_ID, SSYF,
+		SCNF, NK, CXI, XSMC, CLLX, JB, CSXS, CMS, ZWS, GL,
+		RYLX, BSQMS, RYBH, QDFS,
+		FDJGS,
+		REGISTER_DATE, CERTIFICATE_DATE, CAR_ID,
+		AREA1, AREA2, AREA3, STATUS, REMARK,
+		CAR_NAME,
+		CAR_ICO, CAR_PRICE,
+		USER_FID, TYPE_FID, PARTAKE_MAX
+	</sql>
+	<select id="selectByExample" parameterType="com.oojunzi.app.web.model.CarInfoExample"
+		resultMap="BaseResultMap">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from T_CAR_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" parameterType="java.math.BigDecimal"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from T_CAR_INFO
+		where ID = #{id,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		delete from
+		T_CAR_INFO
+		where ID = #{id,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.CarInfoExample">
+		delete from T_CAR_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.oojunzi.app.web.model.CarInfo">
+		insert into T_CAR_INFO (ID,
+		USER_ID, PLATE_NUMBER,
+		OWNER, BRAND_MODEL, VEHICLE_IDENTIFICATION_CODE,
+		ENGINE_TYPE, DRIVING_LICENSE_HOMEPAGE, DRIVING_LICENSE_VICE_PAGE,
+		CREATE_TIME, PARAM1, PARAM2,
+		PARAM3, PARAM4, PARAM5,
+		PARAM6, PARAM7,
+		PARAM8,
+		PARAM9, PARAM10, LEVEL_ID,
+		VIN, VINNF, CJMC, PP,
+		CX, PL, FDJXH,
+		BSQLX,
+		DWS, PFBZ, CLDM, SSNF,
+		TCNF, ZDJG, N_LEVEL_ID,
+		SSYF, SCNF, NK,
+		CXI,
+		XSMC, CLLX, JB, CSXS,
+		CMS, ZWS, GL, RYLX,
+		BSQMS, RYBH, QDFS,
+		FDJGS,
+		REGISTER_DATE, CERTIFICATE_DATE,
+		CAR_ID, AREA1, AREA2, AREA3,
+		STATUS,
+		REMARK, CAR_NAME, CAR_ICO,
+		CAR_PRICE, USER_FID, TYPE_FID,
+		PARTAKE_MAX)
+		values (#{id,jdbcType=DECIMAL}, #{userId,jdbcType=DECIMAL},
+		#{plateNumber,jdbcType=VARCHAR},
+		#{owner,jdbcType=VARCHAR},
+		#{brandModel,jdbcType=VARCHAR},
+		#{vehicleIdentificationCode,jdbcType=VARCHAR},
+		#{engineType,jdbcType=VARCHAR},
+		#{drivingLicenseHomepage,jdbcType=VARCHAR},
+		#{drivingLicenseVicePage,jdbcType=VARCHAR},
+		#{createTime,jdbcType=DATE}, #{param1,jdbcType=VARCHAR},
+		#{param2,jdbcType=VARCHAR},
+		#{param3,jdbcType=VARCHAR},
+		#{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR},
+		#{param6,jdbcType=VARCHAR}, #{param7,jdbcType=VARCHAR},
+		#{param8,jdbcType=VARCHAR},
+		#{param9,jdbcType=VARCHAR},
+		#{param10,jdbcType=VARCHAR}, #{levelId,jdbcType=VARCHAR},
+		#{vin,jdbcType=VARCHAR}, #{vinnf,jdbcType=VARCHAR},
+		#{cjmc,jdbcType=VARCHAR}, #{pp,jdbcType=VARCHAR},
+		#{cx,jdbcType=VARCHAR}, #{pl,jdbcType=VARCHAR},
+		#{fdjxh,jdbcType=VARCHAR}, #{bsqlx,jdbcType=VARCHAR},
+		#{dws,jdbcType=VARCHAR}, #{pfbz,jdbcType=VARCHAR},
+		#{cldm,jdbcType=VARCHAR}, #{ssnf,jdbcType=VARCHAR},
+		#{tcnf,jdbcType=VARCHAR}, #{zdjg,jdbcType=VARCHAR},
+		#{nLevelId,jdbcType=VARCHAR},
+		#{ssyf,jdbcType=VARCHAR},
+		#{scnf,jdbcType=VARCHAR}, #{nk,jdbcType=VARCHAR},
+		#{cxi,jdbcType=VARCHAR},
+		#{xsmc,jdbcType=VARCHAR},
+		#{cllx,jdbcType=VARCHAR}, #{jb,jdbcType=VARCHAR},
+		#{csxs,jdbcType=VARCHAR},
+		#{cms,jdbcType=VARCHAR},
+		#{zws,jdbcType=VARCHAR}, #{gl,jdbcType=VARCHAR},
+		#{rylx,jdbcType=VARCHAR},
+		#{bsqms,jdbcType=VARCHAR},
+		#{rybh,jdbcType=VARCHAR}, #{qdfs,jdbcType=VARCHAR},
+		#{fdjgs,jdbcType=VARCHAR}, #{registerDate,jdbcType=DATE},
+		#{certificateDate,jdbcType=DATE},
+		#{carId,jdbcType=DECIMAL},
+		#{area1,jdbcType=VARCHAR}, #{area2,jdbcType=VARCHAR},
+		#{area3,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR}, #{carName,jdbcType=VARCHAR},
+		#{carIco,jdbcType=VARCHAR},
+		#{carPrice,jdbcType=DECIMAL},
+		#{userFid,jdbcType=DECIMAL}, #{typeFid,jdbcType=DECIMAL},
+		#{partakeMax,jdbcType=DECIMAL})
+	</insert>
+	<insert id="insertSelective" parameterType="com.oojunzi.app.web.model.CarInfo">
+		insert into T_CAR_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="plateNumber != null">
+				PLATE_NUMBER,
+			</if>
+			<if test="owner != null">
+				OWNER,
+			</if>
+			<if test="brandModel != null">
+				BRAND_MODEL,
+			</if>
+			<if test="vehicleIdentificationCode != null">
+				VEHICLE_IDENTIFICATION_CODE,
+			</if>
+			<if test="engineType != null">
+				ENGINE_TYPE,
+			</if>
+			<if test="drivingLicenseHomepage != null">
+				DRIVING_LICENSE_HOMEPAGE,
+			</if>
+			<if test="drivingLicenseVicePage != null">
+				DRIVING_LICENSE_VICE_PAGE,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+			<if test="param1 != null">
+				PARAM1,
+			</if>
+			<if test="param2 != null">
+				PARAM2,
+			</if>
+			<if test="param3 != null">
+				PARAM3,
+			</if>
+			<if test="param4 != null">
+				PARAM4,
+			</if>
+			<if test="param5 != null">
+				PARAM5,
+			</if>
+			<if test="param6 != null">
+				PARAM6,
+			</if>
+			<if test="param7 != null">
+				PARAM7,
+			</if>
+			<if test="param8 != null">
+				PARAM8,
+			</if>
+			<if test="param9 != null">
+				PARAM9,
+			</if>
+			<if test="param10 != null">
+				PARAM10,
+			</if>
+			<if test="levelId != null">
+				LEVEL_ID,
+			</if>
+			<if test="vin != null">
+				VIN,
+			</if>
+			<if test="vinnf != null">
+				VINNF,
+			</if>
+			<if test="cjmc != null">
+				CJMC,
+			</if>
+			<if test="pp != null">
+				PP,
+			</if>
+			<if test="cx != null">
+				CX,
+			</if>
+			<if test="pl != null">
+				PL,
+			</if>
+			<if test="fdjxh != null">
+				FDJXH,
+			</if>
+			<if test="bsqlx != null">
+				BSQLX,
+			</if>
+			<if test="dws != null">
+				DWS,
+			</if>
+			<if test="pfbz != null">
+				PFBZ,
+			</if>
+			<if test="cldm != null">
+				CLDM,
+			</if>
+			<if test="ssnf != null">
+				SSNF,
+			</if>
+			<if test="tcnf != null">
+				TCNF,
+			</if>
+			<if test="zdjg != null">
+				ZDJG,
+			</if>
+			<if test="nLevelId != null">
+				N_LEVEL_ID,
+			</if>
+			<if test="ssyf != null">
+				SSYF,
+			</if>
+			<if test="scnf != null">
+				SCNF,
+			</if>
+			<if test="nk != null">
+				NK,
+			</if>
+			<if test="cxi != null">
+				CXI,
+			</if>
+			<if test="xsmc != null">
+				XSMC,
+			</if>
+			<if test="cllx != null">
+				CLLX,
+			</if>
+			<if test="jb != null">
+				JB,
+			</if>
+			<if test="csxs != null">
+				CSXS,
+			</if>
+			<if test="cms != null">
+				CMS,
+			</if>
+			<if test="zws != null">
+				ZWS,
+			</if>
+			<if test="gl != null">
+				GL,
+			</if>
+			<if test="rylx != null">
+				RYLX,
+			</if>
+			<if test="bsqms != null">
+				BSQMS,
+			</if>
+			<if test="rybh != null">
+				RYBH,
+			</if>
+			<if test="qdfs != null">
+				QDFS,
+			</if>
+			<if test="fdjgs != null">
+				FDJGS,
+			</if>
+			<if test="registerDate != null">
+				REGISTER_DATE,
+			</if>
+			<if test="certificateDate != null">
+				CERTIFICATE_DATE,
+			</if>
+			<if test="carId != null">
+				CAR_ID,
+			</if>
+			<if test="area1 != null">
+				AREA1,
+			</if>
+			<if test="area2 != null">
+				AREA2,
+			</if>
+			<if test="area3 != null">
+				AREA3,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="carName != null">
+				CAR_NAME,
+			</if>
+			<if test="carIco != null">
+				CAR_ICO,
+			</if>
+			<if test="carPrice != null">
+				CAR_PRICE,
+			</if>
+			<if test="userFid != null">
+				USER_FID,
+			</if>
+			<if test="typeFid != null">
+				TYPE_FID,
+			</if>
+			<if test="partakeMax != null">
+				PARTAKE_MAX,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=DECIMAL},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=DECIMAL},
+			</if>
+			<if test="plateNumber != null">
+				#{plateNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="owner != null">
+				#{owner,jdbcType=VARCHAR},
+			</if>
+			<if test="brandModel != null">
+				#{brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleIdentificationCode != null">
+				#{vehicleIdentificationCode,jdbcType=VARCHAR},
+			</if>
+			<if test="engineType != null">
+				#{engineType,jdbcType=VARCHAR},
+			</if>
+			<if test="drivingLicenseHomepage != null">
+				#{drivingLicenseHomepage,jdbcType=VARCHAR},
+			</if>
+			<if test="drivingLicenseVicePage != null">
+				#{drivingLicenseVicePage,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=DATE},
+			</if>
+			<if test="param1 != null">
+				#{param1,jdbcType=VARCHAR},
+			</if>
+			<if test="param2 != null">
+				#{param2,jdbcType=VARCHAR},
+			</if>
+			<if test="param3 != null">
+				#{param3,jdbcType=VARCHAR},
+			</if>
+			<if test="param4 != null">
+				#{param4,jdbcType=VARCHAR},
+			</if>
+			<if test="param5 != null">
+				#{param5,jdbcType=VARCHAR},
+			</if>
+			<if test="param6 != null">
+				#{param6,jdbcType=VARCHAR},
+			</if>
+			<if test="param7 != null">
+				#{param7,jdbcType=VARCHAR},
+			</if>
+			<if test="param8 != null">
+				#{param8,jdbcType=VARCHAR},
+			</if>
+			<if test="param9 != null">
+				#{param9,jdbcType=VARCHAR},
+			</if>
+			<if test="param10 != null">
+				#{param10,jdbcType=VARCHAR},
+			</if>
+			<if test="levelId != null">
+				#{levelId,jdbcType=VARCHAR},
+			</if>
+			<if test="vin != null">
+				#{vin,jdbcType=VARCHAR},
+			</if>
+			<if test="vinnf != null">
+				#{vinnf,jdbcType=VARCHAR},
+			</if>
+			<if test="cjmc != null">
+				#{cjmc,jdbcType=VARCHAR},
+			</if>
+			<if test="pp != null">
+				#{pp,jdbcType=VARCHAR},
+			</if>
+			<if test="cx != null">
+				#{cx,jdbcType=VARCHAR},
+			</if>
+			<if test="pl != null">
+				#{pl,jdbcType=VARCHAR},
+			</if>
+			<if test="fdjxh != null">
+				#{fdjxh,jdbcType=VARCHAR},
+			</if>
+			<if test="bsqlx != null">
+				#{bsqlx,jdbcType=VARCHAR},
+			</if>
+			<if test="dws != null">
+				#{dws,jdbcType=VARCHAR},
+			</if>
+			<if test="pfbz != null">
+				#{pfbz,jdbcType=VARCHAR},
+			</if>
+			<if test="cldm != null">
+				#{cldm,jdbcType=VARCHAR},
+			</if>
+			<if test="ssnf != null">
+				#{ssnf,jdbcType=VARCHAR},
+			</if>
+			<if test="tcnf != null">
+				#{tcnf,jdbcType=VARCHAR},
+			</if>
+			<if test="zdjg != null">
+				#{zdjg,jdbcType=VARCHAR},
+			</if>
+			<if test="nLevelId != null">
+				#{nLevelId,jdbcType=VARCHAR},
+			</if>
+			<if test="ssyf != null">
+				#{ssyf,jdbcType=VARCHAR},
+			</if>
+			<if test="scnf != null">
+				#{scnf,jdbcType=VARCHAR},
+			</if>
+			<if test="nk != null">
+				#{nk,jdbcType=VARCHAR},
+			</if>
+			<if test="cxi != null">
+				#{cxi,jdbcType=VARCHAR},
+			</if>
+			<if test="xsmc != null">
+				#{xsmc,jdbcType=VARCHAR},
+			</if>
+			<if test="cllx != null">
+				#{cllx,jdbcType=VARCHAR},
+			</if>
+			<if test="jb != null">
+				#{jb,jdbcType=VARCHAR},
+			</if>
+			<if test="csxs != null">
+				#{csxs,jdbcType=VARCHAR},
+			</if>
+			<if test="cms != null">
+				#{cms,jdbcType=VARCHAR},
+			</if>
+			<if test="zws != null">
+				#{zws,jdbcType=VARCHAR},
+			</if>
+			<if test="gl != null">
+				#{gl,jdbcType=VARCHAR},
+			</if>
+			<if test="rylx != null">
+				#{rylx,jdbcType=VARCHAR},
+			</if>
+			<if test="bsqms != null">
+				#{bsqms,jdbcType=VARCHAR},
+			</if>
+			<if test="rybh != null">
+				#{rybh,jdbcType=VARCHAR},
+			</if>
+			<if test="qdfs != null">
+				#{qdfs,jdbcType=VARCHAR},
+			</if>
+			<if test="fdjgs != null">
+				#{fdjgs,jdbcType=VARCHAR},
+			</if>
+			<if test="registerDate != null">
+				#{registerDate,jdbcType=VARCHAR},
+			</if>
+			<if test="certificateDate != null">
+				#{certificateDate,jdbcType=DATE},
+			</if>
+			<if test="carId != null">
+				#{carId,jdbcType=DECIMAL},
+			</if>
+			<if test="area1 != null">
+				#{area1,jdbcType=VARCHAR},
+			</if>
+			<if test="area2 != null">
+				#{area2,jdbcType=VARCHAR},
+			</if>
+			<if test="area3 != null">
+				#{area3,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="carName != null">
+				#{carName,jdbcType=VARCHAR},
+			</if>
+			<if test="carIco != null">
+				#{carIco,jdbcType=VARCHAR},
+			</if>
+			<if test="carPrice != null">
+				#{carPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="userFid != null">
+				#{userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="typeFid != null">
+				#{typeFid,jdbcType=DECIMAL},
+			</if>
+			<if test="partakeMax != null">
+				#{partakeMax,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.oojunzi.app.web.model.CarInfoExample"
+		resultType="java.lang.Integer">
+		select count(*) from T_CAR_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<select id="countCarByUserId" parameterType="com.oojunzi.app.web.model.CarInfoExample"
+		resultType="java.lang.Integer">
+		select count(*) from T_CAR_INFO t where t.user_id = #{userId} and t.status = 3	
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update T_CAR_INFO
+		<set>
+			<if test="record.id != null">
+				ID = #{record.id,jdbcType=DECIMAL},
+			</if>
+			<if test="record.userId != null">
+				USER_ID = #{record.userId,jdbcType=DECIMAL},
+			</if>
+			<if test="record.plateNumber != null">
+				PLATE_NUMBER = #{record.plateNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="record.owner != null">
+				OWNER = #{record.owner,jdbcType=VARCHAR},
+			</if>
+			<if test="record.brandModel != null">
+				BRAND_MODEL = #{record.brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="record.vehicleIdentificationCode != null">
+				VEHICLE_IDENTIFICATION_CODE =
+				#{record.vehicleIdentificationCode,jdbcType=VARCHAR},
+			</if>
+			<if test="record.engineType != null">
+				ENGINE_TYPE = #{record.engineType,jdbcType=VARCHAR},
+			</if>
+			<if test="record.drivingLicenseHomepage != null">
+				DRIVING_LICENSE_HOMEPAGE =
+				#{record.drivingLicenseHomepage,jdbcType=VARCHAR},
+			</if>
+			<if test="record.drivingLicenseVicePage != null">
+				DRIVING_LICENSE_VICE_PAGE =
+				#{record.drivingLicenseVicePage,jdbcType=VARCHAR},
+			</if>
+			<if test="record.createTime != null">
+				CREATE_TIME = #{record.createTime,jdbcType=DATE},
+			</if>
+			<if test="record.param1 != null">
+				PARAM1 = #{record.param1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param2 != null">
+				PARAM2 = #{record.param2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param3 != null">
+				PARAM3 = #{record.param3,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param4 != null">
+				PARAM4 = #{record.param4,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param5 != null">
+				PARAM5 = #{record.param5,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param6 != null">
+				PARAM6 = #{record.param6,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param7 != null">
+				PARAM7 = #{record.param7,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param8 != null">
+				PARAM8 = #{record.param8,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param9 != null">
+				PARAM9 = #{record.param9,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param10 != null">
+				PARAM10 = #{record.param10,jdbcType=VARCHAR},
+			</if>
+			<if test="record.levelId != null">
+				LEVEL_ID = #{record.levelId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.vin != null">
+				VIN = #{record.vin,jdbcType=VARCHAR},
+			</if>
+			<if test="record.vinnf != null">
+				VINNF = #{record.vinnf,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cjmc != null">
+				CJMC = #{record.cjmc,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pp != null">
+				PP = #{record.pp,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cx != null">
+				CX = #{record.cx,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pl != null">
+				PL = #{record.pl,jdbcType=VARCHAR},
+			</if>
+			<if test="record.fdjxh != null">
+				FDJXH = #{record.fdjxh,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bsqlx != null">
+				BSQLX = #{record.bsqlx,jdbcType=VARCHAR},
+			</if>
+			<if test="record.dws != null">
+				DWS = #{record.dws,jdbcType=VARCHAR},
+			</if>
+			<if test="record.pfbz != null">
+				PFBZ = #{record.pfbz,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cldm != null">
+				CLDM = #{record.cldm,jdbcType=VARCHAR},
+			</if>
+			<if test="record.ssnf != null">
+				SSNF = #{record.ssnf,jdbcType=VARCHAR},
+			</if>
+			<if test="record.tcnf != null">
+				TCNF = #{record.tcnf,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zdjg != null">
+				ZDJG = #{record.zdjg,jdbcType=VARCHAR},
+			</if>
+			<if test="record.nLevelId != null">
+				N_LEVEL_ID = #{record.nLevelId,jdbcType=VARCHAR},
+			</if>
+			<if test="record.ssyf != null">
+				SSYF = #{record.ssyf,jdbcType=VARCHAR},
+			</if>
+			<if test="record.scnf != null">
+				SCNF = #{record.scnf,jdbcType=VARCHAR},
+			</if>
+			<if test="record.nk != null">
+				NK = #{record.nk,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cxi != null">
+				CXI = #{record.cxi,jdbcType=VARCHAR},
+			</if>
+			<if test="record.xsmc != null">
+				XSMC = #{record.xsmc,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cllx != null">
+				CLLX = #{record.cllx,jdbcType=VARCHAR},
+			</if>
+			<if test="record.jb != null">
+				JB = #{record.jb,jdbcType=VARCHAR},
+			</if>
+			<if test="record.csxs != null">
+				CSXS = #{record.csxs,jdbcType=VARCHAR},
+			</if>
+			<if test="record.cms != null">
+				CMS = #{record.cms,jdbcType=VARCHAR},
+			</if>
+			<if test="record.zws != null">
+				ZWS = #{record.zws,jdbcType=VARCHAR},
+			</if>
+			<if test="record.gl != null">
+				GL = #{record.gl,jdbcType=VARCHAR},
+			</if>
+			<if test="record.rylx != null">
+				RYLX = #{record.rylx,jdbcType=VARCHAR},
+			</if>
+			<if test="record.bsqms != null">
+				BSQMS = #{record.bsqms,jdbcType=VARCHAR},
+			</if>
+			<if test="record.rybh != null">
+				RYBH = #{record.rybh,jdbcType=VARCHAR},
+			</if>
+			<if test="record.qdfs != null">
+				QDFS = #{record.qdfs,jdbcType=VARCHAR},
+			</if>
+			<if test="record.fdjgs != null">
+				FDJGS = #{record.fdjgs,jdbcType=VARCHAR},
+			</if>
+			<if test="record.registerDate != null">
+				REGISTER_DATE = #{record.registerDate,jdbcType=DATE},
+			</if>
+			<if test="record.certificateDate != null">
+				CERTIFICATE_DATE =
+				#{record.certificateDate,jdbcType=DATE},
+			</if>
+			<if test="record.carId != null">
+				CAR_ID = #{record.carId,jdbcType=DECIMAL},
+			</if>
+			<if test="record.area1 != null">
+				AREA1 = #{record.area1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.area2 != null">
+				AREA2 = #{record.area2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.area3 != null">
+				AREA3 = #{record.area3,jdbcType=VARCHAR},
+			</if>
+			<if test="record.status != null">
+				STATUS = #{record.status,jdbcType=VARCHAR},
+			</if>
+			<if test="record.remark != null">
+				REMARK = #{record.remark,jdbcType=VARCHAR},
+			</if>
+			<if test="record.carName != null">
+				CAR_NAME = #{record.carName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.carIco != null">
+				CAR_ICO = #{record.carIco,jdbcType=VARCHAR},
+			</if>
+			<if test="record.carPrice != null">
+				CAR_PRICE = #{record.carPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="record.userFid != null">
+				USER_FID = #{record.userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="record.typeFid != null">
+				TYPE_FID = #{record.typeFid,jdbcType=DECIMAL},
+			</if>
+			<if test="record.partakeMax != null">
+				PARTAKE_MAX = #{record.partakeMax,jdbcType=DECIMAL},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update T_CAR_INFO
+		set ID = #{record.id,jdbcType=DECIMAL},
+		USER_ID =
+		#{record.userId,jdbcType=DECIMAL},
+		PLATE_NUMBER =
+		#{record.plateNumber,jdbcType=VARCHAR},
+		OWNER =
+		#{record.owner,jdbcType=VARCHAR},
+		BRAND_MODEL =
+		#{record.brandModel,jdbcType=VARCHAR},
+		VEHICLE_IDENTIFICATION_CODE =
+		#{record.vehicleIdentificationCode,jdbcType=VARCHAR},
+		ENGINE_TYPE =
+		#{record.engineType,jdbcType=VARCHAR},
+		DRIVING_LICENSE_HOMEPAGE =
+		#{record.drivingLicenseHomepage,jdbcType=VARCHAR},
+		DRIVING_LICENSE_VICE_PAGE =
+		#{record.drivingLicenseVicePage,jdbcType=VARCHAR},
+		CREATE_TIME =
+		#{record.createTime,jdbcType=DATE},
+		PARAM1 =
+		#{record.param1,jdbcType=VARCHAR},
+		PARAM2 =
+		#{record.param2,jdbcType=VARCHAR},
+		PARAM3 =
+		#{record.param3,jdbcType=VARCHAR},
+		PARAM4 =
+		#{record.param4,jdbcType=VARCHAR},
+		PARAM5 =
+		#{record.param5,jdbcType=VARCHAR},
+		PARAM6 =
+		#{record.param6,jdbcType=VARCHAR},
+		PARAM7 =
+		#{record.param7,jdbcType=VARCHAR},
+		PARAM8 =
+		#{record.param8,jdbcType=VARCHAR},
+		PARAM9 =
+		#{record.param9,jdbcType=VARCHAR},
+		PARAM10 =
+		#{record.param10,jdbcType=VARCHAR},
+		LEVEL_ID =
+		#{record.levelId,jdbcType=VARCHAR},
+		VIN =
+		#{record.vin,jdbcType=VARCHAR},
+		VINNF =
+		#{record.vinnf,jdbcType=VARCHAR},
+		CJMC =
+		#{record.cjmc,jdbcType=VARCHAR},
+		PP = #{record.pp,jdbcType=VARCHAR},
+		CX
+		= #{record.cx,jdbcType=VARCHAR},
+		PL = #{record.pl,jdbcType=VARCHAR},
+		FDJXH = #{record.fdjxh,jdbcType=VARCHAR},
+		BSQLX =
+		#{record.bsqlx,jdbcType=VARCHAR},
+		DWS = #{record.dws,jdbcType=VARCHAR},
+		PFBZ = #{record.pfbz,jdbcType=VARCHAR},
+		CLDM =
+		#{record.cldm,jdbcType=VARCHAR},
+		SSNF =
+		#{record.ssnf,jdbcType=VARCHAR},
+		TCNF =
+		#{record.tcnf,jdbcType=VARCHAR},
+		ZDJG =
+		#{record.zdjg,jdbcType=VARCHAR},
+		N_LEVEL_ID =
+		#{record.nLevelId,jdbcType=VARCHAR},
+		SSYF =
+		#{record.ssyf,jdbcType=VARCHAR},
+		SCNF =
+		#{record.scnf,jdbcType=VARCHAR},
+		NK = #{record.nk,jdbcType=VARCHAR},
+		CXI = #{record.cxi,jdbcType=VARCHAR},
+		XSMC =
+		#{record.xsmc,jdbcType=VARCHAR},
+		CLLX =
+		#{record.cllx,jdbcType=VARCHAR},
+		JB = #{record.jb,jdbcType=VARCHAR},
+		CSXS = #{record.csxs,jdbcType=VARCHAR},
+		CMS =
+		#{record.cms,jdbcType=VARCHAR},
+		ZWS = #{record.zws,jdbcType=VARCHAR},
+		GL = #{record.gl,jdbcType=VARCHAR},
+		RYLX =
+		#{record.rylx,jdbcType=VARCHAR},
+		BSQMS =
+		#{record.bsqms,jdbcType=VARCHAR},
+		RYBH =
+		#{record.rybh,jdbcType=VARCHAR},
+		QDFS =
+		#{record.qdfs,jdbcType=VARCHAR},
+		FDJGS =
+		#{record.fdjgs,jdbcType=VARCHAR},
+		REGISTER_DATE =
+		#{record.registerDate,jdbcType=DATE},
+		CERTIFICATE_DATE =
+		#{record.certificateDate,jdbcType=DATE},
+		CAR_ID =
+		#{record.carId,jdbcType=DECIMAL},
+		AREA1 =
+		#{record.area1,jdbcType=VARCHAR},
+		AREA2 = #{record.area2,jdbcType=VARCHAR},
+		AREA3 = #{record.area3,jdbcType=VARCHAR},
+		STATUS =
+		#{record.status,jdbcType=VARCHAR},
+		REMARK =
+		#{record.remark,jdbcType=VARCHAR},
+		CAR_NAME =
+		#{record.carName,jdbcType=VARCHAR},
+		CAR_ICO =
+		#{record.carIco,jdbcType=VARCHAR},
+		CAR_PRICE =
+		#{record.carPrice,jdbcType=DECIMAL},
+		USER_FID =
+		#{record.userFid,jdbcType=DECIMAL},
+		TYPE_FID =
+		#{record.typeFid,jdbcType=DECIMAL},
+		PARTAKE_MAX =
+		#{record.partakeMax,jdbcType=DECIMAL}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.CarInfo">
+		update T_CAR_INFO
+		<set>
+			<if test="userId != null">
+				USER_ID = #{userId,jdbcType=DECIMAL},
+			</if>
+			<if test="plateNumber != null">
+				PLATE_NUMBER = #{plateNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="owner != null">
+				OWNER = #{owner,jdbcType=VARCHAR},
+			</if>
+			<if test="brandModel != null">
+				BRAND_MODEL = #{brandModel,jdbcType=VARCHAR},
+			</if>
+			<if test="vehicleIdentificationCode != null">
+				VEHICLE_IDENTIFICATION_CODE =
+				#{vehicleIdentificationCode,jdbcType=VARCHAR},
+			</if>
+			<if test="engineType != null">
+				ENGINE_TYPE = #{engineType,jdbcType=VARCHAR},
+			</if>
+			<if test="drivingLicenseHomepage != null">
+				DRIVING_LICENSE_HOMEPAGE =
+				#{drivingLicenseHomepage,jdbcType=VARCHAR},
+			</if>
+			<if test="drivingLicenseVicePage != null">
+				DRIVING_LICENSE_VICE_PAGE =
+				#{drivingLicenseVicePage,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=DATE},
+			</if>
+			<if test="param1 != null">
+				PARAM1 = #{param1,jdbcType=VARCHAR},
+			</if>
+			<if test="param2 != null">
+				PARAM2 = #{param2,jdbcType=VARCHAR},
+			</if>
+			<if test="param3 != null">
+				PARAM3 = #{param3,jdbcType=VARCHAR},
+			</if>
+			<if test="param4 != null">
+				PARAM4 = #{param4,jdbcType=VARCHAR},
+			</if>
+			<if test="param5 != null">
+				PARAM5 = #{param5,jdbcType=VARCHAR},
+			</if>
+			<if test="param6 != null">
+				PARAM6 = #{param6,jdbcType=VARCHAR},
+			</if>
+			<if test="param7 != null">
+				PARAM7 = #{param7,jdbcType=VARCHAR},
+			</if>
+			<if test="param8 != null">
+				PARAM8 = #{param8,jdbcType=VARCHAR},
+			</if>
+			<if test="param9 != null">
+				PARAM9 = #{param9,jdbcType=VARCHAR},
+			</if>
+			<if test="param10 != null">
+				PARAM10 = #{param10,jdbcType=VARCHAR},
+			</if>
+			<if test="levelId != null">
+				LEVEL_ID = #{levelId,jdbcType=VARCHAR},
+			</if>
+			<if test="vin != null">
+				VIN = #{vin,jdbcType=VARCHAR},
+			</if>
+			<if test="vinnf != null">
+				VINNF = #{vinnf,jdbcType=VARCHAR},
+			</if>
+			<if test="cjmc != null">
+				CJMC = #{cjmc,jdbcType=VARCHAR},
+			</if>
+			<if test="pp != null">
+				PP = #{pp,jdbcType=VARCHAR},
+			</if>
+			<if test="cx != null">
+				CX = #{cx,jdbcType=VARCHAR},
+			</if>
+			<if test="pl != null">
+				PL = #{pl,jdbcType=VARCHAR},
+			</if>
+			<if test="fdjxh != null">
+				FDJXH = #{fdjxh,jdbcType=VARCHAR},
+			</if>
+			<if test="bsqlx != null">
+				BSQLX = #{bsqlx,jdbcType=VARCHAR},
+			</if>
+			<if test="dws != null">
+				DWS = #{dws,jdbcType=VARCHAR},
+			</if>
+			<if test="pfbz != null">
+				PFBZ = #{pfbz,jdbcType=VARCHAR},
+			</if>
+			<if test="cldm != null">
+				CLDM = #{cldm,jdbcType=VARCHAR},
+			</if>
+			<if test="ssnf != null">
+				SSNF = #{ssnf,jdbcType=VARCHAR},
+			</if>
+			<if test="tcnf != null">
+				TCNF = #{tcnf,jdbcType=VARCHAR},
+			</if>
+			<if test="zdjg != null">
+				ZDJG = #{zdjg,jdbcType=VARCHAR},
+			</if>
+			<if test="nLevelId != null">
+				N_LEVEL_ID = #{nLevelId,jdbcType=VARCHAR},
+			</if>
+			<if test="ssyf != null">
+				SSYF = #{ssyf,jdbcType=VARCHAR},
+			</if>
+			<if test="scnf != null">
+				SCNF = #{scnf,jdbcType=VARCHAR},
+			</if>
+			<if test="nk != null">
+				NK = #{nk,jdbcType=VARCHAR},
+			</if>
+			<if test="cxi != null">
+				CXI = #{cxi,jdbcType=VARCHAR},
+			</if>
+			<if test="xsmc != null">
+				XSMC = #{xsmc,jdbcType=VARCHAR},
+			</if>
+			<if test="cllx != null">
+				CLLX = #{cllx,jdbcType=VARCHAR},
+			</if>
+			<if test="jb != null">
+				JB = #{jb,jdbcType=VARCHAR},
+			</if>
+			<if test="csxs != null">
+				CSXS = #{csxs,jdbcType=VARCHAR},
+			</if>
+			<if test="cms != null">
+				CMS = #{cms,jdbcType=VARCHAR},
+			</if>
+			<if test="zws != null">
+				ZWS = #{zws,jdbcType=VARCHAR},
+			</if>
+			<if test="gl != null">
+				GL = #{gl,jdbcType=VARCHAR},
+			</if>
+			<if test="rylx != null">
+				RYLX = #{rylx,jdbcType=VARCHAR},
+			</if>
+			<if test="bsqms != null">
+				BSQMS = #{bsqms,jdbcType=VARCHAR},
+			</if>
+			<if test="rybh != null">
+				RYBH = #{rybh,jdbcType=VARCHAR},
+			</if>
+			<if test="qdfs != null">
+				QDFS = #{qdfs,jdbcType=VARCHAR},
+			</if>
+			<if test="fdjgs != null">
+				FDJGS = #{fdjgs,jdbcType=VARCHAR},
+			</if>
+			<if test="registerDate != null">
+				REGISTER_DATE = #{registerDate,jdbcType=DATE},
+			</if>
+			<if test="certificateDate != null">
+				CERTIFICATE_DATE = #{certificateDate,jdbcType=DATE},
+			</if>
+			<if test="carId != null">
+				CAR_ID = #{carId,jdbcType=DECIMAL},
+			</if>
+			<if test="area1 != null">
+				AREA1 = #{area1,jdbcType=VARCHAR},
+			</if>
+			<if test="area2 != null">
+				AREA2 = #{area2,jdbcType=VARCHAR},
+			</if>
+			<if test="area3 != null">
+				AREA3 = #{area3,jdbcType=VARCHAR},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="carName != null">
+				CAR_NAME = #{carName,jdbcType=VARCHAR},
+			</if>
+			<if test="carIco != null">
+				CAR_ICO = #{carIco,jdbcType=VARCHAR},
+			</if>
+			<if test="carPrice != null">
+				CAR_PRICE = #{carPrice,jdbcType=DECIMAL},
+			</if>
+			<if test="userFid != null">
+				USER_FID = #{userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="typeFid != null">
+				TYPE_FID = #{typeFid,jdbcType=DECIMAL},
+			</if>
+			<if test="partakeMax != null">
+				PARTAKE_MAX = #{partakeMax,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.CarInfo">
+		update T_CAR_INFO
+		set USER_ID = #{userId,jdbcType=DECIMAL},
+		PLATE_NUMBER =
+		#{plateNumber,jdbcType=VARCHAR},
+		OWNER = #{owner,jdbcType=VARCHAR},
+		BRAND_MODEL = #{brandModel,jdbcType=VARCHAR},
+		VEHICLE_IDENTIFICATION_CODE =
+		#{vehicleIdentificationCode,jdbcType=VARCHAR},
+		ENGINE_TYPE =
+		#{engineType,jdbcType=VARCHAR},
+		DRIVING_LICENSE_HOMEPAGE =
+		#{drivingLicenseHomepage,jdbcType=VARCHAR},
+		DRIVING_LICENSE_VICE_PAGE =
+		#{drivingLicenseVicePage,jdbcType=VARCHAR},
+		CREATE_TIME =
+		#{createTime,jdbcType=DATE},
+		PARAM1 = #{param1,jdbcType=VARCHAR},
+		PARAM2 = #{param2,jdbcType=VARCHAR},
+		PARAM3 =
+		#{param3,jdbcType=VARCHAR},
+		PARAM4 = #{param4,jdbcType=VARCHAR},
+		PARAM5
+		= #{param5,jdbcType=VARCHAR},
+		PARAM6 = #{param6,jdbcType=VARCHAR},
+		PARAM7 = #{param7,jdbcType=VARCHAR},
+		PARAM8 =
+		#{param8,jdbcType=VARCHAR},
+		PARAM9 = #{param9,jdbcType=VARCHAR},
+		PARAM10 = #{param10,jdbcType=VARCHAR},
+		LEVEL_ID =
+		#{levelId,jdbcType=VARCHAR},
+		VIN = #{vin,jdbcType=VARCHAR},
+		VINNF =
+		#{vinnf,jdbcType=VARCHAR},
+		CJMC = #{cjmc,jdbcType=VARCHAR},
+		PP =
+		#{pp,jdbcType=VARCHAR},
+		CX = #{cx,jdbcType=VARCHAR},
+		PL =
+		#{pl,jdbcType=VARCHAR},
+		FDJXH = #{fdjxh,jdbcType=VARCHAR},
+		BSQLX =
+		#{bsqlx,jdbcType=VARCHAR},
+		DWS = #{dws,jdbcType=VARCHAR},
+		PFBZ =
+		#{pfbz,jdbcType=VARCHAR},
+		CLDM = #{cldm,jdbcType=VARCHAR},
+		SSNF =
+		#{ssnf,jdbcType=VARCHAR},
+		TCNF = #{tcnf,jdbcType=VARCHAR},
+		ZDJG =
+		#{zdjg,jdbcType=VARCHAR},
+		N_LEVEL_ID = #{nLevelId,jdbcType=VARCHAR},
+		SSYF = #{ssyf,jdbcType=VARCHAR},
+		SCNF = #{scnf,jdbcType=VARCHAR},
+		NK =
+		#{nk,jdbcType=VARCHAR},
+		CXI = #{cxi,jdbcType=VARCHAR},
+		XSMC =
+		#{xsmc,jdbcType=VARCHAR},
+		CLLX = #{cllx,jdbcType=VARCHAR},
+		JB =
+		#{jb,jdbcType=VARCHAR},
+		CSXS = #{csxs,jdbcType=VARCHAR},
+		CMS =
+		#{cms,jdbcType=VARCHAR},
+		ZWS = #{zws,jdbcType=VARCHAR},
+		GL =
+		#{gl,jdbcType=VARCHAR},
+		RYLX = #{rylx,jdbcType=VARCHAR},
+		BSQMS =
+		#{bsqms,jdbcType=VARCHAR},
+		RYBH = #{rybh,jdbcType=VARCHAR},
+		QDFS =
+		#{qdfs,jdbcType=VARCHAR},
+		FDJGS = #{fdjgs,jdbcType=VARCHAR},
+		REGISTER_DATE = #{registerDate,jdbcType=DATE},
+		CERTIFICATE_DATE =
+		#{certificateDate,jdbcType=DATE},
+		CAR_ID = #{carId,jdbcType=DECIMAL},
+		AREA1 = #{area1,jdbcType=VARCHAR},
+		AREA2 = #{area2,jdbcType=VARCHAR},
+		AREA3 =
+		#{area3,jdbcType=VARCHAR},
+		STATUS = #{status,jdbcType=VARCHAR},
+		REMARK =
+		#{remark,jdbcType=VARCHAR},
+		CAR_NAME = #{carName,jdbcType=VARCHAR},
+		CAR_ICO =
+		#{carIco,jdbcType=VARCHAR},
+		CAR_PRICE = #{carPrice,jdbcType=DECIMAL},
+		USER_FID = #{userFid,jdbcType=DECIMAL},
+		TYPE_FID =
+		#{typeFid,jdbcType=DECIMAL},
+		PARTAKE_MAX =
+		#{partakeMax,jdbcType=DECIMAL}
+		where ID = #{id,jdbcType=DECIMAL}
+	</update>
+	<!-- By LGQ -->
+	<select id="selectCarInfoAndTimeByUserId" parameterType="Map"
+		resultType="Map">
+		select
+		<include refid="Base_Column_List" />
+		from T_CAR_INFO A where A.User_Id = #{userId}
+	</select>
+	<select id="selectCarInfoByHelpId" parameterType="String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from T_CAR_INFO c
+		where c.id in (select t.car_fid from T_HELP_PARTAKE t
+		where
+		t.help_fid=#{helpId})
+	</select>
+	<select id="selectTotalPartakeMaxByUserId" parameterType="String"
+		resultType="String">
+		select sum(t.partake_max) as partake_max from T_CAR_INFO t
+		where t.user_id =#{userId}
+	</select>
+	<!-- add zhwh -->
+
+
+	<select id="selectPlateNumber" parameterType="java.math.BigDecimal"
+		resultMap="BaseResultMap">
+		select
+
+		<include refid="Base_Column_List" />
+		from T_CAR_INFO
+		<if test="_parameter != null">
+
+		</if>
+		where PLATE_NUMBER = #{plate_number,jdbcType=DECIMAL}
+
+
+	</select>
+
+	<!-- add yuhb 根据titleid和用户id取对应的车辆分摊信息-->
+	<select id="selectPartakeList" parameterType="Map" resultMap="BaseResultMap">
+    	select t.fact_pay as param10,c.plate_number
+     	from T_HELP_PARTAKE t,t_car_info c
+           where t.car_fid = c.id 
+            and t.car_fid in (select c.id from T_Car_Info c where c.user_id=#{userId})
+            and t.param1 = #{titleId}  
+            and t.help_fid = #{helpId}
+     </select>
+        <!-- 根据 主题carids 取出所有参与分摊车辆-->
+        <select id="selectCarJoinByCarids" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+      select    
+       <include refid="Base_Column_List" />
+       from t_car_info t  
+      where t.id in 
+
+		 <foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+		  	#{item}  
+		 </foreach>  
+    </select> 
+    <!-- 分页条件查询 -->
+    <select id="selectByExampleAndPage" parameterType="com.oojunzi.app.web.model.UserExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List" />
+        from t_car_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause" />
+        </if>
+        
+    </select>
+
+</mapper>

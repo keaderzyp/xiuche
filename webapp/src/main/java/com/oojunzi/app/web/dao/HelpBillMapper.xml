@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.HelpBillMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.HelpBill" >
+    <id column="BILLID" property="billid" jdbcType="DECIMAL" />
+    <result column="BILLNAME" property="billname" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="HELPID" property="helpid" jdbcType="DECIMAL" />
+    <result column="TITLEID" property="titleid" jdbcType="DECIMAL" />
+    <result column="COSTDONE" property="costdone" jdbcType="DECIMAL" />
+    <result column="COSTUNDONE" property="costundone" jdbcType="DECIMAL" />
+    <result column="ACCIDENTTYPE" property="accidenttype" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="DATE" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+    <result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+    <result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+    <result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+    <result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+    <result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+    <result column="TIMEZONE" property="timezone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BILLID, BILLNAME, STATUS, HELPID, TITLEID, COSTDONE, COSTUNDONE, ACCIDENTTYPE, CREATETIME, 
+    REMARK, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, PARAM7, PARAM8, PARAM9, PARAM10, 
+    TIMEZONE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.HelpBillExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_HELP_BILL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_HELP_BILL
+    where BILLID = #{billid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from T_HELP_BILL
+    where BILLID = #{billid,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.HelpBillExample" >
+    delete from T_HELP_BILL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.HelpBill" >
+    insert into T_HELP_BILL (BILLID, BILLNAME, STATUS, 
+      HELPID, TITLEID, COSTDONE, 
+      COSTUNDONE, ACCIDENTTYPE, CREATETIME, 
+      REMARK, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5, 
+      PARAM6, PARAM7, PARAM8, 
+      PARAM9, PARAM10, TIMEZONE
+      )
+    values (#{billid,jdbcType=DECIMAL}, #{billname,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{helpid,jdbcType=DECIMAL}, #{titleid,jdbcType=DECIMAL}, #{costdone,jdbcType=DECIMAL}, 
+      #{costundone,jdbcType=DECIMAL}, #{accidenttype,jdbcType=VARCHAR}, #{createtime,jdbcType=DATE}, 
+      #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, 
+      #{param6,jdbcType=VARCHAR}, #{param7,jdbcType=VARCHAR}, #{param8,jdbcType=VARCHAR}, 
+      #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR}, #{timezone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.HelpBill" >
+    insert into T_HELP_BILL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billid != null" >
+        BILLID,
+      </if>
+      <if test="billname != null" >
+        BILLNAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="helpid != null" >
+        HELPID,
+      </if>
+      <if test="titleid != null" >
+        TITLEID,
+      </if>
+      <if test="costdone != null" >
+        COSTDONE,
+      </if>
+      <if test="costundone != null" >
+        COSTUNDONE,
+      </if>
+      <if test="accidenttype != null" >
+        ACCIDENTTYPE,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+      <if test="param6 != null" >
+        PARAM6,
+      </if>
+      <if test="param7 != null" >
+        PARAM7,
+      </if>
+      <if test="param8 != null" >
+        PARAM8,
+      </if>
+      <if test="param9 != null" >
+        PARAM9,
+      </if>
+      <if test="param10 != null" >
+        PARAM10,
+      </if>
+      <if test="timezone != null" >
+        TIMEZONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billid != null" >
+        #{billid,jdbcType=DECIMAL},
+      </if>
+      <if test="billname != null" >
+        #{billname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="helpid != null" >
+        #{helpid,jdbcType=DECIMAL},
+      </if>
+      <if test="titleid != null" >
+        #{titleid,jdbcType=DECIMAL},
+      </if>
+      <if test="costdone != null" >
+        #{costdone,jdbcType=DECIMAL},
+      </if>
+      <if test="costundone != null" >
+        #{costundone,jdbcType=DECIMAL},
+      </if>
+      <if test="accidenttype != null" >
+        #{accidenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="timezone != null" >
+        #{timezone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.HelpBillExample" resultType="java.lang.Integer" >
+    select count(*) from T_HELP_BILL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_HELP_BILL
+    <set >
+      <if test="record.billid != null" >
+        BILLID = #{record.billid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.billname != null" >
+        BILLNAME = #{record.billname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.helpid != null" >
+        HELPID = #{record.helpid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.titleid != null" >
+        TITLEID = #{record.titleid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.costdone != null" >
+        COSTDONE = #{record.costdone,jdbcType=DECIMAL},
+      </if>
+      <if test="record.costundone != null" >
+        COSTUNDONE = #{record.costundone,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accidenttype != null" >
+        ACCIDENTTYPE = #{record.accidenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createtime != null" >
+        CREATETIME = #{record.createtime,jdbcType=DATE},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param6 != null" >
+        PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param7 != null" >
+        PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param8 != null" >
+        PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param9 != null" >
+        PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param10 != null" >
+        PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.timezone != null" >
+        TIMEZONE = #{record.timezone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_HELP_BILL
+    set BILLID = #{record.billid,jdbcType=DECIMAL},
+      BILLNAME = #{record.billname,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      HELPID = #{record.helpid,jdbcType=DECIMAL},
+      TITLEID = #{record.titleid,jdbcType=DECIMAL},
+      COSTDONE = #{record.costdone,jdbcType=DECIMAL},
+      COSTUNDONE = #{record.costundone,jdbcType=DECIMAL},
+      ACCIDENTTYPE = #{record.accidenttype,jdbcType=VARCHAR},
+      CREATETIME = #{record.createtime,jdbcType=DATE},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=VARCHAR},
+      PARAM6 = #{record.param6,jdbcType=VARCHAR},
+      PARAM7 = #{record.param7,jdbcType=VARCHAR},
+      PARAM8 = #{record.param8,jdbcType=VARCHAR},
+      PARAM9 = #{record.param9,jdbcType=VARCHAR},
+      PARAM10 = #{record.param10,jdbcType=VARCHAR},
+      TIMEZONE = #{record.timezone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.HelpBill" >
+    update T_HELP_BILL
+    <set >
+      <if test="billname != null" >
+        BILLNAME = #{billname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="helpid != null" >
+        HELPID = #{helpid,jdbcType=DECIMAL},
+      </if>
+      <if test="titleid != null" >
+        TITLEID = #{titleid,jdbcType=DECIMAL},
+      </if>
+      <if test="costdone != null" >
+        COSTDONE = #{costdone,jdbcType=DECIMAL},
+      </if>
+      <if test="costundone != null" >
+        COSTUNDONE = #{costundone,jdbcType=DECIMAL},
+      </if>
+      <if test="accidenttype != null" >
+        ACCIDENTTYPE = #{accidenttype,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CREATETIME = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=VARCHAR},
+      </if>
+      <if test="param6 != null" >
+        PARAM6 = #{param6,jdbcType=VARCHAR},
+      </if>
+      <if test="param7 != null" >
+        PARAM7 = #{param7,jdbcType=VARCHAR},
+      </if>
+      <if test="param8 != null" >
+        PARAM8 = #{param8,jdbcType=VARCHAR},
+      </if>
+      <if test="param9 != null" >
+        PARAM9 = #{param9,jdbcType=VARCHAR},
+      </if>
+      <if test="param10 != null" >
+        PARAM10 = #{param10,jdbcType=VARCHAR},
+      </if>
+      <if test="timezone != null" >
+        TIMEZONE = #{timezone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where BILLID = #{billid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.HelpBill" >
+    update T_HELP_BILL
+    set BILLNAME = #{billname,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      HELPID = #{helpid,jdbcType=DECIMAL},
+      TITLEID = #{titleid,jdbcType=DECIMAL},
+      COSTDONE = #{costdone,jdbcType=DECIMAL},
+      COSTUNDONE = #{costundone,jdbcType=DECIMAL},
+      ACCIDENTTYPE = #{accidenttype,jdbcType=VARCHAR},
+      CREATETIME = #{createtime,jdbcType=DATE},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=VARCHAR},
+      PARAM6 = #{param6,jdbcType=VARCHAR},
+      PARAM7 = #{param7,jdbcType=VARCHAR},
+      PARAM8 = #{param8,jdbcType=VARCHAR},
+      PARAM9 = #{param9,jdbcType=VARCHAR},
+      PARAM10 = #{param10,jdbcType=VARCHAR},
+      TIMEZONE = #{timezone,jdbcType=VARCHAR}
+    where BILLID = #{billid,jdbcType=DECIMAL}
+  </update>
+  
+  
+     <select id="selectHelpBillId" resultType="java.lang.Long" >
+        select SEQ_HELP_BILL.NEXTVAL from dual
+    </select>
+         <select id="selectHelpBillIdForPK" resultType="java.lang.Long" >
+        select SEQ_HELP_BILL_ID.NEXTVAL from dual
+    </select>
+    
+    <!-- 参与分摊车辆 by enddate  -->
+    <select id="selectCarJoinList" resultType="java.lang.Integer"  parameterType="java.lang.String">
+
+		select count(*) from t_car_info t1 where t1.status = 3 and t1.status !=0 and to_date(t1.param1,'yyyy-mm-dd')
+ &lt; to_date(#{enddate,jdbcType=VARCHAR},'yyyy-mm-dd')
+    </select>
+    
+    <!-- 所有参与分摊车辆ids 集合  by enddate  -->
+    <select id="selectCarIdsList" resultType="java.lang.Integer"  parameterType="java.lang.String">
+
+		select t1.id from t_car_info t1 where t1.status = 3 and t1.status !=0 and to_date(t1.param1,'yyyy-mm-dd')
+ &lt; to_date(#{enddate,jdbcType=VARCHAR},'yyyy-mm-dd')
+    </select>
+    <!-- 账单查询 -->
+        <select id="selectBillList" parameterType="com.oojunzi.app.web.model.HelpBillExample" resultMap="BaseResultMap">
+			select t.titleid ,t.billname,sum(t.costdone) as costdone,t.timezone,t.param1,t.param4,t.status from T_HELP_BILL t
+				
+		<if test="_parameter != null" >
+      		<include refid="Example_Where_Clause" />
+    	</if>
+    	 group by t.titleid ,t.billname,t.timezone,t.param1,t.param4,t.status
+	    <if test="orderByClause != null" >
+	      order by ${orderByClause}
+	    </if>
+    </select>
+           <!-- 账单查询 by billname-->
+     <select id="selectBillListByBillName" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.HelpBillExample">
+			select t.titleid ,t.billname,sum(t.costdone) as costdone,t.timezone,t.param1,t.param4,t.status from T_HELP_BILL t
+			
+	<if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+     group by t.titleid ,t.billname,t.timezone,t.param1,t.param4,t.status
+    </select>
+    <!-- 账单查询根据 主题titleid-->
+        <select id="selectBillByTitleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+			select t.titleid ,t.billname,sum(t.costdone) as costdone,t.timezone,t.param4,t.status  from T_HELP_BILL t where t.titleid = #{titleId,jdbcType=VARCHAR} group by t.titleid ,t.billname,t.timezone,t.param4,t.status  
+			
+    </select> 
+    <!-- 根据titleId取出 发起求助车辆id -->
+         <select id="selectCarIdsFromHelpByTitleId" resultType="java.lang.Integer" parameterType="java.lang.String">
+			select 
+				 distinct(param6)
+ 				from T_HELP_BILL t 
+					where t.titleid = #{titleId,jdbcType=VARCHAR}
+    </select>    
+        <!-- 根据 主题titleid 获取参与车辆ids-->
+        <select id="selectCarListByTitleId" resultType="java.lang.String" parameterType="java.lang.String">
+			select t.param5 from T_HELP_BILL t  
+			where t.titleid = #{titleId,jdbcType=VARCHAR}
+    </select> 
+            <!-- 根据 主题carids 取出所有参与车辆分摊上限总和-->
+        <select id="selectPartakeTotalByCarIds" resultType="java.lang.Double" parameterType="java.lang.Integer">
+      select sum(t.partake_max) from t_car_info t  
+      where t.id in 
+
+		 <foreach item="item" index="index" collection="list" open="(" separator="," close=")">  
+		  	#{item}  
+		 </foreach>  
+    </select> 
+    <!-- 主题账单查询根据 主题titleid-->
+        <select id="selectBillListByTitleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+			select 
+			<include refid="Base_Column_List" />
+	  		from T_HELP_BILL  t 
+			where t.titleid = #{titleId,jdbcType=VARCHAR}
+    </select> 
+    
+</mapper>

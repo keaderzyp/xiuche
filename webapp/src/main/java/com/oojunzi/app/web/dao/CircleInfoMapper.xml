@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.CircleInfoMapper">
+	<resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.CircleInfo">
+		<id column="CIRCLE_ID" property="circleId" jdbcType="DECIMAL" />
+		<result column="CIRCLE_NAME" property="circleName" jdbcType="VARCHAR" />
+		<result column="MAX_NUMBER" property="maxNumber" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CREAT_TIME" property="creatTime" jdbcType="DATE" />
+		<result column="USER_FID" property="userFid" jdbcType="DECIMAL" />
+		<result column="CIRCLE_DESC" property="circleDesc" jdbcType="VARCHAR" />
+		<result column="HELP_COUNT" property="helpCount" jdbcType="DECIMAL" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="CIRCLE_ICO" property="circleIco" jdbcType="VARCHAR" />
+		<result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+		<result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+		<result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+		<result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+		<result column="PARAM5" property="param5" jdbcType="VARCHAR" />
+		<result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+		<result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+		<result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+		<result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+		<result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+		<result column="PARTAKE_MAX" property="partakeMax" jdbcType="DECIMAL" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Update_By_Example_Where_Clause">
+		<where>
+			<foreach collection="example.oredCriteria" item="criteria"
+				separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value} and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		CIRCLE_ID, CIRCLE_NAME, MAX_NUMBER, STATUS, CREAT_TIME, USER_FID, CIRCLE_DESC,
+		HELP_COUNT,
+		REMARK, CIRCLE_ICO, PARAM1, PARAM2, PARAM3, PARAM4, PARAM5, PARAM6, PARAM7,
+		PARAM8,
+		PARAM9, PARAM10, PARTAKE_MAX
+	</sql>
+	<select id="selectByExample" resultMap="BaseResultMap"
+		parameterType="com.oojunzi.app.web.model.CircleInfoExample">
+		select
+		<if test="distinct">
+			distinct
+		</if>
+		<include refid="Base_Column_List" />
+		from T_CIRCLE_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+		<if test="orderByClause != null">
+			order by ${orderByClause}
+		</if>
+	</select>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_CIRCLE_INFO
+		where CIRCLE_ID = #{circleId,jdbcType=DECIMAL}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+		delete from T_CIRCLE_INFO
+		where CIRCLE_ID = #{circleId,jdbcType=DECIMAL}
+	</delete>
+	<delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.CircleInfoExample">
+		delete from T_CIRCLE_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</delete>
+	<insert id="insert" parameterType="com.oojunzi.app.web.model.CircleInfo">
+		insert into T_CIRCLE_INFO (CIRCLE_ID, CIRCLE_NAME, MAX_NUMBER,
+		STATUS, CREAT_TIME, USER_FID,
+		CIRCLE_DESC, HELP_COUNT, REMARK,
+		CIRCLE_ICO, PARAM1, PARAM2, PARAM3,
+		PARAM4, PARAM5, PARAM6, PARAM7,
+		PARAM8, PARAM9, PARAM10, PARTAKE_MAX
+		)
+		values (#{circleId,jdbcType=DECIMAL}, #{circleName,jdbcType=VARCHAR},
+		#{maxNumber,jdbcType=DECIMAL},
+		#{status,jdbcType=VARCHAR}, #{creatTime,jdbcType=DATE}, #{userFid,jdbcType=DECIMAL},
+		#{circleDesc,jdbcType=VARCHAR}, #{helpCount,jdbcType=DECIMAL},
+		#{remark,jdbcType=VARCHAR},
+		#{circleIco,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR},
+		#{param3,jdbcType=VARCHAR},
+		#{param4,jdbcType=VARCHAR}, #{param5,jdbcType=VARCHAR}, #{param6,jdbcType=VARCHAR},
+		#{param7,jdbcType=VARCHAR},
+		#{param8,jdbcType=VARCHAR}, #{param9,jdbcType=VARCHAR}, #{param10,jdbcType=VARCHAR},
+		#{partakeMax,jdbcType=DECIMAL}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.oojunzi.app.web.model.CircleInfo">
+		insert into T_CIRCLE_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="circleId != null">
+				CIRCLE_ID,
+			</if>
+			<if test="circleName != null">
+				CIRCLE_NAME,
+			</if>
+			<if test="maxNumber != null">
+				MAX_NUMBER,
+			</if>
+			<if test="status != null">
+				STATUS,
+			</if>
+			<if test="creatTime != null">
+				CREAT_TIME,
+			</if>
+			<if test="userFid != null">
+				USER_FID,
+			</if>
+			<if test="circleDesc != null">
+				CIRCLE_DESC,
+			</if>
+			<if test="helpCount != null">
+				HELP_COUNT,
+			</if>
+			<if test="remark != null">
+				REMARK,
+			</if>
+			<if test="circleIco != null">
+				CIRCLE_ICO,
+			</if>
+			<if test="param1 != null">
+				PARAM1,
+			</if>
+			<if test="param2 != null">
+				PARAM2,
+			</if>
+			<if test="param3 != null">
+				PARAM3,
+			</if>
+			<if test="param4 != null">
+				PARAM4,
+			</if>
+			<if test="param5 != null">
+				PARAM5,
+			</if>
+			<if test="param6 != null">
+				PARAM6,
+			</if>
+			<if test="param7 != null">
+				PARAM7,
+			</if>
+			<if test="param8 != null">
+				PARAM8,
+			</if>
+			<if test="param9 != null">
+				PARAM9,
+			</if>
+			<if test="param10 != null">
+				PARAM10,
+			</if>
+			<if test="partakeMax != null">
+				PARTAKE_MAX,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="circleId != null">
+				#{circleId,jdbcType=DECIMAL},
+			</if>
+			<if test="circleName != null">
+				#{circleName,jdbcType=VARCHAR},
+			</if>
+			<if test="maxNumber != null">
+				#{maxNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="creatTime != null">
+				#{creatTime,jdbcType=VARCHAR},
+			</if>
+			<if test="userFid != null">
+				#{userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="circleDesc != null">
+				#{circleDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="helpCount != null">
+				#{helpCount,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				#{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="circleIco != null">
+				#{circleIco,jdbcType=VARCHAR},
+			</if>
+			<if test="param1 != null">
+				#{param1,jdbcType=VARCHAR},
+			</if>
+			<if test="param2 != null">
+				#{param2,jdbcType=VARCHAR},
+			</if>
+			<if test="param3 != null">
+				#{param3,jdbcType=VARCHAR},
+			</if>
+			<if test="param4 != null">
+				#{param4,jdbcType=VARCHAR},
+			</if>
+			<if test="param5 != null">
+				#{param5,jdbcType=VARCHAR},
+			</if>
+			<if test="param6 != null">
+				#{param6,jdbcType=VARCHAR},
+			</if>
+			<if test="param7 != null">
+				#{param7,jdbcType=VARCHAR},
+			</if>
+			<if test="param8 != null">
+				#{param8,jdbcType=VARCHAR},
+			</if>
+			<if test="param9 != null">
+				#{param9,jdbcType=VARCHAR},
+			</if>
+			<if test="param10 != null">
+				#{param10,jdbcType=VARCHAR},
+			</if>
+			<if test="partakeMax != null">
+				#{partakeMax,jdbcType=DECIMAL},
+			</if>
+		</trim>
+	</insert>
+	<select id="countByExample" parameterType="com.oojunzi.app.web.model.CircleInfoExample"
+		resultType="java.lang.Integer">
+		select count(*) from T_CIRCLE_INFO
+		<if test="_parameter != null">
+			<include refid="Example_Where_Clause" />
+		</if>
+	</select>
+	<update id="updateByExampleSelective" parameterType="map">
+		update T_CIRCLE_INFO
+		<set>
+			<if test="record.circleId != null">
+				CIRCLE_ID = #{record.circleId,jdbcType=DECIMAL},
+			</if>
+			<if test="record.circleName != null">
+				CIRCLE_NAME = #{record.circleName,jdbcType=VARCHAR},
+			</if>
+			<if test="record.maxNumber != null">
+				MAX_NUMBER = #{record.maxNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="record.status != null">
+				STATUS = #{record.status,jdbcType=VARCHAR},
+			</if>
+			<if test="record.creatTime != null">
+				CREAT_TIME = #{record.creatTime,jdbcType=DATE},
+			</if>
+			<if test="record.userFid != null">
+				USER_FID = #{record.userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="record.circleDesc != null">
+				CIRCLE_DESC = #{record.circleDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="record.helpCount != null">
+				HELP_COUNT = #{record.helpCount,jdbcType=DECIMAL},
+			</if>
+			<if test="record.remark != null">
+				REMARK = #{record.remark,jdbcType=VARCHAR},
+			</if>
+			<if test="record.circleIco != null">
+				CIRCLE_ICO = #{record.circleIco,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param1 != null">
+				PARAM1 = #{record.param1,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param2 != null">
+				PARAM2 = #{record.param2,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param3 != null">
+				PARAM3 = #{record.param3,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param4 != null">
+				PARAM4 = #{record.param4,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param5 != null">
+				PARAM5 = #{record.param5,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param6 != null">
+				PARAM6 = #{record.param6,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param7 != null">
+				PARAM7 = #{record.param7,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param8 != null">
+				PARAM8 = #{record.param8,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param9 != null">
+				PARAM9 = #{record.param9,jdbcType=VARCHAR},
+			</if>
+			<if test="record.param10 != null">
+				PARAM10 = #{record.param10,jdbcType=VARCHAR},
+			</if>
+			<if test="record.partakeMax != null">
+				PARTAKE_MAX = #{record.partakeMax,jdbcType=DECIMAL},
+			</if>
+		</set>
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByExample" parameterType="map">
+		update T_CIRCLE_INFO
+		set CIRCLE_ID = #{record.circleId,jdbcType=DECIMAL},
+		CIRCLE_NAME = #{record.circleName,jdbcType=VARCHAR},
+		MAX_NUMBER = #{record.maxNumber,jdbcType=DECIMAL},
+		STATUS = #{record.status,jdbcType=VARCHAR},
+		CREAT_TIME = #{record.creatTime,jdbcType=DATE},
+		USER_FID = #{record.userFid,jdbcType=DECIMAL},
+		CIRCLE_DESC = #{record.circleDesc,jdbcType=VARCHAR},
+		HELP_COUNT = #{record.helpCount,jdbcType=DECIMAL},
+		REMARK = #{record.remark,jdbcType=VARCHAR},
+		CIRCLE_ICO = #{record.circleIco,jdbcType=VARCHAR},
+		PARAM1 = #{record.param1,jdbcType=VARCHAR},
+		PARAM2 = #{record.param2,jdbcType=VARCHAR},
+		PARAM3 = #{record.param3,jdbcType=VARCHAR},
+		PARAM4 = #{record.param4,jdbcType=VARCHAR},
+		PARAM5 = #{record.param5,jdbcType=VARCHAR},
+		PARAM6 = #{record.param6,jdbcType=VARCHAR},
+		PARAM7 = #{record.param7,jdbcType=VARCHAR},
+		PARAM8 = #{record.param8,jdbcType=VARCHAR},
+		PARAM9 = #{record.param9,jdbcType=VARCHAR},
+		PARAM10 = #{record.param10,jdbcType=VARCHAR},
+		PARTAKE_MAX = #{record.partakeMax,jdbcType=DECIMAL}
+		<if test="_parameter != null">
+			<include refid="Update_By_Example_Where_Clause" />
+		</if>
+	</update>
+	<update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.CircleInfo">
+		update T_CIRCLE_INFO
+		<set>
+			<if test="circleName != null">
+				CIRCLE_NAME = #{circleName,jdbcType=VARCHAR},
+			</if>
+			<if test="maxNumber != null">
+				MAX_NUMBER = #{maxNumber,jdbcType=DECIMAL},
+			</if>
+			<if test="status != null">
+				STATUS = #{status,jdbcType=VARCHAR},
+			</if>
+			<if test="creatTime != null">
+				CREAT_TIME = #{creatTime,jdbcType=DATE},
+			</if>
+			<if test="userFid != null">
+				USER_FID = #{userFid,jdbcType=DECIMAL},
+			</if>
+			<if test="circleDesc != null">
+				CIRCLE_DESC = #{circleDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="helpCount != null">
+				HELP_COUNT = #{helpCount,jdbcType=DECIMAL},
+			</if>
+			<if test="remark != null">
+				REMARK = #{remark,jdbcType=VARCHAR},
+			</if>
+			<if test="circleIco != null">
+				CIRCLE_ICO = #{circleIco,jdbcType=VARCHAR},
+			</if>
+			<if test="param1 != null">
+				PARAM1 = #{param1,jdbcType=VARCHAR},
+			</if>
+			<if test="param2 != null">
+				PARAM2 = #{param2,jdbcType=VARCHAR},
+			</if>
+			<if test="param3 != null">
+				PARAM3 = #{param3,jdbcType=VARCHAR},
+			</if>
+			<if test="param4 != null">
+				PARAM4 = #{param4,jdbcType=VARCHAR},
+			</if>
+			<if test="param5 != null">
+				PARAM5 = #{param5,jdbcType=VARCHAR},
+			</if>
+			<if test="param6 != null">
+				PARAM6 = #{param6,jdbcType=VARCHAR},
+			</if>
+			<if test="param7 != null">
+				PARAM7 = #{param7,jdbcType=VARCHAR},
+			</if>
+			<if test="param8 != null">
+				PARAM8 = #{param8,jdbcType=VARCHAR},
+			</if>
+			<if test="param9 != null">
+				PARAM9 = #{param9,jdbcType=VARCHAR},
+			</if>
+			<if test="param10 != null">
+				PARAM10 = #{param10,jdbcType=VARCHAR},
+			</if>
+			<if test="partakeMax != null">
+				PARTAKE_MAX = #{partakeMax,jdbcType=DECIMAL},
+			</if>
+		</set>
+		where CIRCLE_ID = #{circleId,jdbcType=DECIMAL}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.CircleInfo">
+		update T_CIRCLE_INFO
+		set CIRCLE_NAME = #{circleName,jdbcType=VARCHAR},
+		MAX_NUMBER = #{maxNumber,jdbcType=DECIMAL},
+		STATUS = #{status,jdbcType=VARCHAR},
+		CREAT_TIME = #{creatTime,jdbcType=DATE},
+		USER_FID = #{userFid,jdbcType=DECIMAL},
+		CIRCLE_DESC = #{circleDesc,jdbcType=VARCHAR},
+		HELP_COUNT = #{helpCount,jdbcType=DECIMAL},
+		REMARK = #{remark,jdbcType=VARCHAR},
+		CIRCLE_ICO = #{circleIco,jdbcType=VARCHAR},
+		PARAM1 = #{param1,jdbcType=VARCHAR},
+		PARAM2 = #{param2,jdbcType=VARCHAR},
+		PARAM3 = #{param3,jdbcType=VARCHAR},
+		PARAM4 = #{param4,jdbcType=VARCHAR},
+		PARAM5 = #{param5,jdbcType=VARCHAR},
+		PARAM6 = #{param6,jdbcType=VARCHAR},
+		PARAM7 = #{param7,jdbcType=VARCHAR},
+		PARAM8 = #{param8,jdbcType=VARCHAR},
+		PARAM9 = #{param9,jdbcType=VARCHAR},
+		PARAM10 = #{param10,jdbcType=VARCHAR},
+		PARTAKE_MAX = #{partakeMax,jdbcType=DECIMAL}
+		where CIRCLE_ID = #{circleId,jdbcType=DECIMAL}
+	</update>
+
+
+	<!-- add yuhb 0712 -->
+	<resultMap id="BaseResultMap2" type="com.oojunzi.app.web.model.CircleInfo">
+		<id column="CIRCLE_ID" property="circleId" jdbcType="DECIMAL" />
+		<result column="CIRCLE_NAME" property="circleName" jdbcType="VARCHAR" />
+		<result column="MAX_NUMBER" property="maxNumber" jdbcType="DECIMAL" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CREAT_TIME" property="creatTime" jdbcType="DATE" />
+		<result column="USER_FID" property="userFid" jdbcType="DECIMAL" />
+		<result column="CIRCLE_DESC" property="circleDesc" jdbcType="VARCHAR" />
+		<result column="HELP_COUNT" property="helpCount" jdbcType="DECIMAL" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="CIRCLE_ICO" property="circleIco" jdbcType="VARCHAR" />
+		<result column="nearly_time" property="nearly_time" jdbcType="VARCHAR" />
+		<result column="driver_year" property="driver_year" jdbcType="VARCHAR" />
+		<result column="avg_price" property="avg_price" jdbcType="VARCHAR" />
+		<result column="all_count" property="all_count" jdbcType="VARCHAR" />
+		<result column="help_count" property="help_count" jdbcType="VARCHAR" />
+		<result column="PARAM6" property="param6" jdbcType="VARCHAR" />
+		<result column="PARAM7" property="param7" jdbcType="VARCHAR" />
+		<result column="PARAM8" property="param8" jdbcType="VARCHAR" />
+		<result column="PARAM9" property="param9" jdbcType="VARCHAR" />
+		<result column="PARAM10" property="param10" jdbcType="VARCHAR" />
+		<result column="PARTAKE_MAX" property="partakeMax" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<select id="selectByUserId" resultMap="BaseResultMap"
+		parameterType="java.math.BigDecimal">
+		select
+		<include refid="Base_Column_List" />
+		from T_CIRCLE_INFO t
+		where t.circle_id =
+		(select c.circle_fid from t_circle_user c where c.user_fid =
+		#{userId,jdbcType=DECIMAL})
+	</select>
+	<select id="selectCircleId" resultType="java.lang.Long">
+		select SEQ_CIRCLE_INFO.NEXTVAL from dual
+	</select>
+
+	<select id="selectCarInfoByUserId" resultMap="BaseResultMap2"
+		parameterType="java.math.BigDecimal">
+	    select case when sum(TO_NUMBER(sysdate - i.REGISTER_DATE))/(365*count(1)) is null then '0.0'
+                  else to_char(sum(TO_NUMBER(sysdate - i.REGISTER_DATE))/(365*count(1)),'99.9') end driver_year,
+             	case when avg(i.zdjg) is null then '0.0' 
+                  else to_char(nvl((avg(i.zdjg)),0),'9999.9') end avg_price, 
+	    		count(i.status) all_count, 
+	    		count(case when i.status=3 then 3 else null end) help_count,sum(i.partake_max) partake_max
+	    from t_car_info i ,
+	    	(select c.user_fid from t_circle_user c where c.circle_fid = (select
+	    		circle_fid from t_circle_user where user_fid =#{userId,jdbcType=DECIMAL}   )) s
+	    where i.user_id(+) = s.user_fid
+	    and i.status != 0		
+	</select>
+
+
+	<select id="sltCircleNearHelpTime" resultType="java.util.Date"
+		parameterType="java.math.BigDecimal">
+	    select max(h.happen_time)
+	    from t_help_info h,
+	    	(select c.user_fid from t_circle_user c where c.circle_fid = (select
+	    		circle_fid from t_circle_user where user_fid =#{userId,jdbcType=DECIMAL}   )) s
+	    where h.param1(+) = s.user_fid
+    </select>
+    
+</mapper>

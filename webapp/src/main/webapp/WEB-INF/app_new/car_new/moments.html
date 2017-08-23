@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>动态</title>
+	<link href="css/moments-styles.css" rel="stylesheet"></head>
+	<body>
+		
+		<div class="loading-body">
+			<img src="img/loading.gif"/>
+		</div>
+		<div class="nav">
+			<div class="nav-city">
+				动态
+			</div>
+			<div class="search">
+				<img src="img/search.png" alt="" />
+			</div>
+		</div>
+		<div class="tab-bar nav-bar">
+			<div class="tab-bar-icon active ">
+				<i class="gonggao">
+				</i>
+				<span >
+					公告
+				</span>
+				<span class="badge">2</span>
+			</div>
+			<div class="tab-bar-icon  ">
+				<i class="huodong">
+				</i>
+				<span >
+					活动
+				</span>
+			</div>
+			<div class="tab-bar-icon">
+				<i class="zixun">
+					
+				</i>
+				<span >
+					资讯
+				</span>
+			</div>
+			<div class="tab-bar-icon">
+				<i class="kuwan">
+					
+				</i>
+				<span >
+					酷玩
+				</span>
+			</div>
+		</div>
+		<!--公告-->
+		<div class="gonggao-page show">
+			<div class="moments-bar" onclick="redirectTo('moments_info.html')">
+				<div class="moments-head">
+					<div class="moments-user">
+						<img src="img/t1.jpg"/>
+						行车小秘书
+					</div>
+					<div class="moments-time">
+						2017-01-01
+					</div>
+				</div>
+				<div class="moments-body">
+					<img src="img/fengjing.jpeg" alt="" />
+				</div>
+				<div class="moments-foot">
+			   【公告】收拾行囊，来一次说走就走的旅行
+				</div>
+			</div>
+			<div class="moments-bar" onclick="redirectTo('moments_info.html')">
+				<div class="moments-head">
+					<div class="moments-user">
+						<img src="img/t1.jpg"/>
+						行车小秘书
+					</div>
+					<div class="moments-time">
+						2017-01-01
+					</div>
+				</div>
+				<div class="moments-body">
+					<img src="img/fengjing2.jpeg" alt="" />
+				</div>
+				<div class="moments-foot">
+			   【公告】来呀，免费保养送你你要么？
+				</div>
+			</div>
+			<div class="moments-bar" onclick="redirectTo('moments_info.html')">
+				<div class="moments-head">
+					<div class="moments-user">
+						<img src="img/t1.jpg"/>
+						行车小秘书
+					</div>
+					<div class="moments-time">
+						2017-01-01
+					</div>
+				</div>
+				<div class="moments-body">
+					<img src="img/fengjing1.jpeg" alt="" />
+				</div>
+				<div class="moments-foot">
+			   【公告】来呀，免费保养送你你要么？
+				</div>
+			</div>
+		</div>
+		<!--活动页-->
+		<div class="huodong-page">
+			活动页
+		</div>
+		<!--资讯页-->
+		<div class="zixun-page">
+			资讯页
+		</div>
+		<!--酷玩页-->
+		<div class="kuwan-page">
+			酷玩页
+		</div>
+		<div class="tab-bar">
+			<div class="tab-bar-icon ">
+				<a href="index.html">
+					<i class="shouye">
+					</i>
+					<span >
+						首页
+					</span>
+				</a>
+			</div>
+			<div class="tab-bar-icon  active">
+				<a href="moments.html">
+					<i class="dongtai">
+					</i>
+					<span >
+						动态
+					</span>
+				</a>
+			</div>
+			<div class="tab-bar-icon ">
+				<a href="main_login.html">
+					<i class="jifen">
+						
+					</i>
+					<span >
+						我的
+					</span>
+				</a>
+			</div>
+		</div>
+	</body>
+	<script src="js/util.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		//解决动态内部切换页面
+		(function(){
+			var tabs = document.getElementsByClassName('tab-bar-icon');
+			for(var i=0;i<4;i++){
+				tabs[i].addEventListener('click',changeTab);
+			}
+			function changeTab(){
+				for(var i=0;i<4;i++){
+					removeClass(tabs[i],'active');
+					var name = tabs[i].children[0].className;
+					var tabPage = document.getElementsByClassName(name+'-page')[0];
+					removeClass(tabPage,'show');
+				}
+				var name = this.children[0].className;
+				var tabPage = document.getElementsByClassName(name+'-page')[0];
+				addClass(this,'active')
+				addClass(tabPage,'show')
+			}
+			function addClass(tag,name){
+				tag.className+=" "+name;
+			}
+			function removeClass(tag,name){
+				tag.className = tag.className.replace(name,'');
+			}
+		})();
+	</script>
+	<script src="js/loading.js" type="text/javascript" charset="utf-8"></script>
+</html>

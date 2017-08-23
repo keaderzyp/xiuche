@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.CarMaxFormulaMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.CarMaxFormula" >
+    <id column="FORMULA_ID" property="formulaId" jdbcType="VARCHAR" />
+    <result column="FLOOR_PRICE" property="floorPrice" jdbcType="DECIMAL" />
+    <result column="CEIL_PRICE" property="ceilPrice" jdbcType="DECIMAL" />
+    <result column="QUOTIENT" property="quotient" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    FORMULA_ID, FLOOR_PRICE, CEIL_PRICE, QUOTIENT, STATUS, REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.CarMaxFormulaExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_CAR_MAX_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CAR_MAX_FORMULA
+    where FORMULA_ID = #{formulaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_CAR_MAX_FORMULA
+    where FORMULA_ID = #{formulaId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.CarMaxFormulaExample" >
+    delete from T_CAR_MAX_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.CarMaxFormula" >
+    insert into T_CAR_MAX_FORMULA (FORMULA_ID, FLOOR_PRICE, CEIL_PRICE, 
+      QUOTIENT, STATUS, REMARK
+      )
+    values (#{formulaId,jdbcType=VARCHAR}, #{floorPrice,jdbcType=DECIMAL}, #{ceilPrice,jdbcType=DECIMAL}, 
+      #{quotient,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.CarMaxFormula" >
+    insert into T_CAR_MAX_FORMULA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="formulaId != null" >
+        FORMULA_ID,
+      </if>
+      <if test="floorPrice != null" >
+        FLOOR_PRICE,
+      </if>
+      <if test="ceilPrice != null" >
+        CEIL_PRICE,
+      </if>
+      <if test="quotient != null" >
+        QUOTIENT,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="formulaId != null" >
+        #{formulaId,jdbcType=VARCHAR},
+      </if>
+      <if test="floorPrice != null" >
+        #{floorPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="ceilPrice != null" >
+        #{ceilPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quotient != null" >
+        #{quotient,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.CarMaxFormulaExample" resultType="java.lang.Integer" >
+    select count(*) from T_CAR_MAX_FORMULA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_CAR_MAX_FORMULA
+    <set >
+      <if test="record.formulaId != null" >
+        FORMULA_ID = #{record.formulaId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.floorPrice != null" >
+        FLOOR_PRICE = #{record.floorPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ceilPrice != null" >
+        CEIL_PRICE = #{record.ceilPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.quotient != null" >
+        QUOTIENT = #{record.quotient,jdbcType=DECIMAL},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_CAR_MAX_FORMULA
+    set FORMULA_ID = #{record.formulaId,jdbcType=VARCHAR},
+      FLOOR_PRICE = #{record.floorPrice,jdbcType=DECIMAL},
+      CEIL_PRICE = #{record.ceilPrice,jdbcType=DECIMAL},
+      QUOTIENT = #{record.quotient,jdbcType=DECIMAL},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.CarMaxFormula" >
+    update T_CAR_MAX_FORMULA
+    <set >
+      <if test="floorPrice != null" >
+        FLOOR_PRICE = #{floorPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="ceilPrice != null" >
+        CEIL_PRICE = #{ceilPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="quotient != null" >
+        QUOTIENT = #{quotient,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FORMULA_ID = #{formulaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.CarMaxFormula" >
+    update T_CAR_MAX_FORMULA
+    set FLOOR_PRICE = #{floorPrice,jdbcType=DECIMAL},
+      CEIL_PRICE = #{ceilPrice,jdbcType=DECIMAL},
+      QUOTIENT = #{quotient,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where FORMULA_ID = #{formulaId,jdbcType=VARCHAR}
+  </update>
+  
+  <!-- add yuhb 取对应价格车的折旧率 -->
+  <select id="selectFormulaByPrice" parameterType="java.math.BigDecimal" resultType="java.math.BigDecimal" >
+    select quotient from T_CAR_MAX_FORMULA t where t.floor_price &lt;=  #{price,jdbcType=DECIMAL} 
+    	and t.ceil_price &gt;=  #{price,jdbcType=DECIMAL}
+  </select>
+  
+</mapper>

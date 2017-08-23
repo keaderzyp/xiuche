@@ -1,0 +1,229 @@
+.money-num-bar{
+	height: 88px;
+	background: #4098FF;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 15px;
+}
+
+.money-num-bar .title{
+	height: 88px;
+	font-size: 12px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+}
+.money-num-bar .title img{
+	width: 16px;
+	height: 16px;
+}
+.money-num-bar .num{
+	font-size: 48px;
+	color: #FFFFFF;
+	letter-spacing: 0;
+}
+.money-num-bar .btn button{
+	width: 70px;
+	height: 24px;
+	border-radius: 100px;
+	border:2px solid #FFFFFF;
+	color: #FFFFFF;
+	font-size: 14px;
+	line-height: 14px;
+	background:  #4098FF;
+	outline: none;
+}
+.alert{
+	background: #CEE4FF;
+	height: 32px;
+	line-height: 32px;
+	font-size: 12px;
+	color: #4A90E2;
+	letter-spacing: 0.14px;
+}
+.alert img{
+	width: 17px;
+	height: 17px;
+	vertical-align: middle;
+	margin: 0px 10px;
+}
+.pay-item{
+	background-color: #FFFFFF;
+	height: 70px;
+	border-bottom: 1px solid #EBEBEB;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	padding-left: 15px;
+	padding-right: 15px;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+
+.pay-item-info{
+	-webkit-box-flex:1 ;
+	    -ms-flex-positive:1 ;
+	        flex-grow:1 ;
+}
+.pay-item-info .title .main{
+	font-family: .PingFangSC-Regular;
+	font-size: 14px;
+	color: #4A4A4A;
+	letter-spacing: 0;
+	line-height: 14px;
+}
+.pay-item-info .title .date{
+	font-family: .PingFangSC-Regular;
+	font-size: 10px;
+	color: #CCCCCC;
+	letter-spacing: 0;
+	line-height: 10px;
+}
+.pay-item-info .content{
+	margin-top: 10px;
+	font-family: .PingFangSC-Regular;
+	font-size: 12px;
+	color: #9B9B9B;
+	letter-spacing: 0;
+	line-height: 14px;
+}
+.pay-item-number{
+	font-family: .PingFangSC-Medium;
+	font-size: 14px;
+	color: #FF4900;
+	letter-spacing: 0;
+	line-height: 14px;
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+	width: 51px;
+}
+.pay-item-type{
+	font-family: .PingFangSC-Regular;
+	font-size: 12px;
+	color: #7ED321;
+	letter-spacing: 0;
+	line-height: 12px;
+	-webkit-box-flex: 0;
+	    -ms-flex-positive: 0;
+	        flex-grow: 0;
+	-ms-flex-negative: 0;
+	    flex-shrink: 0;
+	width: 78px;
+	text-align: right;
+}
+.pay-item-type button{
+	width: 48px;
+	height: 32px;
+	background-color: #FFFFFF;
+	font-family: .PingFangSC-Regular;
+	font-size: 12px;
+	color: #4098FF;
+	letter-spacing: 0;
+	line-height: 12px;
+	border: 1px solid #4098FF;
+	border-radius: 5px;
+}
+.pay-item .lime{
+	color: #7ED321;
+}
+.loading-body{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	display: flex;
+	transition: 0.5s;
+}
+.loading-body img{
+	width: 30px;
+	height: 30px;
+	margin: auto;
+}
+.choose-pay{
+	height: 280px;
+	background: #FFFFFF;
+}
+.choose-pay .tr{
+	display: flex;
+	padding: 15px 15px 0px;
+}
+.choose-pay .tr .active{
+	background-color:  #58A5FF;
+	color: #FFFFFF !important;
+}
+
+.choose-pay .tr .td,.choose-pay .tr .td input{
+	height: 80px;
+	border: 1px solid #58A5FF;
+	border-radius: 4px;
+	font-size: 18px;
+	color: #4098FF;
+	letter-spacing: 0.22px;
+	text-align: center;
+	line-height: 80px;
+	flex-grow: 0 ;
+	flex-shrink: 0;
+	margin-right: 20px;
+	box-sizing: border-box;
+}
+.choose-pay .tr .td{
+	width: 100px;
+}
+.choose-pay .tr .lg{
+	width: 220px;
+}
+.choose-pay .tr .td input{
+	border: none;
+	outline: none;
+	line-height: 20px;
+	height: 20px;
+	text-align: center;
+}
+@media only screen  and (max-width: 320px) {
+	.choose-pay .tr .td{
+		width: 80px;
+	}
+	.choose-pay .tr .lg{
+		width: 180px;
+	}
+	.choose-pay .tr .td input{
+		width: 150px;
+		text-align: center;
+	}
+}
+.bottom{
+	height: 90px;
+	font-size: 14px;
+	color: #9B9B9B;
+	letter-spacing: 0;
+	line-height: 90px;
+	padding-left: 15px;
+	
+}
+.bottom span{
+	color: #4098FF;
+}
+.pay-type-title{
+	font-size: 14px;
+	color: #9B9B9B;
+	letter-spacing: 0;
+	line-height: 14px;
+	padding: 13px 15px;
+}
+.pay-type .pay-item .pay-title{
+	width: 100%;
+	padding-left: 10px;
+}
+
+.pay-type .pay-item .choose{
+	color: #DBDBDB;
+}

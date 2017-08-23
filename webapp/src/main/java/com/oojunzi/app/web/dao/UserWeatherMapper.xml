@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.oojunzi.app.web.dao.UserWeatherMapper" >
+  <resultMap id="BaseResultMap" type="com.oojunzi.app.web.model.UserWeather" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="SUCC_FLAG" property="succFlag" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="CITY_ID" property="cityId" jdbcType="VARCHAR" />
+    <result column="HAPPYDATE" property="happydate" jdbcType="VARCHAR" />
+    <result column="WEATHER" property="weather" jdbcType="VARCHAR" />
+    <result column="TEMP" property="temp" jdbcType="VARCHAR" />
+    <result column="TEMPHIGH" property="temphigh" jdbcType="VARCHAR" />
+    <result column="TEMPLOW" property="templow" jdbcType="VARCHAR" />
+    <result column="PM2P5DAY" property="pm2p5day" jdbcType="VARCHAR" />
+    <result column="PM2P5" property="pm2p5" jdbcType="VARCHAR" />
+    <result column="AFFECT" property="affect" jdbcType="VARCHAR" />
+    <result column="WEAT_IMG" property="weatImg" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PARAM1" property="param1" jdbcType="VARCHAR" />
+    <result column="PARAM2" property="param2" jdbcType="VARCHAR" />
+    <result column="PARAM3" property="param3" jdbcType="VARCHAR" />
+    <result column="PARAM4" property="param4" jdbcType="VARCHAR" />
+    <result column="PARAM5" property="param5" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, SUCC_FLAG, CITY, CITY_CODE, CITY_ID, HAPPYDATE, WEATHER, TEMP, TEMPHIGH, TEMPLOW, 
+    PM2P5DAY, PM2P5, AFFECT, WEAT_IMG, STATUS, REMARK, PARAM1, PARAM2, PARAM3, PARAM4, 
+    PARAM5
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.UserWeatherExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from T_USER_WEATHER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.math.BigDecimal" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_USER_WEATHER
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal" >
+    delete from T_USER_WEATHER
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.oojunzi.app.web.model.UserWeatherExample" >
+    delete from T_USER_WEATHER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.oojunzi.app.web.model.UserWeather" >
+    insert into T_USER_WEATHER (ID, SUCC_FLAG, CITY, 
+      CITY_CODE, CITY_ID, HAPPYDATE, 
+      WEATHER, TEMP, TEMPHIGH, 
+      TEMPLOW, PM2P5DAY, PM2P5, 
+      AFFECT, WEAT_IMG, STATUS, 
+      REMARK, PARAM1, PARAM2, 
+      PARAM3, PARAM4, PARAM5
+      )
+    values (#{id,jdbcType=DECIMAL}, #{succFlag,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{cityCode,jdbcType=VARCHAR}, #{cityId,jdbcType=VARCHAR}, #{happydate,jdbcType=VARCHAR}, 
+      #{weather,jdbcType=VARCHAR}, #{temp,jdbcType=VARCHAR}, #{temphigh,jdbcType=VARCHAR}, 
+      #{templow,jdbcType=VARCHAR}, #{pm2p5day,jdbcType=VARCHAR}, #{pm2p5,jdbcType=VARCHAR}, 
+      #{affect,jdbcType=VARCHAR}, #{weatImg,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{param1,jdbcType=VARCHAR}, #{param2,jdbcType=VARCHAR}, 
+      #{param3,jdbcType=VARCHAR}, #{param4,jdbcType=VARCHAR}, #{param5,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.oojunzi.app.web.model.UserWeather" >
+    insert into T_USER_WEATHER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        ID,
+      <if test="succFlag != null" >
+        SUCC_FLAG,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="cityId != null" >
+        CITY_ID,
+      </if>
+      <if test="happydate != null" >
+        HAPPYDATE,
+      </if>
+      <if test="weather != null" >
+        WEATHER,
+      </if>
+      <if test="temp != null" >
+        TEMP,
+      </if>
+      <if test="temphigh != null" >
+        TEMPHIGH,
+      </if>
+      <if test="templow != null" >
+        TEMPLOW,
+      </if>
+      <if test="pm2p5day != null" >
+        PM2P5DAY,
+      </if>
+      <if test="pm2p5 != null" >
+        PM2P5,
+      </if>
+      <if test="affect != null" >
+        AFFECT,
+      </if>
+      <if test="weatImg != null" >
+        WEAT_IMG,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="param1 != null" >
+        PARAM1,
+      </if>
+      <if test="param2 != null" >
+        PARAM2,
+      </if>
+      <if test="param3 != null" >
+        PARAM3,
+      </if>
+      <if test="param4 != null" >
+        PARAM4,
+      </if>
+      <if test="param5 != null" >
+        PARAM5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      SEQ_USER_WEATHER.NEXTVAL,
+      <if test="succFlag != null" >
+        #{succFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="happydate != null" >
+        #{happydate,jdbcType=VARCHAR},
+      </if>
+      <if test="weather != null" >
+        #{weather,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="temphigh != null" >
+        #{temphigh,jdbcType=VARCHAR},
+      </if>
+      <if test="templow != null" >
+        #{templow,jdbcType=VARCHAR},
+      </if>
+      <if test="pm2p5day != null" >
+        #{pm2p5day,jdbcType=VARCHAR},
+      </if>
+      <if test="pm2p5 != null" >
+        #{pm2p5,jdbcType=VARCHAR},
+      </if>
+      <if test="affect != null" >
+        #{affect,jdbcType=VARCHAR},
+      </if>
+      <if test="weatImg != null" >
+        #{weatImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        #{param5,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.oojunzi.app.web.model.UserWeatherExample" resultType="java.lang.Integer" >
+    select count(*) from T_USER_WEATHER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update T_USER_WEATHER
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=DECIMAL},
+      </if>
+      <if test="record.succFlag != null" >
+        SUCC_FLAG = #{record.succFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityCode != null" >
+        CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cityId != null" >
+        CITY_ID = #{record.cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.happydate != null" >
+        HAPPYDATE = #{record.happydate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weather != null" >
+        WEATHER = #{record.weather,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temp != null" >
+        TEMP = #{record.temp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.temphigh != null" >
+        TEMPHIGH = #{record.temphigh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.templow != null" >
+        TEMPLOW = #{record.templow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pm2p5day != null" >
+        PM2P5DAY = #{record.pm2p5day,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pm2p5 != null" >
+        PM2P5 = #{record.pm2p5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.affect != null" >
+        AFFECT = #{record.affect,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weatImg != null" >
+        WEAT_IMG = #{record.weatImg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param1 != null" >
+        PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param2 != null" >
+        PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param3 != null" >
+        PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param4 != null" >
+        PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.param5 != null" >
+        PARAM5 = #{record.param5,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update T_USER_WEATHER
+    set ID = #{record.id,jdbcType=DECIMAL},
+      SUCC_FLAG = #{record.succFlag,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      CITY_CODE = #{record.cityCode,jdbcType=VARCHAR},
+      CITY_ID = #{record.cityId,jdbcType=VARCHAR},
+      HAPPYDATE = #{record.happydate,jdbcType=VARCHAR},
+      WEATHER = #{record.weather,jdbcType=VARCHAR},
+      TEMP = #{record.temp,jdbcType=VARCHAR},
+      TEMPHIGH = #{record.temphigh,jdbcType=VARCHAR},
+      TEMPLOW = #{record.templow,jdbcType=VARCHAR},
+      PM2P5DAY = #{record.pm2p5day,jdbcType=VARCHAR},
+      PM2P5 = #{record.pm2p5,jdbcType=VARCHAR},
+      AFFECT = #{record.affect,jdbcType=VARCHAR},
+      WEAT_IMG = #{record.weatImg,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      PARAM1 = #{record.param1,jdbcType=VARCHAR},
+      PARAM2 = #{record.param2,jdbcType=VARCHAR},
+      PARAM3 = #{record.param3,jdbcType=VARCHAR},
+      PARAM4 = #{record.param4,jdbcType=VARCHAR},
+      PARAM5 = #{record.param5,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.oojunzi.app.web.model.UserWeather" >
+    update T_USER_WEATHER
+    <set >
+      <if test="succFlag != null" >
+        SUCC_FLAG = #{succFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null" >
+        CITY_ID = #{cityId,jdbcType=VARCHAR},
+      </if>
+      <if test="happydate != null" >
+        HAPPYDATE = #{happydate,jdbcType=VARCHAR},
+      </if>
+      <if test="weather != null" >
+        WEATHER = #{weather,jdbcType=VARCHAR},
+      </if>
+      <if test="temp != null" >
+        TEMP = #{temp,jdbcType=VARCHAR},
+      </if>
+      <if test="temphigh != null" >
+        TEMPHIGH = #{temphigh,jdbcType=VARCHAR},
+      </if>
+      <if test="templow != null" >
+        TEMPLOW = #{templow,jdbcType=VARCHAR},
+      </if>
+      <if test="pm2p5day != null" >
+        PM2P5DAY = #{pm2p5day,jdbcType=VARCHAR},
+      </if>
+      <if test="pm2p5 != null" >
+        PM2P5 = #{pm2p5,jdbcType=VARCHAR},
+      </if>
+      <if test="affect != null" >
+        AFFECT = #{affect,jdbcType=VARCHAR},
+      </if>
+      <if test="weatImg != null" >
+        WEAT_IMG = #{weatImg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="param1 != null" >
+        PARAM1 = #{param1,jdbcType=VARCHAR},
+      </if>
+      <if test="param2 != null" >
+        PARAM2 = #{param2,jdbcType=VARCHAR},
+      </if>
+      <if test="param3 != null" >
+        PARAM3 = #{param3,jdbcType=VARCHAR},
+      </if>
+      <if test="param4 != null" >
+        PARAM4 = #{param4,jdbcType=VARCHAR},
+      </if>
+      <if test="param5 != null" >
+        PARAM5 = #{param5,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.oojunzi.app.web.model.UserWeather" >
+    update T_USER_WEATHER
+    set SUCC_FLAG = #{succFlag,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      CITY_CODE = #{cityCode,jdbcType=VARCHAR},
+      CITY_ID = #{cityId,jdbcType=VARCHAR},
+      HAPPYDATE = #{happydate,jdbcType=VARCHAR},
+      WEATHER = #{weather,jdbcType=VARCHAR},
+      TEMP = #{temp,jdbcType=VARCHAR},
+      TEMPHIGH = #{temphigh,jdbcType=VARCHAR},
+      TEMPLOW = #{templow,jdbcType=VARCHAR},
+      PM2P5DAY = #{pm2p5day,jdbcType=VARCHAR},
+      PM2P5 = #{pm2p5,jdbcType=VARCHAR},
+      AFFECT = #{affect,jdbcType=VARCHAR},
+      WEAT_IMG = #{weatImg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PARAM1 = #{param1,jdbcType=VARCHAR},
+      PARAM2 = #{param2,jdbcType=VARCHAR},
+      PARAM3 = #{param3,jdbcType=VARCHAR},
+      PARAM4 = #{param4,jdbcType=VARCHAR},
+      PARAM5 = #{param5,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <!-- add LGQ -->
+  <select id="selectByCityAndTime" resultMap="BaseResultMap" parameterType="com.oojunzi.app.web.model.UserWeather" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_USER_WEATHER
+    where  CITY = #{city,jdbcType=VARCHAR} and HAPPYDATE = #{happydate,jdbcType=VARCHAR}
+  </select>
+</mapper>

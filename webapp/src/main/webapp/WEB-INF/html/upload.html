@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>上传行驶证</title>
+		<link rel="stylesheet" type="text/css" href="css/FJL.css"/>
+		<link rel="stylesheet" type="text/css" href="css/FJL.picker.css"/>
+	<link href="css/upload-styles.css" rel="stylesheet"></head>
+	<body>
+		<div class="nav">
+			<span class="back">
+				<img src="img/arrow-left.png"/>
+				返回
+			</span>
+			<span class="title">
+				上传行驶证
+			</span>
+		</div>
+		<ul class="choose-img">
+			<li>
+				<img src="img/upload-main.png"/>
+				<div class="content">
+					上传行驶证主页
+				</div>
+			</li>
+			<li>
+				<img src="img/upload.png"/>
+				<div class="content">
+					上传行驶证副页
+				</div>
+			</li>
+		</ul>
+		<div class="alert-content">
+			请提供清晰的照片，拍照时避免反光<br/>
+			您上传的照片我们将严格保密
+		</div>
+		<div class="car-license-info">
+			<div class="title">
+				车牌
+			</div>
+			<div class="content">
+				<label for="">贵</label>
+				<label for="">A</label>
+				<label for="">3</label>
+				<label for="">6</label>
+				<label for="">9</label>
+				<label for="">0</label>
+				<label for="">Y</label>
+			</div>
+		</div>
+		<div class="car-license-info">
+			<div class="title">
+				所有人
+			</div>
+			<div class="content-gray">
+				<label for="">张</label>
+				<label for="">某</label>
+				<label for="">某</label>
+			</div>
+		</div>
+		<div class="car-license-info pinpai">
+			<div class="title">
+				品牌型号
+			</div>
+			<div class="content-gray">
+				<label for="">东</label>
+				<label for="">风</label>
+				<label for="">日</label>
+				<label for="">产</label>
+				<label for="">牌</label>
+				<label for="">D</label>
+				<label for="">S</label>
+				<label for="">L</label>
+				<label for="">7</label>
+				<label for="">2</label>
+				<label for="">0</label>
+				<label for="">3</label>
+				<label for="">V</label>
+				<label for="">A</label>
+				<label for="">K</label>
+				<label for="">2</label>
+			</div>
+		</div>
+		<div class="car-license-info pinpai">
+			<div class="title">
+				车辆识别代码
+			</div>
+			<div class="content-gray">
+				<label for="">东</label>
+				<label for="">风</label>
+				<label for="">日</label>
+				<label for="">产</label>
+				<label for="">牌</label>
+				<label for="">D</label>
+				<label for="">S</label>
+				<label for="">L</label>
+				<label for="">7</label>
+				<label for="">2</label>
+				<label for="">0</label>
+				<label for="">3</label>
+				<label for="">V</label>
+				<label for="">A</label>
+				<label for="">K</label>
+				<label for="">2</label>
+			</div>
+		</div>
+		<div class="car-license-info pinpai">
+			<div class="title">
+				发动机型号
+			</div>
+			<div class="content-gray">
+				<label for="">东</label>
+				<label for="">风</label>
+				<label for="">日</label>
+				<label for="">产</label>
+				<label for="">牌</label>
+				<label for="">D</label>
+				<label for="">S</label>
+				<label for="">L</label>
+				<label for="">7</label>
+				<label for="">2</label>
+				<label for="">0</label>
+				<label for="">3</label>
+				<label for="">V</label>
+				<label for="">A</label>
+				<label for="">K</label>
+				<label for="">2</label>
+			</div>
+		</div>
+		<div class="car-license-info group">
+			<div class="title">
+				注册日期
+			</div>
+			<div class="content">
+				<button class="date-picker" data-options='{"type":"date","beginYear":2000,"endYear":2086}'>
+					2017-7-1
+				</button>
+				<ul class="arrow-date-picker">
+					<li class="up">
+						<img src="img/arrow-top.png"/>
+					</li>
+					<li class="down">
+						<img src="img/arrow-bottom.png"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="car-license-info group">
+			<div class="title">
+				发证日期
+			</div>
+			<div class="content">
+				<button class="date-picker" data-options='{"type":"date","beginYear":2000,"endYear":2086}'>
+					2017-7-1
+				</button>
+				<ul class="arrow-date-picker">
+					<li class="up">
+						<img src="img/arrow-top.png"/>
+					</li>
+					<li class="down">
+						<img src="img/arrow-bottom.png"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<button onclick="window.location.href='main_makedeal.html'" class="save">保存</button>
+		<script src="js/FJL.min.js"></script>
+		<script src="js/FJL.picker.min.js"></script>
+		<script>
+			
+			(function($) {
+				
+				$.init();
+				//var result = $('#demo2')[0];
+				var btns = $('.date-picker');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						/*
+						 * 首次显示时实例化组件
+						 * 示例为了简洁，将 options 放在了按钮的 dom 上
+						 * 也可以直接通过代码声明 optinos 用于实例化 DtPicker
+						 */
+						var that = this;
+						var picker = new $.DtPicker(options);
+						console.log(picker.setSelectedValue);
+						picker.show(function(rs) {
+							console.log(rs);
+							var d = new Date(rs.value);
+							console.log(new Date(d.getTime()+86400000));
+							/*
+							 * rs.value 拼合后的 value
+							 * rs.text 拼合后的 text
+							 * rs.y 年，可以通过 rs.y.vaue 和 rs.y.text 获取值和文本
+							 * rs.m 月，用法同年
+							 * rs.d 日，用法同年
+							 * rs.h 时，用法同年
+							 * rs.i 分（minutes 的第二个字母），用法同年
+							 */
+							that.innerHTML=rs.text;
+							/* 
+							 * 返回 false 可以阻止选择框的关闭
+							 * return false;
+							 */
+							/*
+							 * 释放组件资源，释放后将将不能再操作组件
+							 * 通常情况下，不需要示放组件，new DtPicker(options) 后，可以一直使用。
+							 * 当前示例，因为内容较多，如不进行资原释放，在某些设备上会较慢。
+							 * 所以每次用完便立即调用 dispose 进行释放，下次用时再创建新实例。
+							 */
+							picker.dispose();
+						});
+					}, false);
+				});
+				
+				var ups = $('.arrow-date-picker .up');
+				ups.each(function(i, up) {
+					up.addEventListener('touchstart', function() {
+						var now = this.parentNode.parentNode.children[0].innerHTML;
+						console.log(now.trim())
+						var nows = now.trim().split('-');
+						var d = new Date();
+						d.setFullYear(nows[0],nows[1]-1,nows[2]);
+						d.setDate(d.getDate()+1)
+						var resDate = d.getFullYear()+'-'+
+									(d.getMonth()+1)+'-'+
+									d.getDate();
+						this.parentNode.parentNode.children[0].innerHTML=resDate;
+					}, false);
+				});
+				var downs = $('.arrow-date-picker .down');
+				downs.each(function(i, down) {
+					down.addEventListener('touchstart', function() {
+						var now = this.parentNode.parentNode.children[0].innerHTML;
+						console.log(now.trim())
+						var nows = now.trim().split('-');
+						var d = new Date();
+						d.setFullYear(nows[0],nows[1]-1,nows[2]);
+						d.setDate(d.getDate()-1)
+						var resDate = d.getFullYear()+'-'+
+									(d.getMonth()+1)+'-'+
+									d.getDate();
+						this.parentNode.parentNode.children[0].innerHTML=resDate;
+					}, false);
+				});
+				//解决输入问题
+				var labels = document.getElementsByTagName("label");
+				for(var i=0;i<labels.length;i++){
+					labels[i].onclick=shuRu;
+				}
+				function shuRu(event){
+						console.log(1);
+						if(event.target=this){
+							var val = this.innerHTML;
+							this.innerHTML="<input autofocus='autofocus'  class='ipt' />";
+							this.children[0].value=""
+							this.children[0].focus(); 
+							this.children[0].onblur=function(){
+								this.parentNode.onclick=shuRu;
+								var val = this.value;
+								this.parentNode.innerHTML = val.trim();
+							}
+							console.log(this.children[0]);
+							this.onclick=undefined;
+						}
+					}
+			})(mui);
+		</script>
+
+	</body>
+</html>
